@@ -13,12 +13,14 @@
     --border-color: #e1e8ed;
 }
 
+html { font-size: 115%; } /* Escala global de fuentes para pantallas (aprox 18.5px base) */
+
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 body { background-color: var(--bg-color); color: var(--text-dark); }
 .dashboard-container { display: flex; height: 100vh; overflow: hidden; }
 
 /* Sidebar */
-.sidebar { width: 280px; background-color: var(--primary-color); color: var(--text-light); display: flex; flex-direction: column; overflow-y: auto; }
+.sidebar { width: 300px; background-color: var(--primary-color); color: var(--text-light); display: flex; flex-direction: column; overflow-y: auto; }
 .logo { padding: 25px 20px; text-align: center; border-bottom: 1px solid var(--secondary-color); }
 .logo h2 { margin-bottom: 5px; color: var(--white); font-size: 1.7rem; font-weight: 700; letter-spacing: 0.5px; }
 .logo p { font-size: 0.95rem; color: #bdc3c7; }

@@ -13,6 +13,80 @@
     <link rel="stylesheet" href="static/css/modules/resumen.css">
 </head>
 <body>
+    <!-- SPLASH SCREEN OVERLAY -->
+    <div id="splash-screen" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: url('docs/CC.jpg') no-repeat center center/cover; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease; cursor: pointer;">
+        <!-- Capa oscura para legibilidad -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(44, 62, 80, 0.85);"></div>
+        
+        <div class="splash-content" style="position: relative; z-index: 10000; text-align: center; color: white; animation: slideUpFade 1.2s ease forwards;">
+            <!-- Logo Primavera Urbana -->
+            <img src="docs/Purbana.jpg" alt="Centro Comercial Primavera Urbana" style="max-height: 180px; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);">
+            
+            <h1 style="font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 15px; font-weight: 700; text-shadow: 2px 2px 5px rgba(0,0,0,0.5);">DASHBOARD</h1>
+            <p style="font-size: 1.2rem; color: #ecf0f1; letter-spacing: 1px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Gestión y Control de Operaciones TI</p>
+            
+            <div style="margin-top: 50px; display: flex; align-items: center; justify-content: center; gap: 15px;">
+                <img src="docs/mifoto.jpeg" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid white; box-shadow: 0 6px 15px rgba(0,0,0,0.5);">
+                <div style="text-align: left; line-height: 1.2;">
+                    <h3 style="font-size: 1.7rem; margin: 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Ing. Miller F. Santos. J.</h3>
+                    <span style="font-size: 1.2rem; color: #ecf0f1; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Profesional en infraestructura y soporte TI</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        @keyframes slideUpFade {
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        body.splash-active { overflow: hidden; }
+    </style>
+    <script>
+        // Lógica de Splash Screen Inteligente
+        // Comprobar si venimos de navegación interna
+        const isInternalNav = sessionStorage.getItem('internalNav');
+        const isReload = (performance.navigation && performance.navigation.type === 1) || 
+                         (window.performance && window.performance.getEntriesByType && window.performance.getEntriesByType("navigation").length > 0 && window.performance.getEntriesByType("navigation")[0].type === "reload");
+        
+        const splash = document.getElementById('splash-screen');
+        
+        if (isInternalNav === 'true' && !isReload) {
+            // Si es navegación entre pestañas (no es reload), ocultar inmediatamente
+            splash.style.display = 'none';
+        } else {
+            // Si es primera vez o un reload (F5), mostrar
+            document.body.classList.add('splash-active');
+            
+            function closeSplash() {
+                if(splash && splash.style.opacity !== '0') {
+                    splash.style.opacity = '0';
+                    splash.style.visibility = 'hidden';
+                    document.body.classList.remove('splash-active');
+                    setTimeout(() => splash.remove(), 800);
+                    
+                    document.removeEventListener('click', closeSplash);
+                    document.removeEventListener('keydown', closeSplash);
+                }
+            }
+
+            document.addEventListener('click', closeSplash);
+            document.addEventListener('keydown', closeSplash);
+        }
+        
+        // Limpiar la bandera para la siguiente recarga manual, pero interceptar clicks en la barra lateral
+        sessionStorage.removeItem('internalNav');
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            const menuLinks = document.querySelectorAll('.sidebar a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sessionStorage.setItem('internalNav', 'true');
+                });
+            });
+        });
+    </script>
+    <!-- FIN SPLASH SCREEN -->
 
     <!-- Modal del Documento Marco -->
     <div id="modalDocumentoMarco" class="modal">
@@ -24,11 +98,13 @@
         </div>
     </div>
 
+    
+
     <div class="dashboard-container">
         
         <aside class="sidebar">
             <div class="logo">
-                <h2>Dashboard V.1</h2>
+                <h2>Dashboard</h2>
                 <p>Reporte desempeño TI</p>
             </div>
             
