@@ -265,10 +265,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
-                <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">Aseguramiento de Disponibilidad y Triage Operativo Diario (SLA Crítico)</td>
-                <td style="padding: 10px 12px; color: #7f8c8d;">Lun a Sáb (Inmediato)</td>
+                <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">Soporte TI y Atención de Incidencias</td>
+                <td style="padding: 10px 12px; color: #7f8c8d;">Lun a Sáb (Horario Laboral)</td>
                 <td colspan="${data.semanas.length}" style="padding: 8px;">
-                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-bolt"></i> Disponibilidad Activa 24/7 - Respuesta Inmediata</div>
+                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Soporte TI (L-V 8a-12p y 2p-6p, Sáb 8a-12p)</div>
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color);">
@@ -303,30 +303,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
-                <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora CCTV</td>
-                <td style="padding: 10px 12px; color: #7f8c8d;">Mar y Jue (Tardes)</td>
+                <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejoramiento Infraestructura</td>
+                <td style="padding: 10px 12px; color: #7f8c8d;">Mar, Mié, Jue (Tardes)</td>
                 <td colspan="${data.semanas.length}" style="padding: 8px;">
-                    <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">${data.cctv}</div>
+                    <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">CCTV y Herramientas Ofimáticas</div>
                 </td>
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
-                <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora Telefonía</td>
-                <td style="padding: 10px 12px; color: #7f8c8d;">Jueves (Tardes)</td>
-                ${data.telEmpty > 0 ? `<td colspan="${data.telEmpty}" style="background: #fafafa; text-align: center; font-size: 0.75rem; color: #aaa;">No iniciado</td>` : ''}
-                ${data.telColspan > 0 ? `
-                <td colspan="${data.telColspan}" style="padding: 8px;">
-                    <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">${data.tel}</div>
-                </td>` : ''}
-            </tr>
-            <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
-                <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora Parqueadero</td>
-                <td style="padding: 10px 12px; color: #7f8c8d;">Mar y Vie (Tardes)</td>
-                ${data.parqEmpty > 0 ? `<td colspan="${data.parqEmpty}" style="background: #fafafa; text-align: center; font-size: 0.75rem; color: #aaa;">No iniciado</td>` : ''}
-                ${data.parqColspan > 0 ? `
-                <td colspan="${data.parqColspan}" style="padding: 8px;">
-                    <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">${data.parq}</div>
-                </td>` : ''}
-                ${data.hasOwnProperty('parqResto') ? `<td style="background: #fafafa;"></td>` : ''}
             </tr>
         `;
 
@@ -381,9 +362,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
-                <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">Aseguramiento de Disponibilidad y Triage Operativo Diario (SLA Crítico)</td>
+                <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">Soporte TI y Atención de Incidencias</td>
                 <td colspan="6" style="padding: 8px;">
-                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-bolt"></i> Disponibilidad Operativa Continua (08:00 - 18:00)</div>
+                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Soporte TI (L-V 8a-12p y 2p-6p, Sáb 8a-12p)</div>
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color);">
@@ -410,8 +391,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
-                <td style="padding: 10px 12px; padding-left: 25px;">${data.infraDesc}</td>
-                ${renderCells(data.infraDias, "Mejoras", "var(--warning)")}
+                <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora Infraestructura</td>
+                ${renderCells([false, true, true, true, false, false], "CCTV/Ofimática", "var(--warning)")}
             </tr>
         `;
 
@@ -437,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const tieneMto = data.mtoDias[diaIndex];
         const tieneSoft = data.softDias[diaIndex];
-        const tieneInfra = data.infraDias[diaIndex];
+        const tieneInfra = [false, true, true, true, false, false][diaIndex];
 
         const headerHtml = `
             <tr style="background: var(--bg-color); border-bottom: 2px solid var(--border-color);">
@@ -458,14 +439,14 @@ document.addEventListener('DOMContentLoaded', () => {
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
                 <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">
-                    <i class="fa-solid fa-circle-exclamation" style="color: var(--alert);"></i> Aseguramiento de Disponibilidad y Triage Operativo Diario (SLA Crítico)
+                    <i class="fa-solid fa-circle-exclamation" style="color: var(--alert);"></i> Soporte TI y Atención de Incidencias
                 </td>
                 <td colspan="2" style="padding: 8px;">
-                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Guardia Activa Mañana</div>
+                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Soporte TI (Mañana)</div>
                 </td>
                 <td style="background: rgba(189, 195, 199, 0.1); text-align: center; font-size: 0.75rem; color: #7f8c8d; font-style: italic;">Almuerzo</td>
                 <td colspan="2" style="padding: 8px;">
-                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Guardia Activa Tarde</div>
+                    <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Soporte TI (Tarde)</div>
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color);">
@@ -521,7 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </td>
             </tr>
             <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
-                <td style="padding: 10px 12px; padding-left: 25px;">${data.infraDesc}</td>
+                <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora CCTV y Ofimática</td>
         `;
         if (tieneInfra) {
             bodyHtml += `
