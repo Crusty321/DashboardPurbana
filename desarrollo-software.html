@@ -28,7 +28,7 @@
         
         <aside class="sidebar">
             <div class="logo">
-                <h2>Dashboard</h2>
+                <h2>Dashboard V.1</h2>
                 <p>Reporte desempeño TI</p>
             </div>
             
@@ -39,7 +39,7 @@
                     <a href="infraestructura.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="infraestructura"><i class="fa-solid fa-network-wired"></i> Infraestructura</li></a>
                     <a href="vista-proyectos.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="vista-proyectos"><i class="fa-solid fa-project-diagram"></i> Gestión y Seguimiento de Proyectos</li></a>
                     <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
-                    <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="desarrollo-software"><i class="fa-solid fa-code"></i> Desarrollo de Software</li></a>
+                    <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="desarrollo-software"><i class="fa-solid fa-laptop-code"></i> Portal Integrado de Gestión</li></a>
                     <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
 <a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
                 </ul>
@@ -49,8 +49,8 @@
         <main class="main-content">
             <header class="header">
                 <div class="header-titles">
-                    <h1 id="page-title">Desarrollo de Software</h1>
-                    <p id="page-subtitle">Cronograma, fases y arquitectura del prototipo de la Intranet Primavera Urbana</p>
+                    <h1 id="page-title">Portal Integrado de Gestión</h1>
+                    <p id="page-subtitle">Cronograma, fases y arquitectura del sistema de gestión para Primavera Urbana</p>
                 </div>
                 <div class="header-actions">
                     <div class="profile-btn">
@@ -64,8 +64,8 @@
                 <div class="table-container">
                     <div class="table-header" style="border-bottom: none; margin-bottom: 10px;">
                         <div>
-                            <h3><i class="fa-solid fa-code" style="color: var(--accent-color);"></i> Plan de Desarrollo de Software: Intranet</h3>
-                            <p style="font-size: 0.85rem; color: #7f8c8d;">Estructuración del proyecto, fases y planificación para el desarrollo del prototipo corporativo</p>
+                            <h3><i class="fa-solid fa-layer-group" style="color: var(--accent-color);"></i> Portal Integrado de Gestión</h3>
+                            <p style="font-size: 0.85rem; color: #7f8c8d;">Estructuración del proyecto, módulos y planificación de desarrollo</p>
                         </div>
                         <div class="header-actions-mto" style="margin-bottom: 0;">
                             <span class="badge positive" style="font-size: 0.85rem; padding: 6px 12px;"><i class="fa-solid fa-calendar"></i> Jornada: Lunes y Viernes (100% TI)</span>
@@ -91,99 +91,318 @@
                         </div>
                     </div>
 
-                    <!-- Módulos de la Intranet (Prototipo) -->
-                    <div style="background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1rem;"><i class="fa-solid fa-list-check"></i> Módulos y Funcionalidades del Prototipo</h4>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                    <!-- Módulos de la Intranet (Diagrama de Escalera) -->
+                    <div style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; margin-bottom: 30px;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 25px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-stairs" style="color: var(--accent-color);"></i> Arquitectura de Módulos (Diagrama de Escalera)
+                        </h4>
+                        
+                        <style>
+                            .escalera-wrapper {
+                                display: flex;
+                                flex-direction: column;
+                                padding: 10px 0 20px 0;
+                                overflow-x: auto;
+                            }
+                            .escalon-row {
+                                display: flex;
+                                align-items: stretch;
+                                margin-bottom: 12px;
+                                min-width: 700px; /* Asegurar que no se rompa en pantallas muy pequeñas */
+                                transition: transform 0.3s ease, filter 0.3s ease;
+                            }
+                            .escalon-row:hover {
+                                transform: translateX(15px);
+                                filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
+                                z-index: 10;
+                            }
+                            .escalon-step {
+                                flex: 0 0 220px;
+                                color: white;
+                                padding: 15px 20px;
+                                border-radius: 8px 0 0 8px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                position: relative;
+                                text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+                            }
+                            /* Flecha indicadora que conecta con el contenido */
+                            .escalon-step::after {
+                                content: '';
+                                position: absolute;
+                                right: -14px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                border-width: 14px 0 14px 14px;
+                                border-style: solid;
+                                z-index: 2;
+                            }
+                            .escalon-details {
+                                flex: 1;
+                                background: #f8fafc;
+                                padding: 15px 25px;
+                                border-radius: 0 8px 8px 0;
+                                border: 1px solid #e2e8f0;
+                                border-left: none;
+                                display: flex;
+                                align-items: center;
+                            }
+                            .items-list {
+                                list-style: none;
+                                padding: 0;
+                                margin: 0;
+                            }
+                            .items-list li {
+                                font-size: 0.85rem;
+                                color: #4a5568;
+                                margin-bottom: 6px;
+                                position: relative;
+                                padding-left: 20px;
+                            }
+                            .items-list li:last-child { margin-bottom: 0; }
+                            .items-list li::before {
+                                content: '\f058';
+                                font-family: 'Font Awesome 6 Free';
+                                font-weight: 900;
+                                position: absolute;
+                                left: 0;
+                                color: var(--accent-color);
+                            }
                             
-                            <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
-                                <h5 style="color: var(--primary-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;"><i class="fa-solid fa-right-to-bracket"></i> 1. Inicio de Sesión</h5>
-                                <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Sistema de autenticación simple mediante credenciales de usuario. Permite el control de acceso y seguridad inicial del aplicativo local.</p>
-                            </div>
+                            /* Escalones descendentes */
+                            .escalon-1 { margin-left: 0%; width: 100%; }
+                            .escalon-2 { margin-left: 5%; width: 95%; }
+                            .escalon-3 { margin-left: 10%; width: 90%; }
+                            .escalon-4 { margin-left: 15%; width: 85%; }
+                            .escalon-5 { margin-left: 20%; width: 80%; }
+                            
+                            /* Colores específicos de cada escalón */
+                            .bg-step-1 { background: #34495e; } .bg-step-1::after { border-color: transparent transparent transparent #34495e; }
+                            .bg-step-2 { background: #2980b9; } .bg-step-2::after { border-color: transparent transparent transparent #2980b9; }
+                            .bg-step-3 { background: #27ae60; } .bg-step-3::after { border-color: transparent transparent transparent #27ae60; }
+                            .bg-step-4 { background: #f39c12; } .bg-step-4::after { border-color: transparent transparent transparent #f39c12; }
+                            .bg-step-5 { background: #e74c3c; } .bg-step-5::after { border-color: transparent transparent transparent #e74c3c; }
+                            
+                            @media (max-width: 900px) {
+                                .escalon-1, .escalon-2, .escalon-3, .escalon-4, .escalon-5 { margin-left: 0; width: 100%; }
+                            }
+                        </style>
 
-                            <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent-color);">
-                                <h5 style="color: var(--primary-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;"><i class="fa-solid fa-users-gear"></i> 2. Asignación de Roles</h5>
-                                <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Establecimiento de dos roles predefinidos:</p>
-                                <ul style="font-size: 0.75rem; color: #555; padding-left: 15px; margin-top: 5px;">
-                                    <li><strong>Encargado (Admin):</strong> Control total, carga y avisos.</li>
-                                    <li><strong>Personal (User):</strong> Vista y descargas permitidas.</li>
-                                </ul>
+                        <div class="escalera-wrapper">
+                            <!-- Escalón 1 -->
+                            <div class="escalon-row escalon-1">
+                                <div class="escalon-step bg-step-1">
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-right-to-bracket" style="margin-right: 8px;"></i> 1. Inicio de Sesión</h5>
+                                </div>
+                                <div class="escalon-details">
+                                    <ul class="items-list">
+                                        <li>Diseño e implementación de la base de datos de usuarios (credenciales y permisos).</li>
+                                        <li>Desarrollo de interfaz de formulario seguro para autenticación (Login).</li>
+                                        <li>Configuración de sesiones y tokens de seguridad básicos.</li>
+                                    </ul>
+                                </div>
                             </div>
-
-                            <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--positive);">
-                                <h5 style="color: var(--primary-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;"><i class="fa-solid fa-file-pdf"></i> 3. Carga y Descarga de Documentos</h5>
-                                <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Gestión documental básica. El Encargado puede subir archivos corporativos y el personal puede buscarlos y descargarlos con un clic.</p>
+                            
+                            <!-- Escalón 2 -->
+                            <div class="escalon-row escalon-2">
+                                <div class="escalon-step bg-step-2">
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-users-gear" style="margin-right: 8px;"></i> 2. Asignación de Roles</h5>
+                                </div>
+                                <div class="escalon-details">
+                                    <ul class="items-list">
+                                        <li>Definición de lógica para <strong>Encargado (Admin)</strong> con permisos de escritura/carga.</li>
+                                        <li>Definición de lógica para <strong>Personal (User)</strong> con permisos de solo lectura.</li>
+                                        <li>Creación de middleware para protección de rutas según el rol.</li>
+                                    </ul>
+                                </div>
                             </div>
-
-                            <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--warning);">
-                                <h5 style="color: var(--primary-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;"><i class="fa-solid fa-bullhorn"></i> 4. Apartado de Avisos y Novedades</h5>
-                                <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Feed o muro de noticias principales. Muestra anuncios urgentes, cambios operativos o comunicados del centro comercial.</p>
+                            
+                            <!-- Escalón 3 -->
+                            <div class="escalon-row escalon-3">
+                                <div class="escalon-step bg-step-3">
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-file-pdf" style="margin-right: 8px;"></i> 3. Gestión Documental</h5>
+                                </div>
+                                <div class="escalon-details">
+                                    <ul class="items-list">
+                                        <li>Habilitación de servidor local para almacenamiento estructurado de archivos físicos.</li>
+                                        <li>Desarrollo del componente de carga (Upload) con restricciones de formato (PDF, Word).</li>
+                                        <li>Creación de listado interactivo con botones de búsqueda y descarga rápida.</li>
+                                    </ul>
+                                </div>
                             </div>
-
-                            <div style="background: var(--bg-color); padding: 15px; border-radius: 8px; border-left: 4px solid var(--alert); grid-column: span 1;">
-                                <h5 style="color: var(--primary-color); font-size: 0.9rem; margin-bottom: 8px; font-weight: bold;"><i class="fa-solid fa-pen-to-square"></i> 5. Módulo del Publicador</h5>
-                                <p style="font-size: 0.8rem; color: #555; line-height: 1.5;">Panel administrativo simplificado. Formulario estructurado para que el Encargado redacte, programe y publique avisos en el muro central.</p>
+                            
+                            <!-- Escalón 4 -->
+                            <div class="escalon-row escalon-4">
+                                <div class="escalon-step bg-step-4">
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-bullhorn" style="margin-right: 8px;"></i> 4. Avisos y Novedades</h5>
+                                </div>
+                                <div class="escalon-details">
+                                    <ul class="items-list">
+                                        <li>Diseño del Muro Principal (Feed) interactivo en la pantalla de inicio de los usuarios.</li>
+                                        <li>Implementación de base de datos para almacenar comunicados, fechas y autores.</li>
+                                        <li>Ajustes de UI/UX para resaltar avisos de alta prioridad (urgentes).</li>
+                                    </ul>
+                                </div>
                             </div>
-
+                            
+                            <!-- Escalón 5 -->
+                            <div class="escalon-row escalon-5">
+                                <div class="escalon-step bg-step-5">
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-pen-to-square" style="margin-right: 8px;"></i> 5. Módulo Publicador</h5>
+                                </div>
+                                <div class="escalon-details">
+                                    <ul class="items-list">
+                                        <li>Desarrollo del panel de administración restringido (exclusivo para rol Encargado).</li>
+                                        <li>Creación de formulario avanzado (WYSIWYG) para redacción de nuevas publicaciones.</li>
+                                        <li>Lógica de edición, eliminación temporal y publicación en el muro general.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Diagrama de Fases y Etapas (Roadmap de Desarrollo) -->
-                    <div style="background: white; border: 1px solid var(--border-color); border-radius: 8px; padding: 25px; margin-bottom: 20px;">
-                        <h4 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1rem;"><i class="fa-solid fa-route"></i> Roadmap de Desarrollo: Cronograma Semanal de Prototipado</h4>
+                    <!-- Mapa de Procesos: Roadmap de Desarrollo -->
+                    <div class="card" style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; margin-bottom: 30px;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                            <i class="fa-solid fa-diagram-project" style="color: var(--accent-color);"></i> Mapa de Procesos: Fases de Desarrollo
+                        </h4>
                         
-                        <div style="display: flex; flex-direction: column; gap: 20px; position: relative; padding-left: 20px; border-left: 3px dashed var(--border-color);">
+                        <style>
+                            .mapa-procesos-sw {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 15px;
+                                justify-content: center;
+                                align-items: stretch;
+                            }
+                            .flow-box-sw {
+                                flex: 1 1 160px;
+                                background: #fff;
+                                border: 2px solid #34495e;
+                                padding: 15px;
+                                box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+                                position: relative;
+                                display: flex;
+                                flex-direction: column;
+                                transition: transform 0.3s ease, box-shadow 0.3s ease;
+                            }
+                            .flow-box-sw:hover {
+                                transform: translateY(-5px);
+                                box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+                            }
+                            .flow-box-sw h5 {
+                                font-size: 0.85rem;
+                                margin-top: 0;
+                                margin-bottom: 12px;
+                                border-bottom: 1px solid #eee;
+                                padding-bottom: 8px;
+                                text-align: center;
+                                font-weight: 700;
+                            }
+                            .flow-box-sw p {
+                                margin: 0 0 10px 0;
+                                font-size: 0.8rem;
+                                color: #555;
+                                line-height: 1.5;
+                                flex-grow: 1;
+                            }
+                            .flow-arrow-sw {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                color: #bdc3c7;
+                                font-size: 1.2rem;
+                            }
+                            @media (max-width: 1024px) {
+                                .flow-arrow-sw { display: none; }
+                                .flow-box-sw { flex: 1 1 100%; margin-bottom: 10px; }
+                            }
+                            /* Formas y colores para el diagrama de flujo */
+                            .shape-start { border-radius: 25px; border-color: #34495e; } 
+                            .shape-start h5 { color: #34495e; }
                             
+                            .shape-proc-1 { border-radius: 4px; border-color: #2980b9; }
+                            .shape-proc-1 h5 { color: #2980b9; }
+                            
+                            .shape-proc-2 { border-radius: 4px; border-color: #27ae60; }
+                            .shape-proc-2 h5 { color: #27ae60; }
+                            
+                            .shape-proc-3 { border-radius: 4px; border-color: #f39c12; }
+                            .shape-proc-3 h5 { color: #f39c12; }
+                            
+                            .shape-end { border-radius: 25px; border-color: #e74c3c; } 
+                            .shape-end h5 { color: #e74c3c; }
+                            
+                            .badge-sw {
+                                background-color: #f8fafc;
+                                color: var(--primary-color);
+                                font-size: 0.7rem;
+                                padding: 6px 8px;
+                                border-radius: 6px;
+                                text-align: center;
+                                display: block;
+                                margin-top: auto;
+                                border: 1px solid #e2e8f0;
+                            }
+                            .tiempo-badge {
+                                display: block;
+                                text-align: center;
+                                font-size: 0.7rem;
+                                color: #7f8c8d;
+                                margin-bottom: 8px;
+                                font-weight: bold;
+                            }
+                        </style>
+
+                        <div class="mapa-procesos-sw">
                             <!-- Fase 1 -->
-                            <div style="position: relative;">
-                                <div style="position: absolute; left: -31px; top: 0; width: 20px; height: 20px; border-radius: 50%; background-color: var(--primary-color); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: bold;">1</div>
-                                <h5 style="color: var(--primary-color); font-size: 0.95rem; margin-bottom: 5px; font-weight: bold;">Fase 1: Diseño, Requerimientos & BD <span style="font-size:0.75rem; color:#7f8c8d; font-weight:normal;">(Semanas 1-4)</span></h5>
-                                <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 6px;">
-                                    Definición lógica de tablas de base de datos, diseño de Mockups para la UI de login, carga de documentos y avisos.
-                                </p>
-                                <span class="badge" style="background-color: var(--bg-color); color: var(--primary-color); font-size: 0.75rem; padding: 3px 8px; border-radius: 4px;"><i class="fa-regular fa-clock"></i> Dedicación: 8 Jornadas (40 horas en total)</span>
+                            <div class="flow-box-sw shape-start">
+                                <h5>1. Diseño & BD</h5>
+                                <span class="tiempo-badge">(Semanas 1-4)</span>
+                                <p>Definición lógica de tablas, requerimientos y diseño de Mockups para UI.</p>
+                                <span class="badge-sw"><i class="fa-regular fa-clock"></i> 8 Jornadas</span>
                             </div>
-
+                            
+                            <div class="flow-arrow-sw"><i class="fa-solid fa-arrow-right"></i></div>
+                            
                             <!-- Fase 2 -->
-                            <div style="position: relative;">
-                                <div style="position: absolute; left: -31px; top: 0; width: 20px; height: 20px; border-radius: 50%; background-color: var(--accent-color); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: bold;">2</div>
-                                <h5 style="color: var(--primary-color); font-size: 0.95rem; margin-bottom: 5px; font-weight: bold;">Fase 2: Arquitectura Base, Login & Roles <span style="font-size:0.75rem; color:#7f8c8d; font-weight:normal;">(Semanas 5-8)</span></h5>
-                                <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 6px;">
-                                    Montaje del servidor local, inicio de sesión (Login/Logout) y enrutamiento protegido diferenciando al Encargado (Admin) del Personal (User).
-                                </p>
-                                <span class="badge" style="background-color: var(--bg-color); color: var(--primary-color); font-size: 0.75rem; padding: 3px 8px; border-radius: 4px;"><i class="fa-regular fa-clock"></i> Dedicación: 8 Jornadas (40 horas en total)</span>
+                            <div class="flow-box-sw shape-proc-1">
+                                <h5>2. Arq. Base & Roles</h5>
+                                <span class="tiempo-badge">(Semanas 5-8)</span>
+                                <p>Montaje del servidor, login y enrutamiento protegido para Admin/User.</p>
+                                <span class="badge-sw"><i class="fa-regular fa-clock"></i> 8 Jornadas</span>
                             </div>
-
+                            
+                            <div class="flow-arrow-sw"><i class="fa-solid fa-arrow-right"></i></div>
+                            
                             <!-- Fase 3 -->
-                            <div style="position: relative;">
-                                <div style="position: absolute; left: -31px; top: 0; width: 20px; height: 20px; border-radius: 50%; background-color: var(--positive); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: bold;">3</div>
-                                <h5 style="color: var(--primary-color); font-size: 0.95rem; margin-bottom: 5px; font-weight: bold;">Fase 3: Módulo de Gestión Documental <span style="font-size:0.75rem; color:#7f8c8d; font-weight:normal;">(Semanas 9-12)</span></h5>
-                                <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 6px;">
-                                    Desarrollo del almacenamiento físico de archivos, validaciones (tipo/tamaño) y botones para descarga y carga de documentos.
-                                </p>
-                                <span class="badge" style="background-color: var(--bg-color); color: var(--primary-color); font-size: 0.75rem; padding: 3px 8px; border-radius: 4px;"><i class="fa-regular fa-clock"></i> Dedicación: 8 Jornadas (40 horas en total)</span>
+                            <div class="flow-box-sw shape-proc-2">
+                                <h5>3. Gestión Documental</h5>
+                                <span class="tiempo-badge">(Semanas 9-12)</span>
+                                <p>Almacenamiento, validaciones (tipo/tamaño) y UI de carga/descarga.</p>
+                                <span class="badge-sw"><i class="fa-regular fa-clock"></i> 8 Jornadas</span>
                             </div>
-
+                            
+                            <div class="flow-arrow-sw"><i class="fa-solid fa-arrow-right"></i></div>
+                            
                             <!-- Fase 4 -->
-                            <div style="position: relative;">
-                                <div style="position: absolute; left: -31px; top: 0; width: 20px; height: 20px; border-radius: 50%; background-color: var(--warning); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: bold;">4</div>
-                                <h5 style="color: var(--primary-color); font-size: 0.95rem; margin-bottom: 5px; font-weight: bold;">Fase 4: Muro & Módulo de Avisos <span style="font-size:0.75rem; color:#7f8c8d; font-weight:normal;">(Semanas 13-15)</span></h5>
-                                <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 6px;">
-                                    Implementación del feed público de anuncios y del formulario de creación y edición de noticias exclusivo para el Encargado.
-                                </p>
-                                <span class="badge" style="background-color: var(--bg-color); color: var(--primary-color); font-size: 0.75rem; padding: 3px 8px; border-radius: 4px;"><i class="fa-regular fa-clock"></i> Dedicación: 6 Jornadas (30 horas en total)</span>
+                            <div class="flow-box-sw shape-proc-3">
+                                <h5>4. Muro & Avisos</h5>
+                                <span class="tiempo-badge">(Semanas 13-15)</span>
+                                <p>Feed público de noticias y publicador de avisos exclusivo para el Encargado.</p>
+                                <span class="badge-sw"><i class="fa-regular fa-clock"></i> 6 Jornadas</span>
                             </div>
-
+                            
+                            <div class="flow-arrow-sw"><i class="fa-solid fa-arrow-right"></i></div>
+                            
                             <!-- Fase 5 -->
-                            <div style="position: relative;">
-                                <div style="position: absolute; left: -31px; top: 0; width: 20px; height: 20px; border-radius: 50%; background-color: var(--alert); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: bold;">5</div>
-                                <h5 style="color: var(--primary-color); font-size: 0.95rem; margin-bottom: 5px; font-weight: bold;">Fase 5: Pruebas, Debugging & Despliegue <span style="font-size:0.75rem; color:#7f8c8d; font-weight:normal;">(Semana 16)</span></h5>
-                                <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 6px;">
-                                    Pruebas cruzadas de roles, resolución de bugs lógicos y despliegue del prototipo funcional en el servidor de la red local.
-                                </p>
-                                <span class="badge" style="background-color: var(--bg-color); color: var(--primary-color); font-size: 0.75rem; padding: 3px 8px; border-radius: 4px;"><i class="fa-regular fa-clock"></i> Dedicación: 2 Jornadas (10 horas en total)</span>
+                            <div class="flow-box-sw shape-end">
+                                <h5>5. QA & Despliegue</h5>
+                                <span class="tiempo-badge">(Semana 16)</span>
+                                <p>Pruebas cruzadas, debugging lógico y despliegue en servidor local.</p>
+                                <span class="badge-sw"><i class="fa-regular fa-clock"></i> 2 Jornadas</span>
                             </div>
-
                         </div>
                     </div>
 
