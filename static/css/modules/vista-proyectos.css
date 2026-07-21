@@ -1,0 +1,23 @@
+/* Estilos específicos para vista-proyectos */
+
+/* Estilos del Dashboard de Contratos e Incidencias */
+.contrato-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08) !important;
+}
+.contrato-card.active-card {
+    background-color: #f0f8ff !important;
+    border-color: #bde0fe !important;
+}
+.severity-tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: inline-block;
+    text-align: center;
+}
+.severity-tag.alta { background-color: #fadbd8; color: #e74c3c; }
+.severity-tag.media { background-color: #fdebd0; color: #e38a00; }
+.severity-tag.baja { background-color: #d5f5e3; color: #27ae60; }

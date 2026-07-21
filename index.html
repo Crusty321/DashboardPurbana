@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Reporte desempeño TI - Primavera Urbana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet" href="static/css/modules/resumen.css">
+</head>
+<body>
+
+    <!-- Modal del Documento Marco -->
+    <div id="modalDocumentoMarco" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="btnCloseModal">&times;</span>
+            <div id="contenidoModalMarco">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Dashboard</h2>
+                <p>Reporte desempeño TI</p>
+            </div>
+            
+            <nav class="menu">
+                <p class="menu-label">GESTIÓN OPERATIVA</p>
+                <ul>
+                                        <a href="plan-trabajo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-trabajo"><i class="fa-solid fa-list-check"></i> Plan de trabajo</li></a>
+                    <a href="infraestructura.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="infraestructura"><i class="fa-solid fa-network-wired"></i> Infraestructura</li></a>
+                    <a href="vista-proyectos.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="vista-proyectos"><i class="fa-solid fa-project-diagram"></i> Gestión y Seguimiento de Proyectos</li></a>
+                    <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
+                    <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="desarrollo-software"><i class="fa-solid fa-code"></i> Desarrollo de Software</li></a>
+                    <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
+<a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-titles">
+                    <h1 id="page-title">Resumen de operaciones</h1>
+                    <p id="page-subtitle">Métricas y estadísticas del comportamiento de la plataforma de soporte</p>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=Miller+Santos&background=3498db&color=fff&bold=true" alt="Foto Ing. Miller Santos" class="profile-img">
+                        <span>Ing. Miller Santos</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="resumen" class="tab-content active-tab">
+                <!-- KPIs Superiores Consolidados de Resumen -->
+                <div class="kpi-cards" style="margin-bottom: 25px;">
+                    <div class="card" style="border-left-color: var(--primary-color);">
+                        <div class="card-header"><span>ACTIVOS TI TOTALES</span><i class="fa-solid fa-server" style="color: var(--primary-color);"></i></div>
+                        <div class="card-value">304</div>
+                        <p class="kpi-detail">Inventariados en el Centro Comercial</p>
+                    </div>
+                    <div class="card" style="border-left-color: var(--accent-color);">
+                        <div class="card-header"><span>PLANES PRIORIZADOS</span><i class="fa-solid fa-screwdriver-wrench" style="color: var(--accent-color);"></i></div>
+                        <div class="card-value">2 Planes</div>
+                        <p class="kpi-detail">CCTV y Telefonía (0% avance)</p>
+                    </div>
+                    <div class="card green-border">
+                        <div class="card-header"><span>CONTRATOS DE SOPORTE</span><i class="fa-solid fa-file-signature" style="color: var(--positive);"></i></div>
+                        <div class="card-value">3 Contratos</div>
+                        <p class="kpi-detail">Externos vigentes (Sin incidencias)</p>
+                    </div>
+                    <div class="card warning-border">
+                        <div class="card-header"><span>AVANCE CRONOGRAMA</span><i class="fa-solid fa-spinner" style="color: var(--warning);"></i></div>
+                        <div class="card-value">0%</div>
+                        <p class="kpi-detail">Consolidado general de actividades</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 25px;">
+                    <!-- Chart 1: Mesa de Ayuda (Soporte Operativo) -->
+                    <div class="table-container" style="margin-bottom: 0;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.95rem; font-weight: bold;"><i class="fa-solid fa-ticket" style="color: var(--accent-color);"></i> 1. Soporte Operativo: Tickets Semanales (Mesa de Ayuda)</h4>
+                        <div style="height: 250px;">
+                            <canvas id="ticketsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: Infraestructura Física (Distribución de Activos) -->
+                    <div class="table-container" style="margin-bottom: 0;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.95rem; font-weight: bold;"><i class="fa-solid fa-cubes" style="color: var(--primary-color);"></i> 2. Infraestructura: Distribución de Dispositivos por Categoría</h4>
+                        <div style="height: 250px;">
+                            <canvas id="infraChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 3: Planes de Mejoramiento (Avance General) -->
+                    <div class="table-container" style="margin-bottom: 0;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.95rem; font-weight: bold;"><i class="fa-solid fa-route" style="color: var(--positive);"></i> 3. Mejoramiento Tecnológico: Avance por Plan de Mejora (%)</h4>
+                        <div style="height: 250px;">
+                            <canvas id="mejoramientoChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 4: Contratos de Soporte y Mantenimiento Externo -->
+                    <div class="table-container" style="margin-bottom: 0;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.95rem; font-weight: bold;"><i class="fa-solid fa-circle-exclamation" style="color: var(--alert);"></i> 4. Proyectos TI: Incidencias Activas por Contrato Externo</h4>
+                        <div style="height: 250px;">
+                            <canvas id="proyectosChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Nueva sección independiente para Plan de Mantenimiento -->
+            <!-- Nueva sección para Desarrollo de Software -->
+            <!-- Nueva sección para Gestión y Seguimiento de Proyectos -->
+            </main>
+    </div>
+
+    <script src="static/js/main.js"></script>
+
+    <script src="static/js/modules/resumen.js"></script>
+</body>
+</html>

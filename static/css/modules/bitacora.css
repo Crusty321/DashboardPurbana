@@ -1,0 +1,64 @@
+/* Estilos específicos para bitacora */
+
+/* --- ESTILOS DEL CRONOGRAMA HORIZONTAL --- */
+.cronograma-container { background-color: var(--white); border-radius: 10px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); margin-bottom: 25px; }
+.cronograma-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.timeline { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; }
+.timeline::-webkit-scrollbar { height: 6px; }
+.timeline::-webkit-scrollbar-track { background: var(--bg-color); border-radius: 4px; }
+.timeline::-webkit-scrollbar-thumb { background: #bdc3c7; border-radius: 4px; }
+.timeline-item { flex: 1; min-width: 150px; background-color: var(--white); border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; position: relative; border-top: 4px solid #e1e8ed; transition: all 0.3s ease; cursor: pointer; }
+.timeline-item:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.timeline-item.active { border-top-color: var(--accent-color); background-color: #f0f8ff; border-color: #bde0fe; }
+.timeline-marker { position: absolute; top: -14px; left: 15px; background-color: var(--bg-color); color: #7f8c8d; font-size: 0.65rem; font-weight: bold; padding: 2px 8px; border-radius: 10px; border: 1px solid var(--border-color); }
+.timeline-item.active .timeline-marker { background-color: var(--accent-color); color: var(--white); border-color: var(--accent-color); }
+.timeline-content h4 { font-size: 0.8rem; color: var(--primary-color); margin-bottom: 5px; line-height: 1.2; }
+.timeline-content p { font-size: 0.75rem; color: #95a5a6; }
+
+/* --- ESTILOS DE LA BITÁCORA / CRONOGRAMA --- */
+.kpi-bitacora-container { display: flex; gap: 20px; margin-bottom: 25px; flex-wrap: wrap;}
+.kpi-b-card { flex: 1; min-width: 250px; background-color: var(--white); border-radius: 10px; padding: 20px; display: flex; align-items: center; gap: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border: 1px solid transparent; }
+.kpi-b-card.active-kpi { border: 2px solid #f39c12; }
+.kpi-b-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; flex-shrink: 0;}
+.kpi-b-info { display: flex; flex-direction: column; width: 100%; }
+.kpi-b-title { font-size: 0.7rem; font-weight: bold; color: #7f8c8d; letter-spacing: 1px; margin-bottom: 5px; }
+.kpi-b-value { font-size: 1.8rem; font-weight: 800; color: var(--primary-color); line-height: 1; margin-bottom: 5px; }
+.kpi-b-sub { font-size: 0.75rem; color: #95a5a6; }
+.mini-progress-bar { width: 100%; height: 6px; background-color: #ecf0f1; border-radius: 3px; margin-top: 5px; overflow: hidden; }
+.mini-progress-fill { height: 100%; width: 0%; background-color: #f39c12; border-radius: 3px; transition: width 0.3s ease; }
+
+.bitacora-table-wrapper { background-color: var(--white); border-radius: 10px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); margin-bottom: 25px; overflow-x: auto;}
+.bitacora-header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.week-nav { display: flex; align-items: center; gap: 15px; background-color: var(--bg-color); padding: 8px 15px; border-radius: 8px; font-weight: 600; font-size: 0.9rem; }
+.week-nav button { background: none; border: none; cursor: pointer; color: #7f8c8d; font-size: 1rem; transition: color 0.2s; }
+.week-nav button:hover { color: var(--primary-color); }
+
+.b-table { width: 100%; border-collapse: collapse; min-width: 700px;}
+.b-table th { background-color: #f8f9fa; padding: 15px; text-align: center; color: var(--secondary-color); font-size: 0.85rem; border-bottom: 2px solid #e1e8ed; }
+.b-table th:first-child { text-align: left; }
+.b-table td { padding: 15px; border-bottom: 1px solid #e1e8ed; vertical-align: middle; }
+.text-center { text-align: center; }
+
+.task-circle { font-size: 1.5rem; color: #bdc3c7; cursor: pointer; transition: all 0.3s ease; }
+.task-circle:hover { color: var(--accent-color); transform: scale(1.15); }
+.empty-dash { color: #d1d8dd; font-weight: bold; }
+
+.task-status { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+.task-status.planned { color: var(--warning); font-weight: bold; font-size: 0.8rem; }
+.task-status.planned i { font-size: 1.2rem; }
+
+.bitacora-footer { display: flex; gap: 20px; flex-wrap: wrap;}
+.footer-box { background-color: var(--white); border-radius: 10px; padding: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); flex: 1; min-width: 300px;}
+.footer-box h4 { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; color: var(--primary-color); font-size: 1rem; }
+.obs-content { background-color: #f8f9fa; padding: 15px; border-radius: 8px; font-size: 0.9rem; color: #555; font-style: italic; border-left: 4px solid var(--border-color); line-height: 1.5; }
+
+.resp-card { display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid #e1e8ed; border-radius: 8px; }
+.resp-card img { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--bg-color); }
+.resp-details { display: flex; flex-direction: column; }
+.resp-details strong { color: var(--primary-color); font-size: 1rem; }
+.resp-details span { color: #7f8c8d; font-size: 0.8rem; margin-bottom: 8px; }
+.tags-container { display: flex; gap: 8px; }
+.tag { font-size: 0.65rem; padding: 3px 8px; border-radius: 12px; font-weight: bold; color: white; }
+.green-tag { background-color: var(--positive); }
+.yellow-tag { background-color: var(--warning); }
+

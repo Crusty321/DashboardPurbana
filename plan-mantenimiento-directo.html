@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Reporte desempeño TI - Primavera Urbana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet" href="static/css/modules/plan-mantenimiento-directo.css">
+</head>
+<body>
+
+    <!-- Modal del Documento Marco -->
+    <div id="modalDocumentoMarco" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="btnCloseModal">&times;</span>
+            <div id="contenidoModalMarco">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Dashboard</h2>
+                <p>Reporte desempeño TI</p>
+            </div>
+            
+            <nav class="menu">
+                <p class="menu-label">GESTIÓN OPERATIVA</p>
+                <ul>
+                                        <a href="plan-trabajo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-trabajo"><i class="fa-solid fa-list-check"></i> Plan de trabajo</li></a>
+                    <a href="infraestructura.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="infraestructura"><i class="fa-solid fa-network-wired"></i> Infraestructura</li></a>
+                    <a href="vista-proyectos.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="vista-proyectos"><i class="fa-solid fa-project-diagram"></i> Gestión y Seguimiento de Proyectos</li></a>
+                    <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
+                    <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="desarrollo-software"><i class="fa-solid fa-code"></i> Desarrollo de Software</li></a>
+                    <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
+<a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-titles">
+                    <h1 id="page-title">Plan de Mantenimiento</h1>
+                    <p id="page-subtitle">Lineamientos y cronograma del plan de mantenimiento preventivo</p>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=Miller+Santos&background=3498db&color=fff&bold=true" alt="Foto Ing. Miller Santos" class="profile-img">
+                        <span>Ing. Miller Santos</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="plan-mantenimiento-directo" class="tab-content active-tab">
+<div id="vista-mantenimiento" class="sub-vista active-sub-vista">
+                    
+                    <div class="table-container">
+                        <div class="table-header" style="border-bottom: none; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <h3><i class="fa-solid fa-chart-line" style="color: var(--accent-color);"></i> Plan de Mantenimiento</h3>
+                                <p style="font-size: 0.85rem; color: #7f8c8d;">Visualización de resultados, proyecciones y cumplimiento de metas</p>
+                            </div>
+                            <div class="header-actions-mto" style="margin-bottom: 0; display: flex; gap: 12px;">
+                                <button id="btnVerMarco" style="background: white; color: var(--primary-color); border: 1px solid #dcdde1; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.02);" onmouseover="this.style.borderColor='var(--primary-color)'; this.style.backgroundColor='#f8fafc'; this.style.transform='translateY(-1px)';" onmouseout="this.style.borderColor='#dcdde1'; this.style.backgroundColor='white'; this.style.transform='translateY(0)';">
+                                    <i class="fa-solid fa-file-invoice" style="color: var(--primary-color);"></i> Ver Documento Marco
+                                </button>
+                                <button style="background: linear-gradient(135deg, var(--accent-color), #2980b9); color: white; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(52,152,219,0.25);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 15px rgba(52,152,219,0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(52,152,219,0.25)';">
+                                    <i class="fa-solid fa-file-word"></i> Descargar Plan (Word)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- KPIs Superiores del Plan -->
+                        <div class="kpi-cards" style="margin-bottom: 15px;">
+                            <div class="card" style="border-left-color: var(--primary-color);">
+                                <div class="card-header"><span>ACTIVOS TOTALES</span><i class="fa-solid fa-boxes-stacked" style="color: var(--primary-color);"></i></div>
+                                <div class="card-value">304</div>
+                                <p class="kpi-detail">Inventario tecnológico general</p>
+                            </div>
+                            <div class="card green-border">
+                                <div class="card-header"><span>LOTE PLAN ACTUAL</span><i class="fa-solid fa-tv" style="color: var(--positive);"></i></div>
+                                <div class="card-value">50</div>
+                                <p class="kpi-detail">Equipos de computación (Censo)</p>
+                            </div>
+                            <div class="card warning-border">
+                                <div class="card-header"><span>FASES MENSUALES</span><i class="fa-solid fa-calendar-check" style="color: var(--warning);"></i></div>
+                                <div class="card-value">~12</div>
+                                <p class="kpi-detail">Equipos/mes (Plan de avance)</p>
+                            </div>
+                            <div class="card" style="border-left-color: var(--accent-color);">
+                                <div class="card-header"><span>META SEMANAL</span><i class="fa-solid fa-clock" style="color: var(--accent-color);"></i></div>
+                                <div class="card-value">3</div>
+                                <p class="kpi-detail">Mar - Mié - Jue (1 eq/día)</p>
+                            </div>
+                        </div>
+
+                        <!-- Gráficos del Plan -->
+                        <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px; margin-bottom: 15px;">
+                            <div class="card">
+                                <h4 style="margin-bottom: 15px; font-size: 0.9rem; color: var(--secondary-color);">Estado de Ejecución Global</h4>
+                                <div style="height: 250px; display: flex; justify-content: center;">
+                                    <canvas id="mtoGlobalChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <h4 style="margin-bottom: 15px; font-size: 0.9rem; color: var(--secondary-color);">Avance Proyectado Mes a Mes (%)</h4>
+                                <div style="height: 250px;">
+                                    <canvas id="mtoProgresoMensualChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estado Documental Compacto -->
+                        <div class="table-header">
+                            <h3><i class="fa-solid fa-file-shield" style="color: var(--accent-color);"></i> Monitoreo de Cumplimiento Documental</h3>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 15px;">
+                            <div class="card" style="border-left-color: var(--positive);">
+                                <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.95rem;"><i class="fa-solid fa-check-double"></i> Fichas Técnicas y Hojas de Vida</h4>
+                                <div class="progress-wrapper" style="flex-direction: column; align-items: flex-start;">
+                                    <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.8rem; margin-bottom: 6px;">
+                                        <span>Progreso de Creación</span>
+                                        <strong>0% (0 / 304)</strong>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 0%; background-color: var(--positive);"></div></div>
+                                </div>
+                            </div>
+
+                            <div class="card" style="border-left-color: var(--warning);">
+                                <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.95rem;"><i class="fa-solid fa-clipboard-list"></i> Protocolos de Actuación</h4>
+                                <div class="progress-wrapper" style="flex-direction: column; align-items: flex-start;">
+                                    <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.8rem; margin-bottom: 6px;">
+                                        <span>Documentación de Procedimientos</span>
+                                        <strong>11% (1 / 9)</strong>
+                                    </div>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 11%; background-color: var(--warning);"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Módulo Estructura Radial de Protocolos (Integrado en la vista principal) -->
+                        <div class="table-container" style="padding: 25px 20px; text-align: center; background: white; margin-bottom: 15px;">
+                            <!-- Cabecera de Protocolos -->
+                            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; padding-left: 15px; padding-right: 15px;">
+                                <h3 style="color: var(--primary-color); font-size: 1.5rem; margin: 0; text-align: left;">Manual de Protocolos de Actuación TI</h3>
+                                <span style="font-size: 0.95rem; color: #7f8c8d; text-align: right;">Catálogo de lineamientos operativos y técnicos</span>
+                            </div>
+                            
+                            <!-- Estilos del Módulo Radial -->
+                            <style>
+                                .nodo-periferico {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    z-index: 5;
+                                    text-align: center;
+                                    cursor: pointer;
+                                    transition: all 0.3s ease;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                }
+                                
+                                .nodo-periferico:hover .nodo-icon {
+                                    transform: scale(1.1);
+                                    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+                                }
+
+                                .nodo-icon {
+                                    width: 65px;
+                                    height: 65px;
+                                    border-radius: 50%;
+                                    background: white;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+                                    transition: all 0.3s ease;
+                                }
+
+                                .nodo-label {
+                                    margin-top: 8px;
+                                    font-weight: bold;
+                                    font-size: 0.8rem;
+                                    max-width: 110px;
+                                    line-height: 1.2;
+                                    background: rgba(255,255,255,0.9);
+                                    padding: 2px 5px;
+                                    border-radius: 4px;
+                                }
+
+                                /* Colores solicitados */
+                                .nodo-1 .nodo-icon { border: 3px solid #7f8c8d; color: #7f8c8d; }
+                                .nodo-1 .nodo-label { color: #7f8c8d; }
+                                
+                                .nodo-2 .nodo-icon { border: 3px solid #3498db; color: #3498db; }
+                                .nodo-2 .nodo-label { color: #3498db; }
+                                
+                                .nodo-3 .nodo-icon { border: 3px solid #2ecc71; color: #2ecc71; }
+                                .nodo-3 .nodo-label { color: #2ecc71; }
+                                
+                                .nodo-3.selected .nodo-icon {
+                                    background: #2ecc71;
+                                    color: white;
+                                    transform: scale(1.15);
+                                    box-shadow: 0 0 15px rgba(46, 204, 113, 0.5);
+                                }
+
+                                .nodo-4 .nodo-icon { border: 3px solid #9b59b6; color: #9b59b6; }
+                                .nodo-4 .nodo-label { color: #9b59b6; }
+                                
+                                .nodo-5 .nodo-icon { border: 3px solid #e67e22; color: #e67e22; }
+                                .nodo-5 .nodo-label { color: #e67e22; }
+                                
+                                .nodo-6 .nodo-icon { border: 3px solid #e74c3c; color: #e74c3c; }
+                                .nodo-6 .nodo-label { color: #e74c3c; }
+                                
+                                .nodo-7 .nodo-icon { border: 3px solid #d35400; color: #d35400; }
+                                .nodo-7 .nodo-label { color: #d35400; }
+                                
+                                .nodo-8 .nodo-icon { border: 3px solid #1abc9c; color: #1abc9c; }
+                                .nodo-8 .nodo-label { color: #1abc9c; }
+                                
+                                .nodo-9 .nodo-icon { border: 3px solid #34495e; color: #34495e; }
+                                .nodo-9 .nodo-label { color: #34495e; }
+
+                                /* Transformaciones radiales (Radio: 250px) */
+                                .nodo-1 { transform: translate(-50%, -50%) rotate(-90deg) translate(250px) rotate(90deg); }
+                                .nodo-2 { transform: translate(-50%, -50%) rotate(-50deg) translate(250px) rotate(50deg); }
+                                .nodo-3 { transform: translate(-50%, -50%) rotate(-10deg) translate(250px) rotate(10deg); }
+                                .nodo-4 { transform: translate(-50%, -50%) rotate(30deg) translate(250px) rotate(-30deg); }
+                                .nodo-5 { transform: translate(-50%, -50%) rotate(70deg) translate(250px) rotate(-70deg); }
+                                .nodo-6 { transform: translate(-50%, -50%) rotate(110deg) translate(250px) rotate(-110deg); }
+                                .nodo-7 { transform: translate(-50%, -50%) rotate(150deg) translate(250px) rotate(-150deg); }
+                                .nodo-8 { transform: translate(-50%, -50%) rotate(190deg) translate(250px) rotate(-190deg); }
+                                .nodo-9 { transform: translate(-50%, -50%) rotate(230deg) translate(250px) rotate(-230deg); }
+                            </style>
+
+                            <!-- Módulo Radial -->
+                            <div style="position: relative; width: 100%; min-height: 600px; margin: 0 auto; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                                
+                                <!-- LÍNEAS CONECTORAS PUNTEADAS -->
+                                <div style="position: absolute; top: 50%; left: 50%; width: 0; height: 0; z-index: 1;">
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(-90deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(-50deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(-10deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(30deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(70deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(110deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(150deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(190deg);"></div>
+                                    <div style="position: absolute; top: 0; left: 0; width: 250px; height: 2px; border-top: 2px dashed #bdc3c7; transform-origin: 0 0; transform: rotate(230deg);"></div>
+                                </div>
+
+                                <!-- Núcleo Central -->
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 150px; height: 150px; border-radius: 50%; border: 2px solid rgba(52, 152, 219, 0.4); background: rgba(255, 255, 255, 0.95); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; text-align: center; transition: transform 0.3s ease;" onmouseover="this.style.transform='translate(-50%, -50%) scale(1.05)'" onmouseout="this.style.transform='translate(-50%, -50%) scale(1)'">
+                                    <i class="fa-solid fa-book-medical" style="font-size: 2.8rem; color: #2980b9; margin-bottom: 12px;"></i>
+                                    <h2 style="font-size: 0.95rem; margin: 0; font-weight: bold; color: var(--primary-color); line-height: 1.2;">Manual de<br>Protocolos TI</h2>
+                                </div>
+                                
+                                <!-- NODOS PERIFÉRICOS -->
+                                <div class="nodo-periferico nodo-1" data-id="1">
+                                    <div class="nodo-icon"><i class="fa-solid fa-sitemap" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">1.</span> Recepción y Escalamiento</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-2" data-id="2">
+                                    <div class="nodo-icon"><i class="fa-solid fa-suitcase-medical" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">2.</span> Soporte Remoto y Sitio</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-3 selected" data-id="3">
+                                    <div class="nodo-icon"><i class="fa-solid fa-screwdriver-wrench" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.9; margin-right: 2px;">3.</span> Mantenimiento Preventivo</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-4" data-id="4">
+                                    <div class="nodo-icon" style="position: relative;">
+                                        <i class="fa-solid fa-database" style="font-size: 1.5rem;"></i>
+                                        <div style="position: absolute; top: -5px; right: -5px; background: #2ecc71; color: white; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; border: 2px solid white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);"><i class="fa-solid fa-check"></i></div>
+                                    </div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">4.</span> Gestión de Respaldos</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-5" data-id="5">
+                                    <div class="nodo-icon"><i class="fa-solid fa-network-wired" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">5.</span> Conectividad y Redes</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-6" data-id="6">
+                                    <div class="nodo-icon"><i class="fa-solid fa-shield-halved" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">6.</span> Ciberseguridad</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-7" data-id="7">
+                                    <div class="nodo-icon"><i class="fa-solid fa-house-crack" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">7.</span> Disaster Recovery</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-8" data-id="8">
+                                    <div class="nodo-icon"><i class="fa-solid fa-diagram-project" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">8.</span> Gestión de Cambios</div>
+                                </div>
+                                
+                                <div class="nodo-periferico nodo-9" data-id="9">
+                                    <div class="nodo-icon"><i class="fa-solid fa-boxes-stacked" style="font-size: 1.5rem;"></i></div>
+                                    <div class="nodo-label"><span style="font-size: 0.75rem; opacity: 0.75; margin-right: 2px;">9.</span> Control de Activos</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel de Detalles Inferior -->
+                        <div id="protocol-detail-panel" class="card" style="max-width: 800px; margin: 0 auto 15px auto; border-top: 4px solid #2ecc71; border-radius: 8px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); text-align: left; background: white; transition: all 0.3s ease;">
+                            <h3 style="color: var(--primary-color); margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; gap: 10px;">
+                                <i id="panel-icon" class="fa-solid fa-screwdriver-wrench" style="color: #2ecc71;"></i> 
+                                <span id="panel-title">3. Mantenimiento Preventivo</span>
+                            </h3>
+                            <p id="panel-desc" style="font-size: 0.95rem; color: #555; line-height: 1.6; margin-bottom: 15px;">
+                                El mantenimiento preventivo garantiza la operatividad y prolonga la vida útil de los activos tecnológicos de Primavera Urbana, reduciendo los riesgos de fallos imprevistos. Este protocolo abarca limpieza física, depuración de software, revisión de conexiones y actualizaciones de seguridad.
+                            </p>
+                            <ul id="panel-list" style="font-size: 0.9rem; color: #555; line-height: 1.7; padding-left: 20px; margin: 0;">
+                                <li style="margin-bottom: 8px;"><strong>Planificación:</strong> Seguimiento del cronograma mensual (3 equipos semanales).</li>
+                                <li style="margin-bottom: 8px;"><strong>Ejecución:</strong> Aplicación de las 5 fases estandarizadas (Diagnóstico, Documental, Hardware, Software, Pruebas).</li>
+                                <li><strong>Cierre:</strong> Firma de actas de conformidad y actualización obligatoria de Hojas de Vida de los equipos.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Mapa de Procesos: Alcance General del Mantenimiento -->
+                        <div class="card" style="margin-bottom: 15px; border-left-color: var(--accent-color); background-color: white; padding: 20px;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 12px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                                <i class="fa-solid fa-diagram-project" style="color: var(--accent-color);"></i> Mapa de Procesos: Alcance Técnico General
+                            </h4>
+                            <p style="font-size: 0.85rem; color: #555; line-height: 1.6; margin-bottom: 20px;">
+                                Para garantizar la estandarización y calidad del proceso, se aplicará el siguiente diagrama de flujo técnico y documental a todos los equipos:
+                            </p>
+                            
+                            <style>
+                                .mapa-procesos {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 15px;
+                                    justify-content: center;
+                                    align-items: stretch;
+                                }
+                                .flow-box {
+                                    flex: 1 1 160px;
+                                    background: #fff;
+                                    border: 2px solid #3498db;
+                                    padding: 15px;
+                                    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+                                    position: relative;
+                                    display: flex;
+                                    flex-direction: column;
+                                    transition: transform 0.3s ease, box-shadow 0.3s ease;
+                                }
+                                .flow-box:hover {
+                                    transform: translateY(-5px);
+                                    box-shadow: 0 8px 15px rgba(52, 152, 219, 0.2);
+                                }
+                                .flow-box h5 {
+                                    color: #2980b9;
+                                    font-size: 0.9rem;
+                                    margin-top: 0;
+                                    margin-bottom: 12px;
+                                    border-bottom: 1px solid #eee;
+                                    padding-bottom: 8px;
+                                    text-align: center;
+                                    font-weight: 700;
+                                }
+                                .flow-box ul {
+                                    margin: 0;
+                                    padding-left: 20px;
+                                    font-size: 0.8rem;
+                                    color: #555;
+                                    line-height: 1.6;
+                                }
+                                .flow-arrow {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    color: #bdc3c7;
+                                    font-size: 1.2rem;
+                                }
+                                @media (max-width: 992px) {
+                                    .flow-arrow { display: none; }
+                                    .flow-box { flex: 1 1 100%; margin-bottom: 10px; }
+                                }
+                                
+                                /* Formas de Diagrama de Flujo */
+                                .shape-inicio { border-radius: 25px; border-color: #2ecc71; } /* Inicio / Terminal */
+                                .shape-inicio h5 { color: #27ae60; }
+                                .shape-doc { border-radius: 4px; border-bottom-right-radius: 25px; border-color: #9b59b6; } /* Documento */
+                                .shape-doc h5 { color: #8e44ad; }
+                                .shape-proceso { border-radius: 4px; border-color: #3498db; } /* Proceso */
+                                .shape-fin { border-radius: 25px; border-color: #e74c3c; } /* Fin / Terminal */
+                                .shape-fin h5 { color: #c0392b; }
+                            </style>
+
+                            <div class="mapa-procesos">
+                                <!-- Fase 1 -->
+                                <div class="flow-box shape-inicio">
+                                    <h5><i class="fa-solid fa-magnifying-glass"></i> 1. Diagnóstico Inicial</h5>
+                                    <ul>
+                                        <li>Inspección de operatividad previa.</li>
+                                        <li>Registro de fallas preexistentes.</li>
+                                        <li>Levantamiento de requerimientos de repuestos.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                
+                                <!-- Fase 2 -->
+                                <div class="flow-box shape-doc">
+                                    <h5><i class="fa-solid fa-file-invoice"></i> 2. Fase Documental</h5>
+                                    <ul>
+                                        <li>Levantamiento de Ficha Técnica.</li>
+                                        <li>Registro en Hoja de Vida (HDV).</li>
+                                        <li>Vinculación digital en sistema.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                
+                                <!-- Fase 3 -->
+                                <div class="flow-box shape-proceso">
+                                    <h5><i class="fa-solid fa-screwdriver-wrench"></i> 3. Fase Física (HW)</h5>
+                                    <ul>
+                                        <li>Limpieza de hardware.</li>
+                                        <li>Inspección de conexiones de video/energía.</li>
+                                        <li>Verificación de soportes físicos.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                
+                                <!-- Fase 4 -->
+                                <div class="flow-box shape-proceso">
+                                    <h5><i class="fa-solid fa-terminal"></i> 4. Fase Lógica (SW)</h5>
+                                    <ul>
+                                        <li>Depuración de archivos temporales.</li>
+                                        <li>Revisión de logs de sistema y parches.</li>
+                                        <li>Confirmación de enlace de red.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="flow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                                
+                                <!-- Fase 5 -->
+                                <div class="flow-box shape-fin">
+                                    <h5><i class="fa-solid fa-check-double"></i> 5. Pruebas de Cierre</h5>
+                                    <ul>
+                                        <li>Verificación de encendido automático.</li>
+                                        <li>Pruebas de video continuas.</li>
+                                        <li>Firma de conformidad.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card" style="border-left-color: var(--secondary-color); background: white; margin-bottom: 15px; padding: 20px;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 20px; font-size: 1.1rem; display: flex; align-items: center; gap: 10px;">
+                                <i class="fa-solid fa-calendar-days" style="color: var(--secondary-color);"></i> Cronograma de Metas Mensuales
+                            </h4>
+                            
+                            <style>
+                                .crono-table {
+                                    width: 100%;
+                                    border-collapse: separate;
+                                    border-spacing: 0;
+                                    background: white;
+                                    border-radius: 12px;
+                                    overflow: hidden;
+                                    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+                                    border: 1px solid #edf2f7;
+                                }
+                                .crono-table th {
+                                    background: #f8fafc;
+                                    color: var(--primary-color);
+                                    font-weight: 700;
+                                    padding: 16px;
+                                    text-align: left;
+                                    font-size: 0.85rem;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                    border-bottom: 2px solid #e2e8f0;
+                                }
+                                .crono-table td {
+                                    padding: 16px;
+                                    border-bottom: 1px solid #edf2f7;
+                                    color: #4a5568;
+                                    font-size: 0.9rem;
+                                    vertical-align: middle;
+                                }
+                                .crono-table tbody tr:last-child td { border-bottom: none; }
+                                .crono-table tbody tr { transition: background 0.2s ease; }
+                                .crono-table tbody tr:hover { background: #f8fafc; }
+                                .mes-badge {
+                                    display: inline-block;
+                                    padding: 6px 12px;
+                                    border-radius: 20px;
+                                    font-weight: 700;
+                                    font-size: 0.8rem;
+                                    background: rgba(52, 152, 219, 0.1);
+                                    color: #2980b9;
+                                }
+                                .fase-text {
+                                    display: block;
+                                    font-size: 0.75rem;
+                                    color: #a0aec0;
+                                    margin-top: 4px;
+                                    font-weight: 600;
+                                }
+                                .areas-text {
+                                    font-weight: 500;
+                                    line-height: 1.5;
+                                }
+                                .meta-badge {
+                                    background: #f1f5f9;
+                                    padding: 6px 12px;
+                                    border-radius: 6px;
+                                    font-weight: 600;
+                                    font-size: 0.85rem;
+                                    color: #64748b;
+                                    border: 1px solid #e2e8f0;
+                                    display: inline-flex;
+                                    align-items: center;
+                                }
+                                .meta-total {
+                                    background: rgba(46, 204, 113, 0.15);
+                                    color: #27ae60;
+                                    padding: 6px 14px;
+                                    border-radius: 20px;
+                                    font-weight: 700;
+                                    display: inline-block;
+                                }
+                                .meta-cierre {
+                                    background: #e74c3c;
+                                    color: white;
+                                    padding: 6px 14px;
+                                    border-radius: 20px;
+                                    font-weight: 700;
+                                    display: inline-block;
+                                }
+                            </style>
+                            
+                            <table class="crono-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 20%;">Mes / Fase</th>
+                                        <th style="width: 45%;">Áreas y Equipos a Intervenir</th>
+                                        <th style="width: 17%;">Meta Semanal</th>
+                                        <th style="width: 18%;">Meta Mensual</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span class="mes-badge">Julio</span>
+                                            <span class="fase-text">Fase 1</span>
+                                        </td>
+                                        <td class="areas-text">Dispositivos Publicitarios (Lote 1)</td>
+                                        <td><span class="meta-badge"><i class="fa-solid fa-desktop" style="margin-right: 6px; color: #94a3b8;"></i> 3 eq/sem</span></td>
+                                        <td><span class="meta-total">6 Equipos</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="mes-badge">Agosto</span>
+                                            <span class="fase-text">Fase 2</span>
+                                        </td>
+                                        <td class="areas-text">Dispositivos Publicitarios (Lote 2)</td>
+                                        <td><span class="meta-badge"><i class="fa-solid fa-desktop" style="margin-right: 6px; color: #94a3b8;"></i> 3 eq/sem</span></td>
+                                        <td><span class="meta-total">12 Equipos</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="mes-badge">Septiembre</span>
+                                            <span class="fase-text">Fase 3</span>
+                                        </td>
+                                        <td class="areas-text">Dispositivos Pub. (3) + Administración (12)</td>
+                                        <td><span class="meta-badge"><i class="fa-solid fa-desktop" style="margin-right: 6px; color: #94a3b8;"></i> 3 eq/sem</span></td>
+                                        <td><span class="meta-total">15 Equipos</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="mes-badge">Octubre</span>
+                                            <span class="fase-text">Fase 4</span>
+                                        </td>
+                                        <td class="areas-text">Mercadeo (3) + Operaciones (7) + Puntos Info. (2)</td>
+                                        <td><span class="meta-badge"><i class="fa-solid fa-desktop" style="margin-right: 6px; color: #94a3b8;"></i> 3 eq/sem</span></td>
+                                        <td><span class="meta-total">12 Equipos</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <span class="mes-badge">Noviembre</span>
+                                            <span class="fase-text">Fase 5</span>
+                                        </td>
+                                        <td class="areas-text">Seguridad (1) + Puesto Control (1) + Lobbys (3)</td>
+                                        <td><span class="meta-badge"><i class="fa-solid fa-desktop" style="margin-right: 6px; color: #94a3b8;"></i> 3 eq/sem</span></td>
+                                        <td><span class="meta-total">5 Equipos</span></td>
+                                    </tr>
+                                    <tr style="background: rgba(231, 76, 60, 0.02);">
+                                        <td>
+                                            <span class="mes-badge" style="background: rgba(231, 76, 60, 0.1); color: #c0392b;">Diciembre</span>
+                                            <span class="fase-text">Fase 6</span>
+                                        </td>
+                                        <td class="areas-text">Consolidación documental, Hojas de Vida (HDV) y Cierre</td>
+                                        <td><span class="meta-badge" style="background: transparent; border: none; color: #a0aec0;">—</span></td>
+                                        <td><span class="meta-cierre">Cierre Total</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Template oculto para el modal (se inyectará por JS) -->
+                <template id="templateMarco">
+                    <div class="table-header">
+                        <h3><i class="fa-solid fa-file-signature" style="color: var(--accent-color);"></i> Documento Marco: Estrategia de Mantenimiento Preventivo</h3>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                        <div class="card" style="border-left-color: var(--primary-color);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 12px; font-size: 0.95rem;"><i class="fa-solid fa-bullseye"></i> Objetivos del Plan</h4>
+                            <p style="font-size: 0.85rem; margin-bottom: 10px;"><strong>General:</strong> Garantizar la disponibilidad, integridad y prolongación de la vida útil de los activos tecnológicos mediante un ciclo preventivo integral.</p>
+                            <ul style="font-size: 0.8rem; padding-left: 15px; color: var(--secondary-color); line-height: 1.5;">
+                                <li>Estandarizar la documentación técnica (HDV y Fichas).</li>
+                                <li>Identificar y mitigar riesgos de falla en hardware crítico.</li>
+                                <li>Establecer planes de mejora basados en el estado real de los equipos.</li>
+                            </ul>
+                        </div>
+
+                        <div class="card" style="border-left-color: var(--warning);">
+                            <h4 style="color: var(--primary-color); margin-bottom: 12px; font-size: 0.95rem;"><i class="fa-solid fa-magnifying-glass-chart"></i> Alcance y Frecuencia</h4>
+                            <p style="font-size: 0.85rem; line-height: 1.5;">
+                                <strong>Alcance:</strong> Lote de 50 activos de cómputo y publicidad del censo, de un inventario general de 304 activos.<br>
+                                <strong>Frecuencia:</strong> Martes, Miércoles y Jueves, 1 activo por día (3 activos/semana).<br>
+                                <strong>Política de Operatividad:</strong> Para no frenar la productividad, se priorizarán ventanas de mantenimiento fuera del horario de uso pico de cada equipo.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-bottom: 30px; border-left-color: var(--accent-color);">
+                        <h4 style="color: var(--primary-color); margin-bottom: 15px; font-size: 0.95rem;"><i class="fa-solid fa-list-check"></i> Actividades a Desarrollar (Protocolo Integral)</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                            <div style="font-size: 0.8rem;"><strong>1. Fase Documental:</strong> Levantamiento de Ficha Técnica y Hoja de Vida.</div>
+                            <div style="font-size: 0.8rem;"><strong>2. Fase Física:</strong> Limpieza de hardware y revisión de periféricos.</div>
+                            <div style="font-size: 0.8rem;"><strong>3. Fase Lógica:</strong> Depuración de software y parches de seguridad.</div>
+                            <div style="font-size: 0.8rem;"><strong>4. Cierre Técnico:</strong> Pruebas de rendimiento y acta final.</div>
+                        </div>
+                    </div>
+                </template>
+</section>
+
+
+            <!-- Nueva sección independiente para Plan de Mantenimiento -->
+            <!-- Nueva sección para Desarrollo de Software -->
+            <!-- Nueva sección para Gestión y Seguimiento de Proyectos -->
+            </main>
+    </div>
+
+    <script src="static/js/main.js"></script>
+
+    <script src="static/js/modules/plan-mantenimiento-directo.js"></script>
+</body>
+</html>

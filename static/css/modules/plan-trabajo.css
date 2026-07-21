@@ -1,0 +1,200 @@
+/* Estilos específicos para plan-trabajo */
+
+/* --- MAPA CONCEPTUAL OPTIMIZADO Y AMPLIADO --- */
+.sub-vista { display: none; animation: fadeIn 0.3s ease-in-out; }
+.sub-vista.active-sub-vista { display: block; }
+
+.mapa-conceptual { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 80px 0; /* Aumentado de 50px */
+}
+
+.nodo-principal { 
+    background-color: var(--primary-color); 
+    color: white; 
+    padding: 25px 70px; /* Aumentado */
+    border-radius: 12px; 
+    font-weight: bold; 
+    font-size: 1.9rem; /* Aumentado de 1.8rem */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+    z-index: 2; 
+}
+
+.linea-vertical { 
+    width: 6px; /* Más gruesa */
+    height: 80px; /* Más larga de 60px */
+    background-color: var(--border-color); 
+}
+
+.nodos-secundarios { 
+    display: flex; 
+    gap: 50px; /* Mayor separación de 30px */
+    border-top: 6px solid var(--border-color); /* Más gruesa */
+    padding-top: 80px; /* Más larga */
+    position: relative; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+}
+
+.nodos-secundarios::before { 
+    content: ''; 
+    position: absolute; 
+    top: -10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 16px; /* Más grande */
+    height: 16px; 
+    background-color: var(--border-color); 
+    border-radius: 50%; 
+}
+
+.nodo-secundario { 
+    background-color: var(--white); 
+    border: 3px solid var(--border-color); /* Borde más grueso */
+    padding: 35px 30px; /* Más aire interno */
+    border-radius: 15px; 
+    text-align: center; 
+    transition: all 0.3s ease; 
+    width: 380px; /* Ancho ampliado de 310px a 380px */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.06); 
+    position: relative; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-bottom: 30px; 
+}
+
+.nodo-secundario::before { 
+    content: ''; 
+    position: absolute; 
+    top: -80px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 6px; 
+    height: 80px; 
+    background-color: var(--border-color); 
+}
+
+.nodo-secundario i.fa-solid {
+    font-size: 2.5rem !important; /* Iconos más grandes */
+    margin-bottom: 15px;
+}
+
+.nodo-secundario span.titulo-nodo { 
+    font-weight: 700; 
+    font-size: 1.5rem; /* Título más grande */
+    color: var(--secondary-color); 
+    margin-bottom: 15px; 
+}
+
+.rama-nodo strong { 
+    font-size: 1rem; /* Subtítulos más grandes */
+    margin-bottom: 8px;
+}
+
+.hoja-nodo p { 
+    font-size: 0.95rem !important; /* Texto de ítems más grande */
+    margin-bottom: 6px !important; 
+}
+
+/* Subtítulos y herencia dentro del mapa */
+.sub-lista-nodo { text-align: left; width: 100%; border-top: 1px solid var(--bg-color); padding-top: 10px; margin-top: 5px;}
+.rama-nodo { width: 100%; text-align: left; font-size: 0.85rem; margin-top: 8px; }
+.rama-nodo strong { color: var(--secondary-color); display: block; margin-bottom: 4px; font-size: 1.0rem; text-transform: uppercase; letter-spacing: 0.3px; }
+.hoja-nodo { padding-left: 12px; border-left: 1px dashed var(--border-color); margin-left: 5px; }
+.hoja-nodo p { font-size: 0.75rem !important; color: #555 !important; margin-bottom: 3px !important; display: flex; align-items: center; gap: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hoja-nodo p i { font-size: 0.65rem !important; color: var(--accent-color) !important; margin: 0;}
+
+/* Botones y Tablas Desplegables */
+.btn-volver { background-color: var(--white); border: 1px solid var(--border-color); padding: 8px 15px; border-radius: 20px; cursor: pointer; font-weight: 600; color: var(--primary-color); margin-bottom: 20px; display: inline-flex; align-items: center; gap: 8px; transition: background 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+.btn-volver:hover { background-color: var(--bg-color); border-color: var(--secondary-color); }
+
+.btn-desplegar { background-color: var(--bg-color); color: var(--primary-color); border: 1px solid var(--border-color); padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 600; width: 100%; margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; transition: all 0.3s ease;}
+.btn-desplegar:hover { background-color: var(--border-color); }
+
+.filas-ocultas { display: none; }
+.filas-ocultas.mostrar { display: table-row-group; animation: fadeIn 0.4s ease-in-out; }
+
+/* --- ESTILOS PARA MODALES Y BOTONES DE DOCUMENTOS --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 900px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--secondary-color);
+}
+
+.btn-doc {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+}
+
+.btn-doc:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-outline-doc {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+}
+
+.btn-outline-doc:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.header-actions-mto {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+

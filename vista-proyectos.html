@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Reporte desempeño TI - Primavera Urbana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet" href="static/css/modules/vista-proyectos.css">
+</head>
+<body>
+
+    <!-- Modal del Documento Marco -->
+    <div id="modalDocumentoMarco" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="btnCloseModal">&times;</span>
+            <div id="contenidoModalMarco">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Dashboard</h2>
+                <p>Reporte desempeño TI</p>
+            </div>
+            
+            <nav class="menu">
+                <p class="menu-label">GESTIÓN OPERATIVA</p>
+                <ul>
+                                        <a href="plan-trabajo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-trabajo"><i class="fa-solid fa-list-check"></i> Plan de trabajo</li></a>
+                    <a href="infraestructura.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="infraestructura"><i class="fa-solid fa-network-wired"></i> Infraestructura</li></a>
+                    <a href="vista-proyectos.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="vista-proyectos"><i class="fa-solid fa-project-diagram"></i> Gestión y Seguimiento de Proyectos</li></a>
+                    <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
+                    <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="desarrollo-software"><i class="fa-solid fa-code"></i> Desarrollo de Software</li></a>
+                    <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
+<a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-titles">
+                    <h1 id="page-title">Gestión y Seguimiento de Proyectos</h1>
+                    <p id="page-subtitle">Monitoreo interactivo de incidentes en los contratos de soporte y mantenimiento TI</p>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=Miller+Santos&background=3498db&color=fff&bold=true" alt="Foto Ing. Miller Santos" class="profile-img">
+                        <span>Ing. Miller Santos</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="vista-proyectos" class="tab-content active-tab">
+                <div class="table-container">
+                    <div class="table-header" style="border-bottom: none; margin-bottom: 10px;">
+                        <div>
+                            <h3><i class="fa-solid fa-project-diagram" style="color: var(--accent-color);"></i> Gestión y Seguimiento de Proyectos TI</h3>
+                            <p style="font-size: 0.85rem; color: #7f8c8d;">Monitoreo interactivo de incidentes en los contratos de soporte y mantenimiento técnico</p>
+                        </div>
+                    </div>
+
+                    <!-- KPI Summary Row -->
+                    <div class="kpi-cards" style="margin-bottom: 25px;">
+                        <div class="card" style="border-left-color: var(--accent-color);">
+                            <div class="card-header"><span>CONTRATOS DE SOPORTE</span><i class="fa-solid fa-file-signature" style="color: var(--accent-color);"></i></div>
+                            <div class="card-value">3</div>
+                            <p class="kpi-detail">Contratos activos y vigentes</p>
+                        </div>
+                        <div class="card" style="border-left-color: var(--alert);">
+                            <div class="card-header"><span>INCIDENCIAS REPORTADAS</span><i class="fa-solid fa-triangle-exclamation" style="color: var(--alert);"></i></div>
+                            <div class="card-value">0</div>
+                            <p class="kpi-detail">Ciclo activo del plan (Inicio: 21 Jul)</p>
+                        </div>
+                        <div class="card green-border">
+                            <div class="card-header"><span>RESOLUCIÓN DE INCIDENTES</span><i class="fa-solid fa-circle-check" style="color: var(--positive);"></i></div>
+                            <div class="card-value">0%</div>
+                            <p class="kpi-detail">Porcentaje de éxito en reparaciones</p>
+                        </div>
+                    </div>
+
+                    <!-- Layout: Flex Row for Master-Detail -->
+                    <div style="display: flex; gap: 25px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 30px;">
+                        
+                        <!-- Columna izquierda: Lista de Contratos (Master) -->
+                        <div style="flex: 1; min-width: 320px; display: flex; flex-direction: column; gap: 15px;">
+                            
+                            <div class="contrato-card active-card" data-contrato="c1" style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 5px solid var(--accent-color); cursor: pointer; transition: all 0.3s ease;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                                    <strong style="font-size: 1.1rem; color: var(--primary-color);">Manting (Soporte CCTV)</strong>
+                                    <span class="status-pill online" style="font-size: 0.75rem;">Activo</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #7f8c8d; margin-bottom: 12px;">CPU-022-2025 (Hardware)</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f2f4f7; padding-top: 10px;">
+                                    <span style="font-size: 0.8rem; color: #555;"><i class="fa-solid fa-bug" style="color: var(--alert); margin-right: 5px;"></i> Incidencias Activas:</span>
+                                    <span class="badge alert" style="background: var(--border-color); color: #7f8c8d; font-weight: bold; font-size: 0.8rem; padding: 3px 8px; border-radius: 10px;">0</span>
+                                </div>
+                            </div>
+
+                            <div class="contrato-card" data-contrato="c2" style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 5px solid #bdc3c7; cursor: pointer; transition: all 0.3s ease;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                                    <strong style="font-size: 1.1rem; color: var(--primary-color);">Manting (BMS & Automatización)</strong>
+                                    <span class="status-pill online" style="font-size: 0.75rem;">Activo</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #7f8c8d; margin-bottom: 12px;">CPU-031-2025 (BMS / BMS Hardware)</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f2f4f7; padding-top: 10px;">
+                                    <span style="font-size: 0.8rem; color: #555;"><i class="fa-solid fa-bug" style="color: var(--alert); margin-right: 5px;"></i> Incidencias Activas:</span>
+                                    <span class="badge warning" style="background: var(--border-color); color: #7f8c8d; font-weight: bold; font-size: 0.8rem; padding: 3px 8px; border-radius: 10px;">0</span>
+                                </div>
+                            </div>
+
+                            <div class="contrato-card" data-contrato="c3" style="background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); border-left: 5px solid #bdc3c7; cursor: pointer; transition: all 0.3s ease;">
+                                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                                    <strong style="font-size: 1.1rem; color: var(--primary-color);">E-Global (Smart Parking)</strong>
+                                    <span class="status-pill online" style="font-size: 0.75rem;">Activo</span>
+                                </div>
+                                <p style="font-size: 0.85rem; color: #7f8c8d; margin-bottom: 12px;">012-23.1 (Smart Parking)</p>
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f2f4f7; padding-top: 10px;">
+                                    <span style="font-size: 0.8rem; color: #555;"><i class="fa-solid fa-bug" style="color: var(--alert); margin-right: 5px;"></i> Incidencias Activas:</span>
+                                    <span class="badge warning" style="background: var(--border-color); color: #7f8c8d; font-weight: bold; font-size: 0.8rem; padding: 3px 8px; border-radius: 10px;">0</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <!-- Columna derecha: Detalles e Incidencias del Contrato Seleccionado (Detail) -->
+                        <div class="contrato-detalle" style="flex: 2; min-width: 500px; background: white; border-radius: 10px; padding: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 20px;">
+                            
+                            <!-- Cabecera del detalle -->
+                            <div style="border-bottom: 2px solid var(--bg-color); padding-bottom: 15px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                    <h3 id="det-proveedor" style="color: var(--primary-color); font-size: 1.4rem;">Manting</h3>
+                                    <span id="det-estado" class="status-pill online">Activo / Vigente</span>
+                                </div>
+                                <p id="det-contrato-id" style="font-weight: 600; color: var(--accent-color); font-size: 0.95rem;">Contrato 1: CPU-022-2025</p>
+                            </div>
+
+                            <!-- Info Layout: Alcance + Gráfica -->
+                            <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                                <!-- Objeto / Alcance -->
+                                <div style="flex: 1; min-width: 300px;">
+                                    <h4 style="font-size: 0.85rem; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; font-weight: bold;">Objeto y Alcance del Soporte</h4>
+                                    <p id="det-alcance" style="font-size: 0.95rem; color: var(--secondary-color); line-height: 1.6;">Mantenimiento preventivo integral y soporte de hardware de cómputo</p>
+                                </div>
+                                
+                                <!-- Histograma -->
+                                <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
+                                    <h4 style="font-size: 0.85rem; color: #7f8c8d; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; font-weight: bold; text-align: center;">Incidencias por Mes</h4>
+                                    <div style="position: relative; height: 180px; width: 100%;">
+                                        <canvas id="incidenciasChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sección Incidencias -->
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-top: 1px solid var(--bg-color); padding-top: 20px;">
+                                    <h4 style="font-size: 1rem; color: var(--primary-color); display: flex; align-items: center; gap: 8px; font-weight: bold;">
+                                        <i class="fa-solid fa-circle-exclamation" style="color: var(--alert);"></i> Bitácora de Incidencias Atendidas en Plan de Mantenimiento
+                                    </h4>
+                                    <span id="det-incidencias-count" class="badge alert" style="background: var(--accent-color); color: white; font-weight: bold; font-size: 0.85rem; padding: 4px 10px; border-radius: 12px;">0 Incidencias</span>
+                                </div>
+                                
+                                <div style="overflow-x: auto;">
+                                    <table class="data-table" id="tabla-incidencias-detalle" style="width:100%;">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 12%; padding: 10px 15px;">Fecha</th>
+                                                <th style="width: 33%; padding: 10px 15px;">Motivo / Descripción</th>
+                                                <th style="width: 12%; padding: 10px 15px;">Gravedad</th>
+                                                <th style="width: 13%; padding: 10px 15px;">Estado</th>
+                                                <th style="width: 30%; padding: 10px 15px;">Concepto Técnico / Observación</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="incidencias-rows">
+                                            <!-- Se inyecta dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Apartado de Incidencias Generales -->
+                    <div class="table-container" style="margin-top: 30px;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 10px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+                            <i class="fa-solid fa-list-check" style="color: var(--accent-color);"></i> Registro de Incidencias Generales TI
+                        </h4>
+                        <p style="font-size: 0.85rem; color: #7f8c8d; margin-bottom: 15px;">Incidencias internas y soporte directo fuera del alcance de los contratos externos de mantenimiento.</p>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 12%;">Fecha</th>
+                                    <th style="width: 20%;">Área / Reporta</th>
+                                    <th style="width: 33%;">Descripción del Incidente</th>
+                                    <th style="width: 12%;">Criticidad</th>
+                                    <th style="width: 23%;">Resolución / Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>—</strong></td>
+                                    <td colspan="4" style="text-align: center; color: #95a5a6; padding: 20px;">
+                                        Sin incidencias generales registradas. El censo e histórico iniciará a partir de la fecha de inicio del plan de mantenimiento (21 de Julio de 2026).
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- Nueva sección independiente para Plan de Mantenimiento -->
+            <!-- Nueva sección para Desarrollo de Software -->
+            <!-- Nueva sección para Gestión y Seguimiento de Proyectos -->
+            </main>
+    </div>
+
+    <script src="static/js/main.js"></script>
+
+    <script src="static/js/modules/vista-proyectos.js"></script>
+</body>
+</html>

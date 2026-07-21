@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Reporte desempeño TI - Primavera Urbana</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <link rel="stylesheet" href="static/css/modules/bitacora.css">
+</head>
+<body>
+
+    <!-- Modal del Documento Marco -->
+    <div id="modalDocumentoMarco" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="btnCloseModal">&times;</span>
+            <div id="contenidoModalMarco">
+                <!-- Se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Dashboard</h2>
+                <p>Reporte desempeño TI</p>
+            </div>
+            
+            <nav class="menu">
+                <p class="menu-label">GESTIÓN OPERATIVA</p>
+                <ul>
+                                        <a href="plan-trabajo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-trabajo"><i class="fa-solid fa-list-check"></i> Plan de trabajo</li></a>
+                    <a href="infraestructura.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="infraestructura"><i class="fa-solid fa-network-wired"></i> Infraestructura</li></a>
+                    <a href="vista-proyectos.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="vista-proyectos"><i class="fa-solid fa-project-diagram"></i> Gestión y Seguimiento de Proyectos</li></a>
+                    <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
+                    <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="desarrollo-software"><i class="fa-solid fa-code"></i> Desarrollo de Software</li></a>
+                    <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
+<a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="header-titles">
+                    <h1 id="page-title">Bitácora de Trabajo</h1>
+                    <p id="page-subtitle">Seguimiento y bitácora del ciclo de mantenimiento de hardware</p>
+                </div>
+                <div class="header-actions">
+                    <div class="profile-btn">
+                        <img src="https://ui-avatars.com/api/?name=Miller+Santos&background=3498db&color=fff&bold=true" alt="Foto Ing. Miller Santos" class="profile-img">
+                        <span>Ing. Miller Santos</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="bitacora" class="tab-content active-tab">
+                <div class="table-container" style="margin-bottom: 30px;">
+                    <div class="table-header" style="border-bottom: none; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                        <div>
+                            <h3><i class="fa-solid fa-chart-gantt" style="color: var(--accent-color);"></i> Cronograma de Hitos y Diagrama de Gantt TI</h3>
+                            <p style="font-size: 0.85rem; color: #7f8c8d;">Visión unificada del Plan de Mantenimiento, Desarrollo de Software y Mejoramiento de Infraestructura</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Filtros Dinámicos de Visualización -->
+                    <div class="gantt-filters-flex" style="display: flex; gap: 15px; align-items: center; margin-bottom: 20px; background: var(--bg-color); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); flex-wrap: wrap;">
+                        <div class="filter-item">
+                            <label for="gantt-view-selector" style="font-size: 0.8rem; font-weight: bold; color: var(--secondary-color); margin-right: 5px;">Escala de Tiempo:</label>
+                            <select id="gantt-view-selector" class="profile-btn" style="background: white; border: 1px solid var(--border-color); color: var(--primary-color); cursor: pointer; font-size: 0.85rem; font-weight: bold; padding: 6px 12px; border-radius: 6px; outline: none; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                                <option value="semestral">Vista Semestral</option>
+                                <option value="mensual">Vista Mensual</option>
+                                <option value="semanal">Vista Semanal</option>
+                                <option value="diario">Vista Diaria</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Filtro de Mes -->
+                        <div class="filter-item" id="filter-mes-wrapper" style="display: none;">
+                            <label for="gantt-filter-mes" style="font-size: 0.8rem; font-weight: bold; color: var(--secondary-color); margin-right: 5px;">Seleccionar Mes:</label>
+                            <select id="gantt-filter-mes" class="profile-btn" style="background: white; border: 1px solid var(--border-color); color: var(--primary-color); cursor: pointer; font-size: 0.85rem; font-weight: bold; padding: 6px 12px; border-radius: 6px; outline: none;">
+                                <option value="Julio">Julio 2026</option>
+                                <option value="Agosto">Agosto 2026</option>
+                                <option value="Septiembre">Septiembre 2026</option>
+                                <option value="Octubre">Octubre 2026</option>
+                                <option value="Noviembre">Noviembre 2026</option>
+                                <option value="Diciembre">Diciembre 2026</option>
+                            </select>
+                        </div>
+
+                        <!-- Filtro de Semana -->
+                        <div class="filter-item" id="filter-semana-wrapper" style="display: none;">
+                            <label for="gantt-filter-semana" style="font-size: 0.8rem; font-weight: bold; color: var(--secondary-color); margin-right: 5px;">Seleccionar Semana:</label>
+                            <select id="gantt-filter-semana" class="profile-btn" style="background: white; border: 1px solid var(--border-color); color: var(--primary-color); cursor: pointer; font-size: 0.85rem; font-weight: bold; padding: 6px 12px; border-radius: 6px; outline: none;">
+                                <option value="1">Semana 1 (20 - 26 Jul)</option>
+                                <option value="2">Semana 2 (27 Jul - 2 Ago)</option>
+                                <option value="3">Semana 3 (3 - 9 Ago)</option>
+                                <option value="4">Semana 4 (10 - 16 Ago)</option>
+                                <option value="5">Semana 5 (17 - 23 Ago)</option>
+                                <option value="6">Semana 6 (24 - 30 Ago)</option>
+                                <option value="7">Semana 7 (31 Ago - 6 Sep)</option>
+                                <option value="8">Semana 8 (7 - 13 Sep)</option>
+                                <option value="9">Semana 9 (14 - 20 Sep)</option>
+                                <option value="10">Semana 10 (21 - 27 Sep)</option>
+                                <option value="11">Semana 11 (28 Sep - 4 Oct)</option>
+                                <option value="12">Semana 12 (5 - 11 Oct)</option>
+                                <option value="13">Semana 13 (12 - 18 Oct)</option>
+                                <option value="14">Semana 14 (19 - 25 Oct)</option>
+                                <option value="15">Semana 15 (26 Oct - 1 Nov)</option>
+                                <option value="16">Semana 16 (2 - 8 Nov)</option>
+                            </select>
+                        </div>
+
+                        <!-- Filtro de Día -->
+                        <div class="filter-item" id="filter-dia-wrapper" style="display: none;">
+                            <label for="gantt-filter-dia" style="font-size: 0.8rem; font-weight: bold; color: var(--secondary-color); margin-right: 5px;">Seleccionar Día:</label>
+                            <select id="gantt-filter-dia" class="profile-btn" style="background: white; border: 1px solid var(--border-color); color: var(--primary-color); cursor: pointer; font-size: 0.85rem; font-weight: bold; padding: 6px 12px; border-radius: 6px; outline: none;">
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miércoles">Miércoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sábado">Sábado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- KPIs de Progreso Integrado -->
+                    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; background: var(--bg-color); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
+                            <div style="flex: 1; min-width: 250px;">
+                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; color: var(--primary-color);">
+                                    <span>Avance Integrado de Actividades TI (Consolidado)</span>
+                                    <span id="gantt-progreso-total-label">0% completado</span>
+                                </div>
+                                <div style="background: #e0e0e0; height: 12px; border-radius: 6px; overflow: hidden;">
+                                    <div id="gantt-bar-total" style="background: var(--positive); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 15px; text-align: center;">
+                                <div style="background: white; border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                                    <span style="font-size: 0.75rem; color: #7f8c8d; display: block; text-transform: uppercase;">AVANCE TOTAL</span>
+                                    <strong id="gantt-progreso-total-badge" style="font-size: 1.2rem; color: var(--positive);">0.0%</strong>
+                                </div>
+                                <div style="background: white; border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                                    <span style="font-size: 0.75rem; color: #7f8c8d; display: block; text-transform: uppercase;">FALTANTE / PENDIENTE</span>
+                                    <strong id="gantt-progreso-faltante-badge" style="font-size: 1.2rem; color: var(--alert);">100.0%</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Progreso por Ejes de Trabajo -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; border-top: 1px solid var(--border-color); padding-top: 12px;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; color: var(--accent-color);">
+                                    <span>Plan de Mantenimiento Preventivo</span>
+                                    <span id="gantt-progreso-mto">0%</span>
+                                </div>
+                                <div style="background: #e0e0e0; height: 6px; border-radius: 3px; overflow: hidden;">
+                                    <div id="gantt-bar-mto" style="background: var(--accent-color); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; color: var(--primary-color);">
+                                    <span>Desarrollo de Software (Intranet)</span>
+                                    <span id="gantt-progreso-soft">0%</span>
+                                </div>
+                                <div style="background: #e0e0e0; height: 6px; border-radius: 3px; overflow: hidden;">
+                                    <div id="gantt-bar-soft" style="background: var(--primary-color); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; color: var(--warning);">
+                                    <span>Mejoramiento de Infraestructura</span>
+                                    <span id="gantt-progreso-infra">0%</span>
+                                </div>
+                                <div style="background: #e0e0e0; height: 6px; border-radius: 3px; overflow: hidden;">
+                                    <div id="gantt-bar-infra" style="background: var(--warning); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1. VISTA SEMESTRAL -->
+                    <div id="gantt-semestral" class="gantt-view-container">
+                        <div style="overflow-x: auto;">
+                            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--bg-color); border-bottom: 2px solid var(--border-color);">
+                                        <th style="padding: 12px; text-align: left; width: 25%;">Eje de Trabajo / Actividad</th>
+                                        <th style="padding: 12px; text-align: left; width: 15%;">Jornada / Días</th>
+                                        <th style="padding: 12px; text-align: center; width: 10%;">Jul</th>
+                                        <th style="padding: 12px; text-align: center; width: 10%;">Ago</th>
+                                        <th style="padding: 12px; text-align: center; width: 10%;">Sep</th>
+                                        <th style="padding: 12px; text-align: center; width: 10%;">Oct</th>
+                                        <th style="padding: 12px; text-align: center; width: 10%;">Nov</th>
+                                        <th style="padding: 12px; text-align: center; width: 10%;">Dic</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="8">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> 1. PLAN DE MANTENIMIENTO PREVENTIVO (50 EQUIPOS)
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 1-2: Pantallas y Totems</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar, Mié, Jue (1 eq/día)</td>
+                                        <td colspan="2" style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Ejecución (21 Pantallas)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 3: Computadores Admin</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar, Mié, Jue (1 eq/día)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Ejecución (12 PC)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 4: Mercadeo, Ops e Info</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar, Mié, Jue (1 eq/día)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Ejecución (12 PC)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 5: Seguridad, Ctrl y Lobbys</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar, Mié, Jue (1 eq/día)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Ejecución (5 PC)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 6: Consolidación y Cierre</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Cierre Anual (Docs/HDV)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--positive); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Cierre de Ciclo</div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="8">
+                                            <i class="fa-solid fa-code"></i> 2. PLAN DE DESARROLLO DE SOFTWARE (INTRANET - 4 MESES)
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 1: Diseño, Requerimientos & BD</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Lunes y Viernes (TI)</td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--primary-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Fase 1 (S1-S4)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 2: Autenticación, Login & Roles</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Lunes y Viernes (TI)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--primary-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Fase 2 (S5-S8)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 3: Módulo de Gestión Documental</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Lunes y Viernes (TI)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--primary-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Fase 3 (S9-S12)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 4: Muro & Módulo de Avisos</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Lunes y Viernes (TI)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--primary-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Fase 4 (S13-S15)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 5: Pruebas & Despliegue Local</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Lunes y Viernes (TI)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--positive); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Fase 5 (S16)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="8">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> 3. PLAN DE MEJORAMIENTO DE INFRAESTRUCTURA (TARDES)
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Mejoramiento CCTV</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar y Jue (Tardes)</td>
+                                        <td colspan="5" style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Mejoras de Servidores NVR y Cableado</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Mejoramiento Telefonía</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Jueves (Tardes)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td colspan="3" style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Planta IP-PBX & Extensiones</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Mejoramiento Parqueadero</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar y Vie (Tardes)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td colspan="3" style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Adecuación Barreras e IP</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Herramientas & Productividad IA</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Viernes (Tardes)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td colspan="2" style="padding: 8px;">
+                                            <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Capacitación en IA de Empleados</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 2. VISTA MENSUAL (Julio 2026) -->
+                    <div id="gantt-mensual" class="gantt-view-container" style="display: none;">
+                        <div style="overflow-x: auto;">
+                            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--bg-color); border-bottom: 2px solid var(--border-color);">
+                                        <th style="padding: 12px; text-align: left; width: 25%;">Eje de Trabajo / Actividad</th>
+                                        <th style="padding: 12px; text-align: left; width: 15%;">Días de Trabajo</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">Semana 1 (20-26 Jul)</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">Semana 2 (27 Jul-2 Ago)</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">Semana 3 (3-9 Ago)</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">Semana 4 (10-16 Ago)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="6">
+                                            <i class="fa-solid fa-clock-rotate-left"></i> EJE CRÍTICO DIARIO
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">Aseguramiento de Disponibilidad y Triage Operativo Diario (SLA Crítico)</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Lun a Sáb (Inmediato)</td>
+                                        <td colspan="4" style="padding: 8px;">
+                                            <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-bolt"></i> Disponibilidad Activa 24/7 - Triage Inmediato</div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="6">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> PROYECTO 1: MANTENIMIENTO PREVENTIVO
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Mto. Dispositivos Publicitarios (Lote 1)</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar, Mié, Jue (3 eq/sem)</td>
+                                        <td colspan="2" style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Mto. Preventivo (Pantallas)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="6">
+                                            <i class="fa-solid fa-code"></i> PROYECTO 2: DESARROLLO DE SOFTWARE
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Fase 1: Diseño, Requerimientos & BD</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Lunes y Viernes (TI)</td>
+                                        <td colspan="4" style="padding: 8px;">
+                                            <div style="background: var(--primary-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Fase 1 (Semanas 1-4)</div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="6">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> PROYECTO 3: MEJORAMIENTO DE INFRAESTRUCTURA
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora CCTV</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Mar y Jue (Tardes)</td>
+                                        <td colspan="4" style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Cableado y Balanceo NVR</div>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora Telefonía</td>
+                                        <td style="padding: 10px 12px; color: #7f8c8d;">Jueves (Tardes)</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td colspan="3" style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Líneas IP-PBX</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 3. VISTA SEMANAL (Semana 1: 20-26 Jul 2026) -->
+                    <div id="gantt-semanal" class="gantt-view-container" style="display: none;">
+                        <div style="overflow-x: auto;">
+                            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--bg-color); border-bottom: 2px solid var(--border-color);">
+                                        <th style="padding: 12px; text-align: left; width: 25%;">Eje de Trabajo / Actividad</th>
+                                        <th style="padding: 12px; text-align: center; width: 12%;">Lun 20</th>
+                                        <th style="padding: 12px; text-align: center; width: 12%;">Mar 21</th>
+                                        <th style="padding: 12px; text-align: center; width: 12%;">Mié 22</th>
+                                        <th style="padding: 12px; text-align: center; width: 12%;">Jue 23</th>
+                                        <th style="padding: 12px; text-align: center; width: 12%;">Vie 24</th>
+                                        <th style="padding: 12px; text-align: center; width: 12%;">Sáb 25</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="7">
+                                            <i class="fa-solid fa-clock-rotate-left"></i> EJE CRÍTICO DIARIO
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">Aseguramiento de Disponibilidad y Triage Operativo Diario (SLA Crítico)</td>
+                                        <td colspan="6" style="padding: 8px;">
+                                            <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-bolt"></i> Disponibilidad Operativa Continua (08:00 - 18:00)</div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="7">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> PROYECTO 1: MANTENIMIENTO PREVENTIVO
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Mto. Preventivo Pantallas</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">1 Pantalla</div>
+                                        </td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">1 Pantalla</div>
+                                        </td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">1 Pantalla</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="7">
+                                            <i class="fa-solid fa-code"></i> PROYECTO 2: DESARROLLO DE SOFTWARE
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Intranet: Fase 1 (Diseño UI/BD)</td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--primary-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Diseño DB (5h)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--primary-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Mockups UI (5h)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="7">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> PROYECTO 3: MEJORAMIENTO DE INFRAESTRUCTURA
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Mejoras de Infraestructura</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">CCTV (Tarde)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">CCTV + Tel</div>
+                                        </td>
+                                        <td style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Parqueo (Tarde)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 4. VISTA DIARIA (Hoy: Martes 21 Julio 2026) -->
+                    <div id="gantt-diario" class="gantt-view-container" style="display: none;">
+                        <div style="overflow-x: auto;">
+                            <table class="data-table" style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr style="background: var(--bg-color); border-bottom: 2px solid var(--border-color);">
+                                        <th style="padding: 12px; text-align: left; width: 25%;">Eje de Trabajo / Actividad</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">08:00 - 10:00</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">10:00 - 12:00</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">12:00 - 14:00</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">14:00 - 16:00</th>
+                                        <th style="padding: 12px; text-align: center; width: 15%;">16:00 - 18:00</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="6">
+                                            <i class="fa-solid fa-clock-rotate-left"></i> EJE CRÍTICO DIARIO (RESPUESTA INSTANTÁNEA)
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px; font-weight: 600; color: var(--alert);">
+                                            <i class="fa-solid fa-circle-exclamation" style="color: var(--alert);"></i> Aseguramiento de Disponibilidad y Triage Operativo Diario (SLA Crítico)
+                                        </td>
+                                        <td colspan="2" style="padding: 8px;">
+                                            <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Guardia Activa mañana</div>
+                                        </td>
+                                        <td style="background: rgba(189, 195, 199, 0.1); text-align: center; font-size: 0.75rem; color: #7f8c8d; font-style: italic;">Receso almuerzo</td>
+                                        <td colspan="2" style="padding: 8px;">
+                                            <div style="background: var(--alert); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;"><i class="fa-solid fa-headset"></i> Guardia Activa tarde</div>
+                                        </td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="6">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> PROYECTO 1: MANTENIMIENTO PREVENTIVO
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Preventivo Pantallas y Totems</td>
+                                        <td colspan="2" style="padding: 8px;">
+                                            <div style="background: var(--accent-color); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Mto. Físico y Lógico (1 Totem)</div>
+                                        </td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                    </tr>
+
+                                    <tr style="border-bottom: 1px solid var(--border-color);">
+                                        <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="6">
+                                            <i class="fa-solid fa-screwdriver-wrench"></i> PROYECTO 3: MEJORAMIENTO DE INFRAESTRUCTURA
+                                        </td>
+                                    </tr>
+                                    <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                                        <td style="padding: 10px 12px; padding-left: 25px;">Mejoramiento CCTV</td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td style="background: #fafafa;"></td>
+                                        <td colspan="2" style="padding: 8px;">
+                                            <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Mto. Racks Secundarios CCTV (Tarde)</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cronograma-container">
+                    <div class="cronograma-header">
+                        <div>
+                            <h3 style="color: var(--primary-color); font-size: 1.2rem;"><i class="fa-solid fa-calendar-week" style="color: var(--accent-color);"></i> Cronograma Semestral de Ejecución</h3>
+                            <p style="font-size: 0.85rem; color: #7f8c8d; margin-top: 5px;">Mantenimiento por áreas (Ventana operativa: Mar - Jue)</p>
+                        </div>
+                        <span class="badge positive" style="font-size: 0.85rem; padding: 6px 12px;"><i class="fa-solid fa-flag-checkered"></i> Inicio: 21 Jul 2026</span>
+                    </div>
+
+                    <div class="timeline">
+                        <div class="timeline-item active" data-week="1">
+                            <div class="timeline-marker">W1</div>
+                            <div class="timeline-content">
+                                <h4>Publicidad - Lote 1</h4>
+                                <p><i class="fa-regular fa-clock"></i> 21 Jul - 23 Jul</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-week="2">
+                            <div class="timeline-marker">W2</div>
+                            <div class="timeline-content">
+                                <h4>Publicidad - Lote 2</h4>
+                                <p><i class="fa-regular fa-clock"></i> 28 Jul - 30 Jul</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-week="3">
+                            <div class="timeline-marker">W3</div>
+                            <div class="timeline-content">
+                                <h4>Publicidad & Admin</h4>
+                                <p><i class="fa-regular fa-clock"></i> 04 Ago - 06 Ago</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-week="4">
+                            <div class="timeline-marker">W4</div>
+                            <div class="timeline-content">
+                                <h4>Administración L2</h4>
+                                <p><i class="fa-regular fa-clock"></i> 11 Ago - 13 Ago</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-week="5">
+                            <div class="timeline-marker">W5</div>
+                            <div class="timeline-content">
+                                <h4>Mercadeo & Ops & Info</h4>
+                                <p><i class="fa-regular fa-clock"></i> 18 Ago - 20 Ago</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-week="6">
+                            <div class="timeline-marker">W6</div>
+                            <div class="timeline-content">
+                                <h4>Seguridad & Ctrl & Lobbys</h4>
+                                <p><i class="fa-regular fa-clock"></i> 25 Ago - 27 Ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kpi-bitacora-container" style="margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+                    <div class="kpi-b-card">
+                        <div class="kpi-b-icon" style="background-color: #d5f5e3; color: #27ae60;">
+                            <i class="fa-solid fa-file-lines"></i>
+                        </div>
+                        <div class="kpi-b-info">
+                            <span class="kpi-b-title">META DEL MES</span>
+                            <span class="kpi-b-value">15 Equipos</span>
+                            <span class="kpi-b-sub"><i class="fa-solid fa-arrow-trend-up"></i> Ciclo de Mantenimiento</span>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-b-card active-kpi">
+                        <div class="kpi-b-icon" style="background-color: #fdebd0; color: #f39c12;">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="kpi-b-info">
+                            <span class="kpi-b-title">COMPLETADAS ESTA SEMANA</span>
+                            <span class="kpi-b-value" id="kpi-completadas-val">0 / 8</span>
+                            <div class="mini-progress-bar"><div id="semana-progress" class="mini-progress-fill" style="width: 0%;"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="kpi-b-card">
+                        <div class="kpi-b-icon" style="background-color: #fadbd8; color: #e74c3c;">
+                            <i class="fa-solid fa-rotate-right"></i>
+                        </div>
+                        <div class="kpi-b-info">
+                            <span class="kpi-b-title">PROGRESO LOTE ACTUAL (50)</span>
+                            <span id="lote-progreso" class="kpi-b-value">0.0%</span>
+                            <span class="kpi-b-sub">Objetivo: 50 Equipos (Publicidad, Admin, etc.)</span>
+                        </div>
+                    </div>
+
+                    <div class="kpi-b-card" style="display: flex; align-items: center; gap: 15px;">
+                        <div class="kpi-b-icon" style="background-color: #dbeafe; color: #1e40af;">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <div class="kpi-b-info">
+                            <span class="kpi-b-title">RESPONSABLE PROFESIONAL</span>
+                            <span class="kpi-b-value" style="font-size: 1rem; font-weight: bold; color: var(--primary-color);">Ing. Miller Santos</span>
+                            <span class="kpi-b-sub">Director de Infraestructura TI</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Nueva sección independiente para Plan de Mantenimiento -->
+            <!-- Nueva sección para Desarrollo de Software -->
+            <!-- Nueva sección para Gestión y Seguimiento de Proyectos -->
+            </main>
+    </div>
+
+    <script src="static/js/main.js"></script>
+
+    <script src="static/js/modules/bitacora.js"></script>
+</body>
+</html>
