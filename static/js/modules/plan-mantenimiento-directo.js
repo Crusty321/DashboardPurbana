@@ -9,9 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
         new Chart(mtoGlobalCtx, {
             type: 'doughnut',
             data: {
-                labels: ['Mantenidos', 'Pendientes'],
+                labels: ['Mantenimientos', 'Pendientes'],
                 datasets: [{
-                    data: [0, 50],
+                    data: [27, 277],
                     backgroundColor: ['#27ae60', '#e1e8ed'],
                     borderWidth: 0
                 }]
@@ -34,15 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: ['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
                 datasets: [{
-                    label: 'Avance Real (%)',
-                    data: [0, 0, 0, 0, 0, 0],
+                    label: 'Equipos (Avance Real)',
+                    data: [6, 18, 27, null, null, null],
                     borderColor: '#3498db',
                     backgroundColor: 'rgba(52, 152, 219, 0.1)',
                     fill: true,
                     tension: 0.4
                 }, {
-                    label: 'Meta Proyectada (%)',
-                    data: [12, 36, 66, 90, 100, 100],
+                    label: 'Equipos (Meta Proyectada)',
+                    data: [6, 18, 30, 42, 47, 50],
                     borderColor: '#bdc3c7',
                     borderDash: [5, 5],
                     fill: false
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 responsive: true,
                 maintainAspectRatio: false,
                 scales: {
-                    y: { beginAtZero: true, max: 100 }
+                    y: { beginAtZero: true, max: 50 }
                 }
             }
         });

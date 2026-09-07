@@ -12,8 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
             estadoClase: "online",
             alcance: `<strong>Objetivo Principal:</strong> Prestar el servicio de mantenimiento preventivo integral y soporte de hardware de cómputo (CPUs, pantallas locales, periféricos e impresoras POS).<br><br>
             <strong>Alcance:</strong> Garantiza el correcto funcionamiento de los puestos de trabajo operativos en todo el centro comercial. Incluye limpieza, depuración lógica y auditorías de seguridad física y lógica.`,
-            incidencias: [],
-            histograma: [0, 1, 0, 0, 0, 0, 0]
+            incidencias: [
+                { fecha: "2026-08-20 19:48", motivo: "Pérdida conexión cámara s14c16 en torre j piso 8 m2", gravedad: "alta", estado: "En Revisión", observacion: "Reportado por Harold Aza - Posible falla IP/Física" },
+                { fecha: "2026-08-21 07:29", motivo: "Pérdida conexión cámara s12c10 piso 3 modulo 5", gravedad: "alta", estado: "En Revisión", observacion: "Reportado por Harold Aza - Posible falla IP/Física" },
+                { fecha: "2026-08-25 09:19", motivo: "Movimiento de cámara", gravedad: "baja", estado: "Pendiente", observacion: "Reportado por Alejandra Rodriguez" },
+                { fecha: "2026-08-25 09:46", motivo: "Limpieza de cámara p2 sobre la casa del kumis", gravedad: "baja", estado: "Pendiente", observacion: "Reportado por Alejandra Rodriguez - Mantenimiento físico" },
+                { fecha: "2026-08-25 09:48", motivo: "Cámara frente a fervor p1-m8 grabar directo y movimiento", gravedad: "media", estado: "Pendiente", observacion: "Reportado por Alejandra Rodriguez" },
+                { fecha: "2026-08-26 15:16", motivo: "Pérdida de conexión IP de cámara", gravedad: "alta", estado: "En Revisión", observacion: "Reportado por Harold Aza - Falla de red recurrente" },
+                { fecha: "2026-08-29 08:50", motivo: "Cámara p7-m2 auditorio fuera de servicio", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Alejandra Rodriguez" }
+            ],
+            histograma: [0, 0, 0, 7, 0, 0, 0]
         },
         c2: {
             proveedor: "Manting (BMS & Automatización)",
@@ -31,8 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 <li><strong>Sistema de Conteo:</strong> Mantenimiento de cámaras y plataforma.</li>
             </ul><br>
             <strong>Vigencia:</strong> Duración de doce (12) meses, desde el 6 de agosto de 2025 hasta el 5 de agosto de 2026.`,
-            incidencias: [],
-            histograma: [0, 0, 1, 0, 0, 0, 0]
+            incidencias: [
+                { fecha: "2026-08-18 11:27", motivo: "Red e Internet", gravedad: "media", estado: "Solucionado", observacion: "Reportado por Diana Gonzalez" },
+                { fecha: "2026-08-18 16:22", motivo: "Sistema lento y no reconoce visitantes", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Liliana Chiquiza" },
+                { fecha: "2026-08-25 16:17", motivo: "Falla al ingresar número de documento", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Diana Gonzalez" },
+                { fecha: "2026-08-26 12:06", motivo: "Credenciales de acceso / no toma los rostros", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Liliana Chiquiza" },
+                { fecha: "2026-08-26 15:32", motivo: "Pantalla de acceso hardware/dispositivos", gravedad: "media", estado: "Solucionado", observacion: "Reportado por Diana Gil" },
+                { fecha: "2026-08-27 11:38", motivo: "Credenciales de acceso / no está dando ingreso", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Liliana Chiquiza" },
+                { fecha: "2026-08-27 11:54", motivo: "Credenciales de acceso en lobby 3", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Liliana Chiquiza" },
+                { fecha: "2026-08-28 14:48", motivo: "Biométrico derecho al ingresar visitantes", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Diana Gonzalez" },
+                { fecha: "2026-08-31 18:11", motivo: "Local Milanelo obturador", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Harold Aza - Sistema Pánico" },
+                { fecha: "2026-09-01 07:56", motivo: "Lobby 3 sistema Welcome demora aprox 20 seg por CC", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Diana Gonzalez" },
+                { fecha: "2026-09-02 16:55", motivo: "Sistema Welcome se bloquea/lento", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Liliana Chiquiza" },
+                { fecha: "2026-09-04 18:34", motivo: "Sistema Welcome reinicios/fallas", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Liliana Chiquiza" },
+                { fecha: "2026-09-04 18:37", motivo: "Sistema Welcome fuera de servicio", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Liliana Chiquiza" }
+            ],
+            histograma: [0, 0, 0, 9, 4, 0, 0]
         },
         c3: {
             proveedor: "E-Global (Smart Parking)",
@@ -68,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
         incidenciasChartInstance = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
+                labels: ['May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov'],
                 datasets: [{
                     label: 'Incidencias',
                     data: datosHistograma || [0, 0, 0, 0, 0, 0, 0],
@@ -103,14 +125,15 @@ document.addEventListener('DOMContentLoaded', () => {
         detEstado.innerText = data.estado;
         detEstado.className = `status-pill ${data.estadoClase}`;
 
-        const totalIncidencias = data.incidencias.length;
-        detIncidenciasCount.innerText = `${totalIncidencias} Incidencias`;
+        const pendientes = data.incidencias.filter(inc => inc.estado !== 'Solucionado');
+        const totalPendientes = pendientes.length;
+        detIncidenciasCount.innerText = `${totalPendientes} Incidencias Activas/Pendientes`;
 
         let html = '';
-        if (totalIncidencias === 0) {
-            html = '<tr><td colspan="5" style="text-align:center; color:#95a5a6; padding: 20px;">Sin incidencias registradas. El histórico iniciará a partir de la fecha de inicio del plan de mantenimiento.</td></tr>';
+        if (totalPendientes === 0) {
+            html = '<tr><td colspan="5" style="text-align:center; color:#95a5a6; padding: 20px;">No hay incidencias pendientes o activas en este contrato.</td></tr>';
         } else {
-            data.incidencias.forEach(inc => {
+            pendientes.forEach(inc => {
                 html += `
                     <tr>
                         <td style="padding: 12px 15px;"><strong>${inc.fecha}</strong></td>
@@ -121,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <span class="severity-tag ${inc.gravedad}">${inc.gravedad}</span>
                         </td>
                         <td style="padding: 12px 15px;">
-                            <span class="status-pill online" style="font-size: 0.75rem; padding: 3px 8px;">${inc.estado}</span>
+                            <span class="status-pill online" style="font-size: 0.75rem; padding: 3px 8px; background-color: var(--alert); color: white;">${inc.estado}</span>
                         </td>
                         <td style="padding: 12px 15px; font-size: 0.85rem; color: #555;">
                             ${inc.observacion !== undefined ? inc.observacion : '—'}

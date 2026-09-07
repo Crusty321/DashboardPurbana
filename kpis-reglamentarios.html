@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KPIs Reglamentarios TI - Primavera Urbana</title>
+    <title>KPIs y Métricas TI - Primavera Urbana</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
@@ -146,8 +146,9 @@
                     <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
                     <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="desarrollo-software"><i class="fa-solid fa-code"></i> Desarrollo de Software</li></a>
                     <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
-                    <a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
-                    <a href="kpis-reglamentarios.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="kpis-reglamentarios"><i class="fa-solid fa-chart-line"></i> KPIs Reglamentarios</li></a>
+                    <a href="soporte-ti.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="soporte-ti"><i class="fa-solid fa-headset"></i> Soporte TI</li></a>
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: none;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
+                    <a href="kpis-reglamentarios.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="kpis-reglamentarios"><i class="fa-solid fa-chart-line"></i> KPIs y Métricas TI</li></a>
                 </ul>
             </nav>
         </aside>
@@ -173,8 +174,8 @@
                 
                 <!-- TOP NAVIGATION TABS -->
                 <div class="top-tabs-menu" style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
-                    <button class="top-tab-btn active" onclick="switchTopTab('protocolos')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-book-bookmark" style="color: var(--primary-color);"></i> Manual de Protocolos TI</button>
-                    <button class="top-tab-btn" onclick="switchTopTab('kpis')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-chart-line" style="color: var(--accent-color);"></i> KPIs y Métricas de TI</button>
+                    <button class="top-tab-btn" style="display:none;" onclick="switchTopTab('protocolos')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-book-bookmark" style="color: var(--primary-color);"></i> Manual de Protocolos TI</button>
+                    <button class="top-tab-btn active" onclick="switchTopTab('kpis')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-chart-line" style="color: var(--accent-color);"></i> KPIs y Métricas de TI</button>
                 </div>
 
                 <style>
@@ -190,7 +191,7 @@
                 </style>
 
                 <!-- TAB 1: MANUAL DE PROTOCOLOS TI -->
-                <div id="tab-protocolos" class="top-tab-content active">
+                <div id="tab-protocolos" class="top-tab-content" style="display:none !important;">
                     <div class="table-container">
                         <h3 class="kpi-section-title"><i class="fa-solid fa-book-open-reader"></i> Manual de Protocolos de Mantenimiento y Soporte</h3>
                         <p style="color: #7f8c8d; margin-bottom: 20px;">Seleccione el protocolo a consultar para ver los procedimientos estandarizados.</p>
@@ -217,78 +218,91 @@
                 </div>
 
                 <!-- TAB 2: KPIs Y MÉTRICAS DE TI -->
-                <div id="tab-kpis" class="top-tab-content">
-                    
-                    <!-- Tarjetas de Resumen KPI -->
+                <div id="tab-kpis" class="top-tab-content active">
+
+                    <!-- Tarjetas KPI resumen -->
                     <div class="kpi-cards" style="margin-bottom: 30px;">
-                        <div class="card" style="border-left-color: var(--accent-color);">
-                            <div class="card-header"><span>TIEMPO MEDIO RESOLUCIÓN</span><i class="fa-solid fa-stopwatch" style="color: var(--accent-color);"></i></div>
-                            <div class="card-value">2.4 Horas</div>
-                            <p class="kpi-detail">Promedio general de resolución</p>
+                        <div class="card" style="border-left-color: #e74c3c;">
+                            <div class="card-header"><span>GESTIÓN CONTRATOS (MANTING)</span><i class="fa-solid fa-handshake" style="color:#e74c3c;"></i></div>
+                            <div class="card-value" style="color:#e74c3c;">45%</div>
+                            <p class="kpi-detail">Resolución incidentes: 9 / 20</p>
                         </div>
-                        <div class="card green-border">
-                            <div class="card-header"><span>PRIMER CONTACTO (FCR)</span><i class="fa-solid fa-headset" style="color: var(--positive);"></i></div>
-                            <div class="card-value">78%</div>
-                            <p class="kpi-detail">Resuelto sin escalamiento</p>
+                        <div class="card" style="border-left-color: var(--warning);">
+                            <div class="card-header"><span>MTO. PREVENTIVO (MENSUAL)</span><i class="fa-solid fa-screwdriver-wrench" style="color:var(--warning);"></i></div>
+                            <div class="card-value" style="color:var(--warning);">90%</div>
+                            <p class="kpi-detail">Equipos ejecutados: 27 / 30 este mes</p>
                         </div>
                         <div class="card" style="border-left-color: var(--primary-color);">
-                            <div class="card-header"><span>UPTIME SERVICIOS</span><i class="fa-solid fa-server" style="color: var(--primary-color);"></i></div>
-                            <div class="card-value">99.9%</div>
-                            <p class="kpi-detail">Disponibilidad de infraestructura</p>
+                            <div class="card-header"><span>AVANCE DEL PROYECTO</span><i class="fa-solid fa-code" style="color:var(--primary-color);"></i></div>
+                            <div class="card-value" style="color:var(--primary-color);">25%</div>
+                            <p class="kpi-detail">Intranet Primavera · Fase 2 en curso</p>
                         </div>
-                        <div class="card warning-border">
-                            <div class="card-header"><span>CUMPLIMIENTO PREVENTIVO</span><i class="fa-solid fa-screwdriver-wrench" style="color: var(--warning);"></i></div>
-                            <div class="card-value">92%</div>
-                            <p class="kpi-detail">Equipos ejecutados vs programados</p>
+                        <div class="card green-border">
+                            <div class="card-header"><span>SOPORTE TI INTERNO</span><i class="fa-solid fa-headset" style="color:var(--positive);"></i></div>
+                            <div class="card-value" style="color:var(--positive);">84%</div>
+                            <p class="kpi-detail">Tickets resueltos: 16 / 19</p>
                         </div>
                     </div>
 
-                    <h3 class="kpi-section-title"><i class="fa-solid fa-chart-pie"></i> Dashboard Analítico</h3>
+                    <h3 class="kpi-section-title"><i class="fa-solid fa-chart-pie"></i> Dashboard Analítico — Gestión Agosto–Septiembre 2026</h3>
 
                     <div class="chart-grid">
-                        <!-- Chart 1: MTTR (Bar) -->
+
+                        <!-- KPI 1: Resolución Manting (Doughnut Gauge) -->
                         <div class="chart-container-custom">
                             <div class="chart-header">
-                                <h4><i class="fa-solid fa-stopwatch" style="color: var(--accent-color);"></i> KPI 1: MTTR (Resolución por Semana)</h4>
+                                <h4><i class="fa-solid fa-handshake" style="color:#e74c3c;"></i> KPI 1: Resolución de Incidentes — Contratista Manting</h4>
                             </div>
-                            <p style="font-size: 0.8rem; color: #7f8c8d; margin-bottom: 10px;">Promedio de resolución en horas por semana (Crítico, Advertencia, Óptimo).</p>
-                            <div style="position: relative; height: 250px; width: 100%;">
-                                <canvas id="mttrChart"></canvas>
+                            <p style="font-size:0.8rem; color:#7f8c8d; margin-bottom:10px;">Fórmula: (Incidentes resueltos / Total reportados) × 100 → <strong>9/20 × 100 = 45%</strong></p>
+                            <div style="position:relative; height:250px; width:100%;">
+                                <canvas id="kpi1Chart"></canvas>
+                            </div>
+                            <p style="font-size:0.78rem; color:#7f8c8d; text-align:center; margin-top:8px;">
+                                <span style="color:#e74c3c; font-weight:bold;">11 incidentes activos</span> · Meta mensual: 80%
+                            </p>
+                        </div>
+
+                        <!-- KPI 2: Mantenimiento Preventivo (Barra doble) -->
+                        <div class="chart-container-custom">
+                            <div class="chart-header">
+                                <h4><i class="fa-solid fa-screwdriver-wrench" style="color:var(--warning);"></i> KPI 2: Plan de Mantenimiento Preventivo</h4>
+                            </div>
+                            <p style="font-size:0.8rem; color:#7f8c8d; margin-bottom:10px;">
+                                KPI Mensual: <strong>27/30 × 100 = 90%</strong> &nbsp;|&nbsp; KPI Acumulado Total: <strong>27/307 × 100 = 8.8%</strong>
+                            </p>
+                            <div style="position:relative; height:250px; width:100%;">
+                                <canvas id="kpi2Chart"></canvas>
+                            </div>
+                            <p style="font-size:0.78rem; color:#7f8c8d; text-align:center; margin-top:8px;">
+                                50 equipos totales · Ciclo Jul–Dic 2026
+                            </p>
+                        </div>
+
+                        <!-- KPI 3: Avance Proyecto Software (Barras horizontales por fase) -->
+                        <div class="chart-container-custom">
+                            <div class="chart-header">
+                                <h4><i class="fa-solid fa-code" style="color:var(--primary-color);"></i> KPI 3: Avance del Proyecto — Intranet Primavera</h4>
+                            </div>
+                            <p style="font-size:0.8rem; color:#7f8c8d; margin-bottom:10px;">Avance consolidado: <strong>25%</strong> · Login ✓ · Roles ✓ · Gestión Documental 🔄</p>
+                            <div style="position:relative; height:250px; width:100%;">
+                                <canvas id="kpi3Chart"></canvas>
                             </div>
                         </div>
 
-                        <!-- Chart 2: FCR (Doughnut) -->
+                        <!-- KPI 4: Soporte TI Interno (Doughnut Gauge) -->
                         <div class="chart-container-custom">
                             <div class="chart-header">
-                                <h4><i class="fa-solid fa-headset" style="color: var(--positive);"></i> KPI 2: Tasa de Resolución (FCR)</h4>
+                                <h4><i class="fa-solid fa-headset" style="color:var(--positive);"></i> KPI 4: Resolución de Tickets — Soporte TI Interno</h4>
                             </div>
-                            <p style="font-size: 0.8rem; color: #7f8c8d; margin-bottom: 10px;">Porcentaje de éxito en solución durante el primer contacto (Meta: 75%+).</p>
-                            <div style="position: relative; height: 250px; width: 100%;">
-                                <canvas id="fcrChart"></canvas>
+                            <p style="font-size:0.8rem; color:#7f8c8d; margin-bottom:10px;">Fórmula: (Tickets resueltos / Total reportados) × 100 → <strong>16/19 × 100 = 84.2%</strong></p>
+                            <div style="position:relative; height:250px; width:100%;">
+                                <canvas id="kpi4Chart"></canvas>
                             </div>
+                            <p style="font-size:0.78rem; color:#7f8c8d; text-align:center; margin-top:8px;">
+                                <span style="color:var(--positive); font-weight:bold;">3 tickets activos restantes</span> · Meta mensual: 90%
+                            </p>
                         </div>
 
-                        <!-- Chart 3: Uptime (Area/Line) -->
-                        <div class="chart-container-custom">
-                            <div class="chart-header">
-                                <h4><i class="fa-solid fa-bolt" style="color: var(--primary-color);"></i> KPI 3: Disponibilidad de Servicios</h4>
-                            </div>
-                            <p style="font-size: 0.8rem; color: #7f8c8d; margin-bottom: 10px;">Tiempo operativo continuo de la infraestructura tecnológica (Mensual).</p>
-                            <div style="position: relative; height: 250px; width: 100%;">
-                                <canvas id="uptimeChart"></canvas>
-                            </div>
-                        </div>
-
-                        <!-- Chart 4: Mantenimiento Preventivo (Bar Comparativa) -->
-                        <div class="chart-container-custom">
-                            <div class="chart-header">
-                                <h4><i class="fa-solid fa-screwdriver-wrench" style="color: var(--warning);"></i> KPI 4: Mantenimiento Preventivo</h4>
-                            </div>
-                            <p style="font-size: 0.8rem; color: #7f8c8d; margin-bottom: 10px;">Porcentaje de ejecución del cronograma: Equipos Programados vs Ejecutados.</p>
-                            <div style="position: relative; height: 250px; width: 100%;">
-                                <canvas id="preventivoChart"></canvas>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -298,151 +312,144 @@
 
     <script src="static/js/main.js"></script>
     <script>
-        // Función para cambiar pestañas superiores
         function switchTopTab(tabId) {
             document.querySelectorAll('.top-tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.top-tab-content').forEach(content => content.classList.remove('active'));
-            
             document.querySelector(`button[onclick="switchTopTab('${tabId}')"]`).classList.add('active');
             document.getElementById(`tab-${tabId}`).classList.add('active');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Estilos comunes
-            const commonOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { font: { family: "'Inter', 'Segoe UI', sans-serif", size: 11 } }
-                    }
-                }
-            };
 
-            // 1. Chart: MTTR (Bar Chart - Horizontal o Vertical)
-            const ctxMttr = document.getElementById('mttrChart').getContext('2d');
-            new Chart(ctxMttr, {
-                type: 'bar',
-                data: {
-                    labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
-                    datasets: [{
-                        label: 'Horas Promedio',
-                        data: [4.2, 3.8, 2.9, 2.4],
-                        backgroundColor: function(context) {
-                            const value = context.dataset.data[context.dataIndex];
-                            if (value > 4) return 'rgba(231, 76, 60, 0.7)'; // Crítico
-                            if (value > 3) return 'rgba(243, 156, 18, 0.7)'; // Advertencia
-                            return 'rgba(46, 204, 113, 0.7)'; // Óptimo
-                        },
-                        borderColor: function(context) {
-                            const value = context.dataset.data[context.dataIndex];
-                            if (value > 4) return '#e74c3c';
-                            if (value > 3) return '#f39c12';
-                            return '#2ecc71';
-                        },
-                        borderWidth: 1,
-                        borderRadius: 4
-                    }]
-                },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        y: { beginAtZero: true, title: { display: true, text: 'Horas' } }
-                    }
+            const centerTextPlugin = (text, color) => ({
+                id: 'centerText_' + text,
+                beforeDraw(chart) {
+                    const { width, height, ctx } = chart;
+                    ctx.restore();
+                    ctx.font = `bold ${(height / 100).toFixed(2)}em 'Inter', sans-serif`;
+                    ctx.textBaseline = 'middle';
+                    ctx.fillStyle = color || '#2c3e50';
+                    const textX = Math.round((width - ctx.measureText(text).width) / 2);
+                    const textY = height / 2.15;
+                    ctx.fillText(text, textX, textY);
+                    ctx.save();
                 }
             });
 
-            // 2. Chart: FCR (Doughnut)
-            const ctxFcr = document.getElementById('fcrChart').getContext('2d');
-            new Chart(ctxFcr, {
+            // ── KPI 1: Manting Resolución (Doughnut) ──
+            new Chart(document.getElementById('kpi1Chart'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Resuelto 1er Contacto', 'Escalado / Pendiente'],
+                    labels: ['Resueltos (9)', 'Activos / Pendientes (11)'],
                     datasets: [{
-                        data: [78, 22],
-                        backgroundColor: ['#2ecc71', '#bdc3c7'],
+                        data: [45, 55],
+                        backgroundColor: ['#e74c3c', '#ecf0f1'],
                         borderWidth: 0,
                         hoverOffset: 4
                     }]
                 },
                 options: {
-                    ...commonOptions,
-                    cutout: '75%',
+                    responsive: true, maintainAspectRatio: false,
+                    cutout: '78%',
                     plugins: {
-                        legend: { position: 'bottom' },
-                        tooltip: { callbacks: { label: function(c) { return c.label + ': ' + c.raw + '%'; } } }
+                        legend: { position: 'bottom', labels: { font: { size: 11 } } },
+                        tooltip: { callbacks: { label: c => c.label + ': ' + c.raw + '%' } }
                     }
                 },
-                plugins: [{
-                    id: 'centerText',
-                    beforeDraw: function(chart) {
-                        var width = chart.width, height = chart.height, ctx = chart.ctx;
-                        ctx.restore();
-                        var fontSize = (height / 114).toFixed(2);
-                        ctx.font = "bold " + fontSize + "em 'Inter', sans-serif";
-                        ctx.textBaseline = "middle";
-                        ctx.fillStyle = "#2c3e50";
-                        var text = "78%", textX = Math.round((width - ctx.measureText(text).width) / 2), textY = height / 2.2;
-                        ctx.fillText(text, textX, textY);
-                        ctx.save();
-                    }
-                }]
+                plugins: [centerTextPlugin('45%', '#e74c3c')]
             });
 
-            // 3. Chart: Uptime (Area/Line)
-            const ctxUptime = document.getElementById('uptimeChart').getContext('2d');
-            new Chart(ctxUptime, {
-                type: 'line',
-                data: {
-                    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
-                    datasets: [
-                        {
-                            label: 'Disponibilidad %',
-                            data: [99.8, 99.6, 99.9, 99.7, 99.9, 99.9],
-                            borderColor: '#3498db',
-                            backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                            fill: true,
-                            tension: 0.3
-                        }
-                    ]
-                },
-                options: {
-                    ...commonOptions,
-                    scales: {
-                        y: { min: 98.0, max: 100, ticks: { callback: function(value) { return value + '%' } } }
-                    }
-                }
-            });
-
-            // 4. Chart: Mantenimiento Preventivo (Comparative Bar)
-            const ctxPrev = document.getElementById('preventivoChart').getContext('2d');
-            new Chart(ctxPrev, {
+            // ── KPI 2: Mantenimiento Preventivo (Barra comparativa) ──
+            new Chart(document.getElementById('kpi2Chart'), {
                 type: 'bar',
                 data: {
-                    labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
+                    labels: ['KPI Mensual\n(Ago 2026)', 'KPI Acumulado\n(Total ciclo)'],
                     datasets: [
                         {
-                            label: 'Programados',
-                            data: [20, 25, 20, 30],
-                            backgroundColor: '#bdc3c7',
-                            borderRadius: 4
+                            label: 'Ejecutado %',
+                            data: [90, 8.8],
+                            backgroundColor: ['#f39c12', '#3498db'],
+                            borderRadius: 6,
+                            barThickness: 60
                         },
                         {
-                            label: 'Ejecutados',
-                            data: [20, 22, 20, 28],
-                            backgroundColor: '#f39c12',
+                            label: 'Meta %',
+                            data: [100, 100],
+                            backgroundColor: ['rgba(243,156,18,0.15)', 'rgba(52,152,219,0.15)'],
+                            borderRadius: 6,
+                            barThickness: 60
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true, max: 100,
+                            ticks: { callback: v => v + '%' },
+                            title: { display: true, text: '% Cumplimiento' }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: { label: c => c.dataset.label + ': ' + c.raw + '%' } }
+                    }
+                }
+            });
+
+            // ── KPI 3: Avance Proyecto Software (Barras horizontales por fase) ──
+            new Chart(document.getElementById('kpi3Chart'), {
+                type: 'bar',
+                data: {
+                    labels: ['F1: Diseño y BD', 'F2: Login y Roles', 'F3: Gestión Doc.', 'F4: Avisos/Muro', 'F5: QA y Despliegue'],
+                    datasets: [
+                        {
+                            label: 'Completado %',
+                            data: [100, 100, 0, 0, 0],
+                            backgroundColor: ['#2ecc71', '#2ecc71', '#bdc3c7', '#bdc3c7', '#bdc3c7'],
                             borderRadius: 4
                         }
                     ]
                 },
                 options: {
-                    ...commonOptions,
+                    indexAxis: 'y',
+                    responsive: true, maintainAspectRatio: false,
                     scales: {
-                        y: { beginAtZero: true, title: { display: true, text: 'Cant. de Equipos' } }
+                        x: {
+                            beginAtZero: true, max: 100,
+                            ticks: { callback: v => v + '%' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: { callbacks: { label: c => 'Avance: ' + c.raw + '%' } }
                     }
                 }
             });
+
+            // ── KPI 4: Soporte TI Interno (Doughnut) ──
+            new Chart(document.getElementById('kpi4Chart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Resueltos (16)', 'Activos / Pendientes (3)'],
+                    datasets: [{
+                        data: [84.2, 15.8],
+                        backgroundColor: ['#2ecc71', '#ecf0f1'],
+                        borderWidth: 0,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    cutout: '78%',
+                    plugins: {
+                        legend: { position: 'bottom', labels: { font: { size: 11 } } },
+                        tooltip: { callbacks: { label: c => c.label + ': ' + c.raw.toFixed(1) + '%' } }
+                    }
+                },
+                plugins: [centerTextPlugin('84%', '#27ae60')]
+            });
+
         });
     </script>
 </body>

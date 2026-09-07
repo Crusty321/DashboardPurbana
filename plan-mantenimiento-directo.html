@@ -115,8 +115,9 @@
                     <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
                     <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="desarrollo-software"><i class="fa-solid fa-code"></i> Desarrollo de Software</li></a>
                     <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
-<a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
-                                    <a href="kpis-reglamentarios.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="kpis-reglamentarios"><i class="fa-solid fa-chart-line"></i> KPIs Reglamentarios</li></a>
+                    <a href="soporte-ti.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="soporte-ti"><i class="fa-solid fa-headset"></i> Soporte TI</li></a>
+<a href="index.html" style="text-decoration: none; color: inherit; display: none;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
+                                    <a href="kpis-reglamentarios.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="kpis-reglamentarios"><i class="fa-solid fa-chart-line"></i> KPIs y Métricas TI</li></a>
                 </ul>
             </nav>
         </aside>
@@ -169,11 +170,7 @@
                                 <div class="card-value">50</div>
                                 <p class="kpi-detail">Equipos de computación (Censo)</p>
                             </div>
-                            <div class="card warning-border">
-                                <div class="card-header"><span>FASES MENSUALES</span><i class="fa-solid fa-calendar-check" style="color: var(--warning);"></i></div>
-                                <div class="card-value">~12</div>
-                                <p class="kpi-detail">Equipos/mes (Plan de avance)</p>
-                            </div>
+
                             <div class="card" style="border-left-color: var(--accent-color);">
                                 <div class="card-header"><span>META SEMANAL</span><i class="fa-solid fa-clock" style="color: var(--accent-color);"></i></div>
                                 <div class="card-value">3</div>
@@ -190,7 +187,7 @@
                                 </div>
                             </div>
                             <div class="card">
-                                <h4 style="margin-bottom: 15px; font-size: 0.9rem; color: var(--secondary-color);">Avance Proyectado Mes a Mes (%)</h4>
+                                <h4 style="margin-bottom: 15px; font-size: 0.9rem; color: var(--secondary-color);">Equipos Mantenidos (Acumulado)</h4>
                                 <div style="height: 250px;">
                                     <canvas id="mtoProgresoMensualChart"></canvas>
                                 </div>
@@ -208,9 +205,9 @@
                                 <div class="progress-wrapper" style="flex-direction: column; align-items: flex-start;">
                                     <div style="display: flex; justify-content: space-between; width: 100%; font-size: 0.8rem; margin-bottom: 6px;">
                                         <span>Progreso de Creación</span>
-                                        <strong>0% (0 / 304)</strong>
+                                        <strong>9% (27 / 304)</strong>
                                     </div>
-                                    <div class="progress-track"><div class="progress-fill" style="width: 0%; background-color: var(--positive);"></div></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 9%; background-color: var(--positive);"></div></div>
                                 </div>
                             </div>
 
@@ -643,7 +640,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <span class="mes-badge">Julio</span>
+                                            <span class="mes-badge">Julio <i class="fa-solid fa-circle-check" style="color: #27ae60; margin-left: 4px;" title="Cumplido sin novedad"></i></span>
                                             <span class="fase-text">Fase 1</span>
                                         </td>
                                         <td class="areas-text">Dispositivos Publicitarios (Lote 1)</td>
@@ -652,7 +649,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="mes-badge">Agosto</span>
+                                            <span class="mes-badge">Agosto <i class="fa-solid fa-circle-check" style="color: #27ae60; margin-left: 4px;" title="Cumplido sin novedad"></i></span>
                                             <span class="fase-text">Fase 2</span>
                                         </td>
                                         <td class="areas-text">Dispositivos Publicitarios (Lote 2)</td>
@@ -661,12 +658,12 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <span class="mes-badge">Septiembre</span>
-                                            <span class="fase-text">Fase 3</span>
+                                            <span class="mes-badge" style="background: rgba(243, 156, 18, 0.1); color: #e67e22;">Septiembre <i class="fa-solid fa-spinner fa-spin" style="margin-left: 4px;" title="En ejecución"></i></span>
+                                            <span class="fase-text">Fase 3 (En ejecución)</span>
                                         </td>
-                                        <td class="areas-text">Dispositivos Pub. (3) + Administración (12)</td>
+                                        <td class="areas-text">Únicamente los 12 dispositivos de administración</td>
                                         <td><span class="meta-badge"><i class="fa-solid fa-desktop" style="margin-right: 6px; color: #94a3b8;"></i> 3 eq/sem</span></td>
-                                        <td><span class="meta-total">15 Equipos</span></td>
+                                        <td><span class="meta-total">12 Equipos</span></td>
                                     </tr>
                                     <tr>
                                         <td>

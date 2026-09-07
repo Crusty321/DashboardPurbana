@@ -115,8 +115,9 @@
                     <a href="plan-mantenimiento-directo.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="plan-mantenimiento-directo"><i class="fa-solid fa-file-contract"></i> Plan de Mantenimiento</li></a>
                     <a href="desarrollo-software.html" style="text-decoration: none; color: inherit;"><li class="menu-item active" data-tab="desarrollo-software"><i class="fa-solid fa-laptop-code"></i> Portal Integrado de Gestión</li></a>
                     <a href="bitacora.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="bitacora"><i class="fa-regular fa-calendar-days"></i> Bitácora de Trabajo</li></a>
-<a href="index.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
-                                    <a href="kpis-reglamentarios.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="kpis-reglamentarios"><i class="fa-solid fa-chart-line"></i> KPIs Reglamentarios</li></a>
+                    <a href="soporte-ti.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="soporte-ti"><i class="fa-solid fa-headset"></i> Soporte TI</li></a>
+<a href="index.html" style="text-decoration: none; color: inherit; display: none;"><li class="menu-item" data-tab="resumen"><i class="fa-solid fa-chart-pie"></i> Resumen de operaciones</li></a>
+                                    <a href="kpis-reglamentarios.html" style="text-decoration: none; color: inherit;"><li class="menu-item" data-tab="kpis-reglamentarios"><i class="fa-solid fa-chart-line"></i> KPIs y Métricas TI</li></a>
                 </ul>
             </nav>
         </aside>
@@ -158,14 +159,14 @@
                             <p class="kpi-detail">Lunes y Viernes (Dedicación completa)</p>
                         </div>
                         <div class="card green-border">
-                            <div class="card-header"><span>AVANCE DEL PROYECTO</span><i class="fa-solid fa-spinner" style="color: var(--positive);"></i></div>
-                            <div class="card-value">0%</div>
-                            <p class="kpi-detail">Sin iniciar (Planificación preliminar)</p>
+                            <div class="card-header"><span>AVANCE DEL PROYECTO</span><i class="fa-solid fa-chart-line" style="color: var(--positive);"></i></div>
+                            <div class="card-value">25%</div>
+                            <p class="kpi-detail">En ejecución</p>
                         </div>
                         <div class="card warning-border">
                             <div class="card-header"><span>ALCANCE DEFINIDO</span><i class="fa-solid fa-cubes" style="color: var(--warning);"></i></div>
                             <div class="card-value">5 Módulos</div>
-                            <p class="kpi-detail">Prototipo funcional básico</p>
+                            <p class="kpi-detail">Excluyendo despliegue (App local)</p>
                         </div>
                     </div>
 
@@ -271,7 +272,7 @@
                             <!-- Escalón 1 -->
                             <div class="escalon-row escalon-1">
                                 <div class="escalon-step bg-step-1">
-                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-right-to-bracket" style="margin-right: 8px;"></i> 1. Inicio de Sesión</h5>
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-right-to-bracket" style="margin-right: 8px;"></i> 1. Inicio de Sesión <i class="fa-solid fa-circle-check" style="color: #2ecc71; margin-left: 5px;"></i></h5>
                                 </div>
                                 <div class="escalon-details">
                                     <ul class="items-list">
@@ -285,7 +286,7 @@
                             <!-- Escalón 2 -->
                             <div class="escalon-row escalon-2">
                                 <div class="escalon-step bg-step-2">
-                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-users-gear" style="margin-right: 8px;"></i> 2. Asignación de Roles</h5>
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-users-gear" style="margin-right: 8px;"></i> 2. Asignación de Roles <i class="fa-solid fa-circle-check" style="color: #2ecc71; margin-left: 5px;"></i></h5>
                                 </div>
                                 <div class="escalon-details">
                                     <ul class="items-list">
@@ -313,7 +314,7 @@
                             <!-- Escalón 4 -->
                             <div class="escalon-row escalon-4">
                                 <div class="escalon-step bg-step-4">
-                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-bullhorn" style="margin-right: 8px;"></i> 4. Avisos y Novedades</h5>
+                                    <h5 style="margin: 0; font-size: 1rem; font-weight: bold;"><i class="fa-solid fa-bullhorn" style="margin-right: 8px;"></i> 4. Avisos y Novedades <i class="fa-solid fa-circle-check" style="color: #2ecc71; margin-left: 5px;"></i></h5>
                                 </div>
                                 <div class="escalon-details">
                                     <ul class="items-list">
@@ -471,16 +472,6 @@
                                 <p>Feed público de noticias y publicador de avisos exclusivo para el Encargado.</p>
                                 <span class="badge-sw"><i class="fa-regular fa-clock"></i> 6 Jornadas</span>
                             </div>
-                            
-                            <div class="flow-arrow-sw"><i class="fa-solid fa-arrow-right"></i></div>
-                            
-                            <!-- Fase 5 -->
-                            <div class="flow-box-sw shape-end">
-                                <h5>5. QA & Despliegue</h5>
-                                <span class="tiempo-badge">(Semana 16)</span>
-                                <p>Pruebas cruzadas, debugging lógico y despliegue en servidor local.</p>
-                                <span class="badge-sw"><i class="fa-regular fa-clock"></i> 2 Jornadas</span>
-                            </div>
                         </div>
                     </div>
 
@@ -520,12 +511,6 @@
                                     <td>Muro de Avisos & Publicador</td>
                                     <td>Diseño de la base de datos de avisos, renderizado en feed e interfaz del publicador con formulario para el Encargado.</td>
                                     <td><span class="badge neutral" style="font-size: 0.75rem;">Lunes: Feed | Viernes: Publicador</span></td>
-                                </tr>
-                                <tr>
-                                    <td><strong>Fase 5: Semana 16</strong></td>
-                                    <td>Lanzamiento de Prototipo</td>
-                                    <td>Pruebas cruzadas de roles (Admin/User), resolución de bugs de carga y despliegue del aplicativo en la red interna local.</td>
-                                    <td><span class="badge positive" style="font-size: 0.75rem; background-color: var(--positive); color: white;">Lunes: QA | Viernes: Despliegue</span></td>
                                 </tr>
                             </tbody>
                         </table>

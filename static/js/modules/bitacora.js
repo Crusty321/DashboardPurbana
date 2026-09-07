@@ -51,7 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
             tel: "Extensiones oficinas administrativas (Jue)",
             telEmpty: 0, telColspan: 4,
             parq: "Sincronización base de datos de parqueo",
-            parqEmpty: 0, parqColspan: 4
+            parqEmpty: 0, parqColspan: 4,
+            wifi: "F0 Switch 14/09 · P1 Carulla 15-16/09 · P2 Falabella 17-18/09 · P3 Parq.Motos 21-22/09 · P4 (por def.) 23-24/09",
+            wifiColspan: 2,
+            wifiEmpty: 2
         },
         "Octubre": {
             semanas: ["Semana 11 (28 Sep-4 Oct)", "Semana 12 (5-11 Oct)", "Semana 13 (12-18 Oct)", "Semana 14 (19-25 Oct)"],
@@ -175,7 +178,9 @@ document.addEventListener('DOMContentLoaded', () => {
             softDesc: "Fase 3: Módulo de carga de documentos",
             softDias: [true, false, false, false, true, false],
             infraDesc: "CCTV (Mar/Jue) + Parqueo (Mar/Vie) + Tel (Jue)",
-            infraDias: [false, true, false, true, true, false]
+            infraDias: [false, true, false, true, true, false],
+            wifiDesc: "Lun 14/09: F0 Config Switch+VLANs · Mar 15/09: P1 Carulla Tendido · Mié 16/09: P1 Carulla AP+Pruebas · Jue 17/09: P2 Falabella Tendido · Vie 18/09: P2 Falabella AP+Pruebas",
+            wifiDias: [true, true, true, true, true, false]
         },
         10: {
             rango: "21 - 27 Sep",
@@ -184,7 +189,9 @@ document.addEventListener('DOMContentLoaded', () => {
             softDesc: "Fase 3: Módulo de descarga de documentos",
             softDias: [true, false, false, false, true, false],
             infraDesc: "CCTV (Mar/Jue) + Parqueo (Mar/Vie) + Tel + IA",
-            infraDias: [false, true, false, true, true, false]
+            infraDias: [false, true, false, true, true, false],
+            wifiDesc: "Lun 21/09: P3 Parq.Motos Tendido · Mar 22/09: P3 Parq.Motos AP+Pruebas · Mié 23/09: P4 Tendido · Jue 24/09: P4 Montaje AP+Pruebas",
+            wifiDias: [true, true, true, true, false, false]
         },
         11: {
             rango: "28 Sep - 4 Oct",
@@ -309,6 +316,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div style="background: var(--warning); color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">CCTV y Herramientas Ofimáticas</div>
                 </td>
             </tr>
+            ${data.wifi ? `
+            <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 12px; font-weight: bold; color: var(--primary-color); background: #fdfefe;" colspan="${data.semanas.length + 2}">
+                    <i class="fa-solid fa-wifi"></i> PROYECTO 4: DESPLIEGUE RED Wi-Fi Y PUNTOS DE RED SS
+                </td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                <td style="padding: 10px 12px; padding-left: 25px;">Instalación Wi-Fi + Puntos de Red Cajeros SS</td>
+                <td style="padding: 10px 12px; color: #7f8c8d;">14–24 Sep · 2 días/punto</td>
+                <td colspan="${data.wifiColspan || 0}" style="background: #fafafa;"></td>
+                <td colspan="${4 - (data.wifiColspan || 0) - (data.wifiEmpty || 0)}" style="padding: 8px;">
+                    <div style="background: #8e44ad; color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.72rem; font-weight: bold;">${data.wifi}</div>
+                </td>
+                ${data.wifiEmpty > 0 ? `<td colspan="${data.wifiEmpty}" style="background: #fafafa;"></td>` : ''}
+            </tr>
+            ` : ''}
         `;
 
         tableContainer.innerHTML = `
@@ -394,6 +417,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td style="padding: 10px 12px; padding-left: 25px;">Plan de Mejora Infraestructura</td>
                 ${renderCells([false, true, true, true, false, false], "CCTV/Ofimática", "var(--warning)")}
             </tr>
+            ${data.wifiDesc ? `
+            <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 12px; font-weight: bold; color: #8e44ad; background: #fdfefe;" colspan="7">
+                    <i class="fa-solid fa-wifi"></i> PROYECTO 4: DESPLIEGUE RED Wi-Fi Y PUNTOS DE RED SS
+                </td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                <td style="padding: 10px 12px; padding-left: 25px; color: #8e44ad; font-weight: 600;">${data.wifiDesc}</td>
+                ${renderCells(data.wifiDias, "📡 Red/WiFi SS", "#8e44ad")}
+            </tr>
+            ` : ''}
         `;
 
         tableContainer.innerHTML = `
@@ -517,6 +551,44 @@ document.addEventListener('DOMContentLoaded', () => {
             bodyHtml += `<td colspan="5" style="background: #fafafa; text-align: center; color: #aaa; font-style: italic;">No programado para hoy</td>`;
         }
         bodyHtml += `</tr>`;
+
+        // WiFi project for semanas 9 y 10 (días específicos)
+        const wifiPorDia = {
+            9: {
+                0: "Lun 14/09 — F0: Montaje Switch, Config VLANs y aprovisionamiento controladora APs",
+                1: "Mar 15/09 — P1 SS CARULLA: Tendido y ponchado de cable Cat6",
+                2: "Mié 16/09 — P1 SS CARULLA: Montaje AP, certificación cable, pruebas RSSI y PoE",
+                3: "Jue 17/09 — P2 SS FALABELLA: Tendido y ponchado de cable Cat6",
+                4: "Vie 18/09 — P2 SS FALABELLA: Montaje AP, certificación cable, pruebas RSSI y PoE",
+            },
+            10: {
+                0: "Lun 21/09 — P3 SS Parq. Motos: Tendido y ponchado de cable Cat6",
+                1: "Mar 22/09 — P3 SS Parq. Motos: Montaje AP, pruebas RSSI, handoff y PoE",
+                2: "Mié 23/09 — P4 (Por definir): Tendido y ponchado de cable Cat6",
+                3: "Jue 24/09 — P4 (Por definir): Montaje AP, pruebas RSSI, handoff y consumo PoE. Cierre de proyecto",
+            }
+        };
+        const wifiHoyDesc = (wifiPorDia[semNum] && wifiPorDia[semNum][diaIndex]) ? wifiPorDia[semNum][diaIndex] : null;
+
+        if (wifiHoyDesc) {
+            bodyHtml += `
+            <tr style="border-bottom: 1px solid var(--border-color);">
+                <td style="padding: 12px; font-weight: bold; color: #8e44ad; background: #fdfefe;" colspan="6">
+                    <i class="fa-solid fa-wifi"></i> PROYECTO 4: DESPLIEGUE RED Wi-Fi Y PUNTOS DE RED SS
+                </td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color); font-size: 0.85rem;">
+                <td style="padding: 10px 12px; padding-left: 25px; color: #8e44ad; font-weight: 600;">${wifiHoyDesc}</td>
+                <td colspan="2" style="padding: 8px;">
+                    <div style="background: #8e44ad; color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Instalación en Campo (Mañana)</div>
+                </td>
+                <td style="background: rgba(189, 195, 199, 0.1); text-align: center; font-size: 0.75rem; color: #7f8c8d; font-style: italic;">Almuerzo</td>
+                <td colspan="2" style="padding: 8px;">
+                    <div style="background: #8e44ad; color: white; text-align: center; padding: 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Pruebas y Certificación (Tarde)</div>
+                </td>
+            </tr>
+            `;
+        }
 
         tableContainer.innerHTML = `
             <div style="overflow-x: auto;">
