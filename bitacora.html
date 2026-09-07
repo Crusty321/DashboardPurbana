@@ -210,61 +210,6 @@
                         </div>
                     </div>
 
-                    <!-- KPIs de Progreso Integrado -->
-                    <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 20px; background: var(--bg-color); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
-                        <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; width: 100%;">
-                            <div style="flex: 1; min-width: 250px;">
-                                <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: bold; margin-bottom: 5px; color: var(--primary-color);">
-                                    <span>Avance Integrado de Actividades TI (Consolidado)</span>
-                                    <span id="gantt-progreso-total-label">0% completado</span>
-                                </div>
-                                <div style="background: #e0e0e0; height: 12px; border-radius: 6px; overflow: hidden;">
-                                    <div id="gantt-bar-total" style="background: var(--positive); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
-                                </div>
-                            </div>
-                            <div style="display: flex; gap: 15px; text-align: center;">
-                                <div style="background: white; border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                                    <span style="font-size: 0.75rem; color: #7f8c8d; display: block; text-transform: uppercase;">AVANCE TOTAL</span>
-                                    <strong id="gantt-progreso-total-badge" style="font-size: 1.2rem; color: var(--positive);">0.0%</strong>
-                                </div>
-                                <div style="background: white; border: 1px solid var(--border-color); padding: 10px 15px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
-                                    <span style="font-size: 0.75rem; color: #7f8c8d; display: block; text-transform: uppercase;">FALTANTE / PENDIENTE</span>
-                                    <strong id="gantt-progreso-faltante-badge" style="font-size: 1.2rem; color: var(--alert);">100.0%</strong>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Progreso por Ejes de Trabajo -->
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; border-top: 1px solid var(--border-color); padding-top: 12px;">
-                            <div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; color: var(--accent-color);">
-                                    <span>Plan de Mantenimiento Preventivo</span>
-                                    <span id="gantt-progreso-mto">0%</span>
-                                </div>
-                                <div style="background: #e0e0e0; height: 6px; border-radius: 3px; overflow: hidden;">
-                                    <div id="gantt-bar-mto" style="background: var(--accent-color); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; color: var(--primary-color);">
-                                    <span>Desarrollo de Software (Intranet)</span>
-                                    <span id="gantt-progreso-soft">0%</span>
-                                </div>
-                                <div style="background: #e0e0e0; height: 6px; border-radius: 3px; overflow: hidden;">
-                                    <div id="gantt-bar-soft" style="background: var(--primary-color); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
-                                </div>
-                            </div>
-                            <div>
-                                <div style="display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; color: var(--warning);">
-                                    <span>Mejoramiento de Infraestructura</span>
-                                    <span id="gantt-progreso-infra">0%</span>
-                                </div>
-                                <div style="background: #e0e0e0; height: 6px; border-radius: 3px; overflow: hidden;">
-                                    <div id="gantt-bar-infra" style="background: var(--warning); width: 0%; height: 100%; transition: width 0.3s ease;"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- 1. VISTA SEMESTRAL -->
                     <div id="gantt-semestral" class="gantt-view-container">
