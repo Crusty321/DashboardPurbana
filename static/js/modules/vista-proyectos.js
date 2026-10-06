@@ -20,8 +20,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fecha: "2026-08-25 09:48", motivo: "Cámara frente a fervor p1-m8 grabar directo y movimiento", gravedad: "media", estado: "Pendiente", observacion: "Reportado por Alejandra Rodriguez" },
                 { fecha: "2026-08-26 15:16", motivo: "Pérdida de conexión IP de cámara", gravedad: "alta", estado: "En Revisión", observacion: "Reportado por Harold Aza - Falla de red recurrente" },
                 { fecha: "2026-08-29 08:50", motivo: "Cámara p7-m2 auditorio fuera de servicio", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Alejandra Rodriguez" }
+                            ,{ fecha: "2026-09-06", motivo: "CÁMARA S10C10 IMAGEN BORROSA", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ" },
+                { fecha: "2026-09-06", motivo: "CAMARAS S14C23 Y S14C24 IMAGEN A BLANCO Y NEGRO PTOS DE PAGO", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ" },
+                { fecha: "2026-09-08", motivo: "camaras  S05C18 Y S05C17  están robóticas  y se van y vuelven", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ" },
+                { fecha: "2026-09-13", motivo: "PTZ EXTERNA PERDIÓ LA CONEXIÓN CON LA CAMARA", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian " },
+                { fecha: "2026-09-15", motivo: "camara piso 3 lobby 3 s09c02 ascensores no presenta movimiento", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-25", motivo: "cámara s06c13 borrosa", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "Cámara S14c04 sin link", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian Ortiz" },
+                { fecha: "2026-09-29", motivo: "CAMARA S14C11 AL PARECER DESENFOCADA Y CON TELARAÑAS", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN ORTIZ " },
+                { fecha: "2026-09-29", motivo: "CAMARA S10C10  BORROSA , NO ES CLARA LA IMAGEN", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S11C18 BLANCO Y NEGRO", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S13C12 NO SE OBSERVA A COLOR", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S13C25 , AL PARECER CON TELARAÑAS O SUCIA EN LENTE", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S14C05 IMAGEN SUCIA  O MALA CLARIDAD DE IMAGEN", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S14C16 , SIN LINK", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S14C23 NO SE OBSERVA A COLOR", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S14C24 NO SE OBSERVA A COLOR", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S05C11 CON SUCIO O TELARAÑAS", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S05C18 ROBOTICA", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S05C17 ROBOTICA", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "CAMARA S05C33 NO SE VE , PRESENTA INTERFERENCIA O EN BLANCO", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
+                { fecha: "2026-09-29", motivo: "S06C13 SE ENCUENTRA  CON IMAGEN BORROSA", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN " }
             ],
-            histograma: [0, 0, 0, 7, 0, 0, 0]
+            histograma: [0, 0, 0, 7, 21, 0, 0]
         },
         c2: {
             proveedor: "Manting (BMS & Automatización)",
@@ -53,8 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fecha: "2026-09-02 16:55", motivo: "Sistema Welcome se bloquea/lento", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Liliana Chiquiza" },
                 { fecha: "2026-09-04 18:34", motivo: "Sistema Welcome reinicios/fallas", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Liliana Chiquiza" },
                 { fecha: "2026-09-04 18:37", motivo: "Sistema Welcome fuera de servicio", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Liliana Chiquiza" }
+                            ,{ fecha: "2026-09-08", motivo: "SISTEMA DE DETECCIÓN DE  INCENDIO LAZO 2 CAIDO", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ" },
+                { fecha: "2026-09-12", motivo: "LECTORES BIOMETRICOS: biométrico adm/casino no marca/apagado", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian camilo " },
+                { fecha: "2026-09-12", motivo: "TECLADOS: Lector ingreso Casino no marcan números", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por DANIEL FELIPE GARCIA ZAPATA" },
+                { fecha: "2026-09-14", motivo: "boton de panico local # 325 no funciona", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian " },
+                { fecha: "2026-09-15", motivo: "MOLINETE DERECHO ESTA DIRECTO", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian/Cristian ortiz" },
+                { fecha: "2026-09-16", motivo: "Sensor de humo sucio, cuarto de tempoaseo", gravedad: "media", estado: "Pendiente", observacion: "Reportado por Santiago Echeverry Silva" },
+                { fecha: "2026-09-17", motivo: "Torniquete queda directo", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ " },
+                { fecha: "2026-09-24", motivo: "TORNIQUETE INGRESOS ADMINISTRACION Y CASINO DIRECTO", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN ORTIZ " },
+                { fecha: "2026-09-26", motivo: "Torniquete  ( molinete)  por momentos directo", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian " },
+                { fecha: "2026-09-29", motivo: "biometríco  puerta rampa sotano 2  a torre 1 no funciona el lector de huella", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN ORTIZ " }
             ],
-            histograma: [0, 0, 0, 9, 4, 0, 0]
+            histograma: [0, 0, 0, 9, 14, 0, 0]
         },
         c3: {
             proveedor: "E-Global (Smart Parking)",
