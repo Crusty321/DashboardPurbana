@@ -163,7 +163,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const pendientes = data.incidencias.filter(inc => inc.estado !== 'Solucionado');
         const totalPendientes = pendientes.length;
-        detIncidenciasCount.innerText = `${totalPendientes} Incidencias Activas/Pendientes`;
+                detIncidenciasCount.innerText = `${totalPendientes} Incidencias Activas/Pendientes`;
+
+        // Toggle insights based on selected contract
+        const insightManting = document.getElementById('insight-manting');
+        const insightEglobal = document.getElementById('insight-eglobal');
+        if (insightManting && insightEglobal) {
+            if (key === 'c1' || key === 'c2') {
+                insightManting.style.display = 'block';
+                insightEglobal.style.display = 'none';
+            } else if (key === 'c3') {
+                insightManting.style.display = 'none';
+                insightEglobal.style.display = 'block';
+            }
+        }
 
         let html = '';
         if (totalPendientes === 0) {
