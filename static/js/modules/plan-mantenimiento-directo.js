@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             data: {
                 labels: ['Mantenimientos', 'Pendientes'],
                 datasets: [{
-                    data: [27, 277],
+                    data: [39, 265],
                     backgroundColor: ['#27ae60', '#e1e8ed'],
                     borderWidth: 0
                 }]
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 labels: ['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
                 datasets: [{
                     label: 'Equipos (Avance Real)',
-                    data: [6, 18, 27, null, null, null],
+                    data: [6, 18, 30, 39, null, null],
                     borderColor: '#3498db',
                     backgroundColor: 'rgba(52, 152, 219, 0.1)',
                     fill: true,
