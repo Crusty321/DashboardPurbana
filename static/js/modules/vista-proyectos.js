@@ -90,11 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
         c3: {
             proveedor: "E-Global (Smart Parking)",
             contratoId: "Contrato: 012-23.1",
-            estado: "Activo (Otrosí 2)",
+            estado: "Activo (Otrosí 3)",
             estadoClase: "online",
             alcance: `<strong>Objetivo Principal:</strong> Prestar el servicio de mantenimiento preventivo y correctivo para el sistema integrado denominado Smart Parking Seamless y Tiquete (con repuestos incluidos).<br><br>
             <strong>Alcance:</strong> El servicio se aplicará exclusivamente a los equipos que componen dicho sistema, el cual está ubicado en la calle 15 #40-01, barrio el Buque, en la ciudad de Villavicencio. Incluye la ejecución de mantenimientos preventivos bajo un cronograma establecido, la atención y corrección de fallas (mantenimiento correctivo) reportadas mediante un sistema de tickets, y el suministro de los repuestos necesarios para garantizar la operatividad y el óptimo funcionamiento del sistema.<br><br>
-            <strong>Vigencia:</strong> Desde el 1 de septiembre de 2023 hasta el 31 de agosto de 2026 (Vigencia inicial extendida por un año mediante Otrosí 1, y posteriormente extendida por otro año mediante Otrosí 2).`,
+            <strong>Vigencia:</strong> Desde el 1 de septiembre de 2023 hasta el 31 de agosto de 2027 (Vigencia inicial extendida por un año mediante Otrosí 1, y posteriormente extendida por otro año mediante Otrosí 2, y ampliada nuevamente mediante Otrosí 3).`,
             incidencias: [
                 { fecha: "2026-09-30 23:59", motivo: "Fallas en POS-AUTOMATICO-03 (Desajustes software/periféricos)", gravedad: "alta", estado: "Solucionado", observacion: "5 incidentes reportados en el mes" },
                 { fecha: "2026-09-30 23:59", motivo: "Fallas en POS-AUTOMATICO-02 (Desajustes software/periféricos)", gravedad: "alta", estado: "Solucionado", observacion: "4 incidentes reportados en el mes" },
