@@ -26,10 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fecha: "2026-09-12", motivo: "Equipo POS 05 pitido intenso", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por LAURA JARAMILLO" },
                 { fecha: "2026-09-13", motivo: "SIIGO no funciona punto de info 1", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Yasmin Cantor" },
                 { fecha: "2026-09-14", motivo: "Instalar impresora L3250 156", gravedad: "media", estado: "Pendiente", observacion: "Reportado por paola orjuela" },
-                { fecha: "2026-09-14", motivo: "Botón pánico local 325 no funciona", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Jaime Eduardo Gamba Carrillo" },
                 { fecha: "2026-09-17", motivo: "No puede ingresar al correo", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por LIYIBETH GUTIERREZ" },
                 { fecha: "2026-09-17", motivo: "Fallas proyección pantallas publicidad", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por María Gonzalez" },
-                { fecha: "2026-09-19", motivo: "Sensor humo sucio tempoaseo", gravedad: "media", estado: "Pendiente", observacion: "Reportado por OSCAR ARANGO" },
                 { fecha: "2026-09-19", motivo: "Incidencia genérica / Dispositivo", gravedad: "baja", estado: "Pendiente", observacion: "Reportado por Isabella Velásquez Romero" },
                 { fecha: "2026-09-21", motivo: "Olvido de contraseña ingreso", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Alejandra Rojas" },
                 { fecha: "2026-09-21", motivo: "Alerta constante al imprimir", gravedad: "media", estado: "Pendiente", observacion: "Reportado por Alejandra Rojas" },
@@ -46,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fecha: "2026-09-25", motivo: "Scanner facturas no configurado", gravedad: "media", estado: "Pendiente", observacion: "Reportado por Yeidy Yasmin Cantor Reyes" },
                 { fecha: "2026-09-26", motivo: "No enciende PC y Office falla", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por PAULA FERREIRA QUITIAN" }
             ],
-            histograma: [0, 0, 0, 15, 37, 0, 0]
+            histograma: [0, 0, 0, 15, 35, 0, 0]
         }
     };
 
