@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fecha: "2026-08-29 08:50", motivo: "Cámara p7-m2 auditorio fuera de servicio", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Alejandra Rodriguez" }
                             ,{ fecha: "2026-09-06", motivo: "CÁMARA S10C10 IMAGEN BORROSA", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ" },
                 { fecha: "2026-09-06", motivo: "CAMARAS S14C23 Y S14C24 IMAGEN A BLANCO Y NEGRO PTOS DE PAGO", gravedad: "media", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ" },
+                { fecha: "2026-09-09", motivo: "Soporte derecho de molinos suelto Lobby 3", gravedad: "media", estado: "Pendiente", observacion: "Reportado por DIANA GONZALEZ" },
                 { fecha: "2026-09-08", motivo: "camaras  S05C18 Y S05C17  están robóticas  y se van y vuelven", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN CAMILO ORTIZ" },
                 { fecha: "2026-09-13", motivo: "PTZ EXTERNA PERDIÓ LA CONEXIÓN CON LA CAMARA", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian " },
                 { fecha: "2026-09-15", motivo: "camara piso 3 lobby 3 s09c02 ascensores no presenta movimiento", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN " },
@@ -85,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fecha: "2026-09-26", motivo: "Torniquete  ( molinete)  por momentos directo", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por Cristian " },
                 { fecha: "2026-09-29", motivo: "biometríco  puerta rampa sotano 2  a torre 1 no funciona el lector de huella", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por CRISTIAN ORTIZ " }
             ],
-            histograma: [0, 0, 0, 9, 14, 0, 0]
+            histograma: [0, 0, 0, 9, 15, 0, 0]
         },
         c3: {
             proveedor: "E-Global (Smart Parking)",
