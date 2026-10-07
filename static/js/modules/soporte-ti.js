@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { fecha: "2026-09-09", motivo: "Pantalla publicidad no proyecta", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por Mayra Acosta" },
                 { fecha: "2026-09-09", motivo: "Falla teléfono gestión documental", gravedad: "media", estado: "Solucionado", observacion: "Reportado por Eliana Molina" },
                 { fecha: "2026-09-09", motivo: "Instalar scaner en PC -156", gravedad: "media", estado: "Solucionado", observacion: "Reportado por PAOLA ORJUELA" },
-                { fecha: "2026-09-10", motivo: "Equipo y Excel muy lentos", gravedad: "alta", estado: "Pendiente", observacion: "Reportado por ANGIE MARCELA MAHECHA MURCIA" },
+                { fecha: "2026-09-10", motivo: "Equipo y Excel muy lentos", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por ANGIE MARCELA MAHECHA MURCIA" },
                 { fecha: "2026-09-10", motivo: "Oficina 435 sin citófono", gravedad: "media", estado: "Pendiente", observacion: "Reportado por LILIANA CHIQUIZA" },
                 { fecha: "2026-09-10", motivo: "Comando Ctrl+V en Excel no funciona", gravedad: "baja", estado: "Solucionado", observacion: "Reportado por LUISA FERNANDA MENDEZ RODRIGUEZ" },
                 { fecha: "2026-09-11", motivo: "Adobe Premier pide actualización Windows", gravedad: "alta", estado: "Solucionado", observacion: "Reportado por maria gonzalez" },
