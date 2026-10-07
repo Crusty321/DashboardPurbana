@@ -175,7 +175,9 @@
                 <!-- TOP NAVIGATION TABS -->
                 <div class="top-tabs-menu" style="display: flex; gap: 15px; margin-bottom: 25px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px;">
                     <button class="top-tab-btn" style="display:none;" onclick="switchTopTab('protocolos')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-book-bookmark" style="color: var(--primary-color);"></i> Manual de Protocolos TI</button>
-                    <button class="top-tab-btn active" onclick="switchTopTab('kpis')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-chart-line" style="color: var(--accent-color);"></i> KPIs y Métricas de TI</button>
+                    <button class="top-tab-btn active" onclick="switchTopTab('kpis')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-chart-line" style="color: var(--accent-color);"></i> Resumen KPIs</button>
+                    <button class="top-tab-btn" onclick="switchTopTab('ezytec')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-car" style="color: #2ecc71;"></i> Evaluación Ezytec</button>
+                    <button class="top-tab-btn" onclick="switchTopTab('manting')" style="background: none; border: none; padding: 10px 20px; font-size: 1.05rem; font-weight: 600; cursor: pointer; color: var(--text-color); border-radius: 4px; transition: background 0.2s;"><i class="fa-solid fa-triangle-exclamation" style="color: #e74c3c;"></i> Evaluación Manting</button>
                 </div>
 
                 <style>
@@ -303,6 +305,96 @@
                             </p>
                         </div>
 
+                    </div>
+                </div>
+
+
+                <!-- TAB: EZYTEC -->
+                <div id="tab-ezytec" class="top-tab-content">
+                    <h3 class="kpi-section-title"><i class="fa-solid fa-car" style="color: #2ecc71;"></i> Evaluación Mensual Contratista: EZYTEC (E-Globalt)</h3>
+                    <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid #2ecc71;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <div>
+                                <h4 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 5px;">Mantenimiento Sistema Smart Parking</h4>
+                                <p style="color: #7f8c8d; font-size: 0.9rem;">Periodo Evaluado: Septiembre 2026 | Contrato a 12 meses</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="font-size: 2rem; font-weight: bold; color: #2ecc71;">4.77</span><span style="font-size: 1.2rem; color: #95a5a6;"> / 5.00</span>
+                                <p style="font-size: 0.85rem; font-weight: 600; color: #27ae60; background: rgba(46, 204, 113, 0.1); padding: 4px 12px; border-radius: 12px; display: inline-block; margin-top: 5px;">SATISFACTORIO</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h5 style="color: var(--text-color); margin-bottom: 10px; font-size: 0.95rem;">Resumen de Operación</h5>
+                                <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #555;">
+                                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-check" style="color: #2ecc71; margin-right: 8px;"></i> <strong>Cierre de Correctivos:</strong> 100% (59 tickets resueltos)</li>
+                                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-clock" style="color: #f39c12; margin-right: 8px;"></i> <strong>Nivel de Servicio ANS:</strong> 86.4% (51 de 59 resueltos en tiempo)</li>
+                                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-calendar-check" style="color: #3498db; margin-right: 8px;"></i> <strong>Mto. Preventivo:</strong> No programado para septiembre (Bimestral)</li>
+                                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-database" style="color: #9b59b6; margin-right: 8px;"></i> <strong>Respaldos:</strong> Certificados operativamente (Subsanado)</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: var(--text-color); margin-bottom: 10px; font-size: 0.95rem;">Modelo de Evaluación (Avance Real vs Meta 8.33%)</h5>
+                                <table class="data-table" style="font-size: 0.75rem; width: 100%;">
+                                    <thead><tr><th>Ítem Evaluado</th><th>Meta</th><th>Avance Real</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Mantenimiento Preventivo</td><td>2.08%</td><td style="color: #27ae60; font-weight: bold;">2.08%</td></tr>
+                                        <tr><td>Nivel de Servicio ANS</td><td>1.67%</td><td style="color: #f39c12; font-weight: bold;">1.44%</td></tr>
+                                        <tr><td>Cierre Correctivos</td><td>1.67%</td><td style="color: #27ae60; font-weight: bold;">1.67%</td></tr>
+                                        <tr><td>Detalle Técnico en Plat.</td><td>1.25%</td><td style="color: #27ae60; font-weight: bold;">1.25%</td></tr>
+                                        <tr><td>Actas y Formas</td><td>0.83%</td><td style="color: #f39c12; font-weight: bold;">0.67%</td></tr>
+                                        <tr><td>Gestión Repuestos</td><td>0.42%</td><td style="color: #27ae60; font-weight: bold;">0.42%</td></tr>
+                                        <tr><td>Entrega Cronograma</td><td>0.42%</td><td style="color: #e74c3c; font-weight: bold;">0.00%</td></tr>
+                                        <tr style="background: #f8f9fa;"><td style="font-weight: bold;">TOTAL EFECTIVIDAD</td><td style="font-weight: bold;">8.33%</td><td style="font-weight: bold; color: #2ecc71;">7.95% (95.4%)</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB: MANTING -->
+                <div id="tab-manting" class="top-tab-content">
+                    <h3 class="kpi-section-title"><i class="fa-solid fa-triangle-exclamation" style="color: #e74c3c;"></i> Evaluación Mensual Contratista: MANTING (BMS)</h3>
+                    <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 4px solid #e74c3c;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <div>
+                                <h4 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 5px;">Mantenimiento BMS & Automatización</h4>
+                                <p style="color: #7f8c8d; font-size: 0.9rem;">Periodo Evaluado: Septiembre 2026 | Avance esperado: ~22% del contrato</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <span style="font-size: 2rem; font-weight: bold; color: #e74c3c;">1.00</span><span style="font-size: 1.2rem; color: #95a5a6;"> / 5.00</span>
+                                <p style="font-size: 0.85rem; font-weight: 600; color: #c0392b; background: rgba(231, 76, 60, 0.1); padding: 4px 12px; border-radius: 12px; display: inline-block; margin-top: 5px;">CRÍTICO / DEFICIENTE</p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h5 style="color: var(--text-color); margin-bottom: 10px; font-size: 0.95rem;">Análisis Crítico de la Supervisión</h5>
+                                <p style="font-size: 0.85rem; color: #555; line-height: 1.5; margin-bottom: 15px;">
+                                    Durante el primer mes de ejecución contractual transcurrido, se alcanzó un avance pírrico del <strong>0.71%</strong> sobre el inventario de 1.401 elementos en la copropiedad. 
+                                    Resta por ejecutar el <strong>99.29%</strong> del contrato con tan solo 4 meses de vigencia restante. Las rutinas preventivas se encuentran nulas.
+                                </p>
+                                <ul style="list-style: none; padding: 0; font-size: 0.85rem; color: #555;">
+                                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-xmark" style="color: #e74c3c; margin-right: 8px;"></i> <strong>Copias de Seguridad (Welcome):</strong> Incumplimiento de la periodicidad (2 de 5 backups esperados).</li>
+                                    <li style="margin-bottom: 8px;"><i class="fa-solid fa-xmark" style="color: #e74c3c; margin-right: 8px;"></i> <strong>Preventivo de Accesos e Incendio:</strong> Avance del 0.00%. Cero intervención en lazos y equipos de campo.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: var(--text-color); margin-bottom: 10px; font-size: 0.95rem;">Avance Técnico por Subsistema</h5>
+                                <table class="data-table" style="font-size: 0.75rem; width: 100%;">
+                                    <thead><tr><th>Sistema</th><th>Intervenidos / Total</th><th>Avance (%)</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Sistema de CCTV</td><td>7 / 347 cámaras</td><td style="color: #e67e22; font-weight: bold;">2.02%</td></tr>
+                                        <tr><td>Detección Incendio (RCI)</td><td>0 / 958 sensores (7 lazos)</td><td style="color: #e74c3c; font-weight: bold;">0.00%</td></tr>
+                                        <tr><td>Intrusión (Botones Pánico)</td><td>3 / 73 botones</td><td style="color: #e67e22; font-weight: bold;">4.11%</td></tr>
+                                        <tr><td>Sistema de Accesos</td><td>0 intervenciones preventivas</td><td style="color: #e74c3c; font-weight: bold;">0.00%</td></tr>
+                                        <tr style="background: #f8f9fa;"><td style="font-weight: bold;">AVANCE GLOBAL</td><td style="font-weight: bold;">10 / 1401 elementos</td><td style="font-weight: bold; color: #c0392b;">0.71%</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
