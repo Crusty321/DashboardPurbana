@@ -223,24 +223,24 @@
                     <!-- Tarjetas KPI resumen -->
                     <div class="kpi-cards" style="margin-bottom: 30px;">
                         <div class="card" style="border-left-color: #e74c3c;">
-                            <div class="card-header"><span>GESTIÓN CONTRATOS (MANTING)</span><i class="fa-solid fa-handshake" style="color:#e74c3c;"></i></div>
-                            <div class="card-value" style="color:#e74c3c;">45%</div>
-                            <p class="kpi-detail">Resolución incidentes: 9 / 20</p>
+                            <div class="card-header"><span>KPI EZYTEC (SMART PARKING)</span><i class="fa-solid fa-car" style="color:#2ecc71;"></i></div>
+                            <div class="card-value" style="color:#2ecc71;">95.4%</div>
+                            <p class="kpi-detail">Nota: 4.77 / 5.0 - Satisfactorio</p>
                         </div>
                         <div class="card" style="border-left-color: var(--warning);">
-                            <div class="card-header"><span>MTO. PREVENTIVO (MENSUAL)</span><i class="fa-solid fa-screwdriver-wrench" style="color:var(--warning);"></i></div>
-                            <div class="card-value" style="color:var(--warning);">90%</div>
-                            <p class="kpi-detail">Equipos ejecutados: 27 / 30 este mes</p>
+                            <div class="card-header"><span>KPI MANTING (BMS)</span><i class="fa-solid fa-triangle-exclamation" style="color:#e74c3c;"></i></div>
+                            <div class="card-value" style="color:#e74c3c;">0.71%</div>
+                            <p class="kpi-detail">Nota: 1.0 / 5.0 - Deficiente</p>
                         </div>
                         <div class="card" style="border-left-color: var(--primary-color);">
-                            <div class="card-header"><span>AVANCE DEL PROYECTO</span><i class="fa-solid fa-code" style="color:var(--primary-color);"></i></div>
-                            <div class="card-value" style="color:var(--primary-color);">25%</div>
-                            <p class="kpi-detail">Intranet Primavera · Fase 2 en curso</p>
+                            <div class="card-header"><span>AVANCE PROYECTO SOFTWARE</span><i class="fa-solid fa-code" style="color:var(--primary-color);"></i></div>
+                            <div class="card-value" style="color:var(--primary-color);">50.0%</div>
+                            <p class="kpi-detail">Fases 1 y 2 (Login/Roles) finalizadas</p>
                         </div>
                         <div class="card green-border">
-                            <div class="card-header"><span>SOPORTE TI INTERNO</span><i class="fa-solid fa-headset" style="color:var(--positive);"></i></div>
-                            <div class="card-value" style="color:var(--positive);">84%</div>
-                            <p class="kpi-detail">Tickets resueltos: 16 / 19</p>
+                            <div class="card-header"><span>SOPORTE TI INTERNO</span><i class="fa-solid fa-headset" style="color:#f39c12;"></i></div>
+                            <div class="card-value" style="color:#f39c12;">91.6%</div>
+                            <p class="kpi-detail">Tickets resueltos: 33 / 36 (Eficiente)</p>
                         </div>
                     </div>
 
@@ -251,7 +251,7 @@
                         <!-- KPI 1: Resolución Manting (Doughnut Gauge) -->
                         <div class="chart-container-custom">
                             <div class="chart-header">
-                                <h4><i class="fa-solid fa-handshake" style="color:#e74c3c;"></i> KPI 1: Resolución de Incidentes — Contratista Manting</h4>
+                                <h4><i class="fa-solid fa-car" style="color:#2ecc71;"></i> KPI: Ezytec (Smart Parking)</h4>
                             </div>
                             <p style="font-size:0.8rem; color:#7f8c8d; margin-bottom:10px;">Fórmula: (Incidentes resueltos / Total reportados) × 100 → <strong>9/20 × 100 = 45%</strong></p>
                             <div style="position:relative; height:250px; width:100%;">
@@ -265,7 +265,7 @@
                         <!-- KPI 2: Mantenimiento Preventivo (Barra doble) -->
                         <div class="chart-container-custom">
                             <div class="chart-header">
-                                <h4><i class="fa-solid fa-screwdriver-wrench" style="color:var(--warning);"></i> KPI 2: Plan de Mantenimiento Preventivo</h4>
+                                <h4><i class="fa-solid fa-triangle-exclamation" style="color:#e74c3c;"></i> KPI: Manting (BMS & Automatización)</h4>
                             </div>
                             <p style="font-size:0.8rem; color:#7f8c8d; margin-bottom:10px;">
                                 KPI Mensual: <strong>27/30 × 100 = 90%</strong> &nbsp;|&nbsp; KPI Acumulado Total: <strong>27/307 × 100 = 8.8%</strong>
@@ -356,25 +356,26 @@
                         tooltip: { callbacks: { label: c => c.label + ': ' + c.raw + '%' } }
                     }
                 },
-                plugins: [centerTextPlugin('45%', '#e74c3c')]
+                plugins: [centerTextPlugin('95.4%', '#2ecc71')]
             });
 
             // ── KPI 2: Mantenimiento Preventivo (Barra comparativa) ──
             new Chart(document.getElementById('kpi2Chart'), {
                 type: 'bar',
                 data: {
-                    labels: ['KPI Mensual\n(Ago 2026)', 'KPI Acumulado\n(Total ciclo)'],
+                    labels: ['Avance Mensual Esperado', 'Avance Real
+(Primer Mes)'],
                     datasets: [
                         {
                             label: 'Ejecutado %',
-                            data: [90, 8.8],
+                            data: [0, 0.71],
                             backgroundColor: ['#f39c12', '#3498db'],
                             borderRadius: 6,
                             barThickness: 60
                         },
                         {
                             label: 'Meta %',
-                            data: [100, 100],
+                            data: [22.2, 100],
                             backgroundColor: ['rgba(243,156,18,0.15)', 'rgba(52,152,219,0.15)'],
                             borderRadius: 6,
                             barThickness: 60
@@ -405,7 +406,7 @@
                     datasets: [
                         {
                             label: 'Completado %',
-                            data: [100, 100, 0, 0, 0],
+                            data: [100, 100, 0, 15, 0],
                             backgroundColor: ['#2ecc71', '#2ecc71', '#bdc3c7', '#bdc3c7', '#bdc3c7'],
                             borderRadius: 4
                         }
@@ -431,9 +432,9 @@
             new Chart(document.getElementById('kpi4Chart'), {
                 type: 'doughnut',
                 data: {
-                    labels: ['Resueltos (16)', 'Activos / Pendientes (3)'],
+                    labels: ['Resueltos (33)', 'Activos / Pendientes (3)'],
                     datasets: [{
-                        data: [84.2, 15.8],
+                        data: [91.6, 8.4],
                         backgroundColor: ['#2ecc71', '#ecf0f1'],
                         borderWidth: 0,
                         hoverOffset: 4
@@ -447,7 +448,7 @@
                         tooltip: { callbacks: { label: c => c.label + ': ' + c.raw.toFixed(1) + '%' } }
                     }
                 },
-                plugins: [centerTextPlugin('84%', '#27ae60')]
+                plugins: [centerTextPlugin('91.6%', '#f39c12')]
             });
 
         });
