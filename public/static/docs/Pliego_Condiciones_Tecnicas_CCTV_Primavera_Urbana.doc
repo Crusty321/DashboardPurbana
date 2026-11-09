@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pliego de Condiciones Técnicas CCTV - Primavera Urbana</title>
+  <style>
+    @page {
+      size: letter;
+      margin: 20mm 18mm 20mm 18mm;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+      color: #1e293b;
+      line-height: 1.55;
+      font-size: 10.5pt;
+      margin: 0;
+      padding: 0;
+    }
+    .header-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #1b4d3e;
+      padding-bottom: 14px;
+      margin-bottom: 22px;
+    }
+    .header-title {
+      flex: 1;
+    }
+    .header-title .org {
+      font-size: 11pt;
+      font-weight: 800;
+      color: #1b4d3e;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .header-title .doc-type {
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+    .header-title h1 {
+      font-size: 13pt;
+      color: #0f172a;
+      margin: 0;
+      line-height: 1.3;
+      font-weight: 800;
+    }
+    .meta-strip {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #1b4d3e;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      font-size: 9.5pt;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    h2 {
+      font-size: 11.5pt;
+      color: #1b4d3e;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 4px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 10.5pt;
+      color: #0f172a;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: 700;
+      page-break-after: avoid;
+    }
+    p {
+      margin: 0 0 10px 0;
+      text-align: justify;
+    }
+    ul {
+      margin: 0 0 12px 0;
+      padding-left: 22px;
+    }
+    li {
+      margin-bottom: 6px;
+      text-align: justify;
+    }
+    .highlight-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 12px 15px;
+      margin: 12px 0;
+    }
+    .footer-note {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid #cbd5e1;
+      font-size: 8.5pt;
+      color: #64748b;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-box">
+    <div class="header-title">
+      <div class="org">CENTRO COMERCIAL Y EMPRESARIAL PRIMAVERA URBANA</div>
+      <div class="doc-type">PLIEGO DE CONDICIONES TÉCNICAS — PLAN DE MEJORAMIENTO DE CCTV</div>
+      <h1>PROYECTO: "SUMINISTRO, MIGRACIÓN, AMPLIACIÓN E INTEGRACIÓN CENTRALIZADA DEL SISTEMA DE VIDEOVIGILANCIA (CCTV)"</h1>
+    </div>
+  </div>
+
+  <div class="meta-strip">
+    <div><strong>Entidad:</strong> Primavera Urbana Centro Comercial y Empresarial</div>
+    <div><strong>Área Responsable:</strong> Infraestructura y Soporte TI</div>
+    <div><strong>Alcance Total:</strong> 387 Canales (347 Migración ONVIF + 40 Nuevos 4MP)</div>
+    <div><strong>Retención:</strong> 15 Días Continuos 24/7 (RAID 6)</div>
+  </div>
+
+  <h2>1. OBJETIVO Y ALCANCE DEL PROYECTO</h2>
+  <p>
+    El presente documento establece los términos de referencia técnicos, administrativos y económicos para la contratación del suministro, instalación, migración, configuración y puesta en marcha de la infraestructura de videovigilancia (CCTV) del Centro Comercial. El proyecto contempla la integración total e integral de <strong>387 canales de video</strong>, divididos estrictamente en: (i) la migración y centralización de <strong>347 cámaras IP/ONVIF existentes</strong> en funcionamiento, y (ii) el suministro, tendido de cableado, canalización y montaje físico desde cero de <strong>40 cámaras IP</strong>. La solución consolidará la operación bajo una arquitectura centralizada, garantizando analíticas de IA transversales, almacenamiento continuo por 15 días bajo arreglo RAID 6, y una o más estaciones de control optimizadas para un (1) operador con visualización simultánea en ocho (8) pantallas independientes.
+  </p>
+
+  <h2>2. MARCO DE CONSOLIDACIÓN Y PROPÓSITO DEL DOCUMENTO</h2>
+  <p>
+    Este pliego de condiciones consolida en un único instrumento normativo los requerimientos para la selección de la mejor alternativa tecnológica para cumplir con el alcance descrito en el numeral anterior. Para tal fin, el Centro Comercial evaluará dos (2) propuestas tecnológicas independientes: una basada en <strong>HikCentral Professional</strong> (como plataforma VMS Enterprise unificada) y otra alternativa de <strong>Arquitectura Abierta / Appliance</strong> (como solución de gestión de video interoperable multi-marca).
+  </p>
+  <p>
+    El oferente tiene la libertad de presentar su propuesta técnica y económica cotizando ambas soluciones o eligiendo solo una de ellas. En cualquier caso, la propuesta deberá garantizar que las soluciones sean 100% comparables en calidad y desempeño, dando estricto cumplimiento a las cantidades, tiempos de retención y especificaciones detalladas en el numeral 7. Descripción técnica de requerimientos hardware y software de este documento.
+  </p>
+  <p>
+    Como base fundamental para el diseño, dimensionamiento y estructuración de la propuesta técnica y económica, hace parte integral del presente pliego el documento adjunto denominado <strong>"Anexo 1. Diagnóstico del sistema CCTV"</strong>, el cual detalla el estado actual de la infraestructura del Centro Comercial.
+  </p>
+
+  <h2>3. ACTA DE CONFIDENCIALIDAD, CONTROL DE ACCESO Y TRATAMIENTO DE DATOS PERSONALES</h2>
+  <p>
+    Como condición previa y obligatoria para la participación en la visita técnica y el acceso al cuarto de control, servidor y centro de monitoreo del Centro Comercial, el Representante Legal y los delegados técnicos autorizados del Oferente deberán suscribir el Acta de Compromiso de Confidencialidad y Tratamiento de Datos Personales, en estricto cumplimiento de la normativa vigente.
+  </p>
+  <p>A través de la firma de este documento, el Oferente se obliga expresamente a:</p>
+  <ul>
+    <li><strong>A. Absoluta Confidencialidad de la Infraestructura de Seguridad:</strong> Guardar reserva estricta sobre la arquitectura de red, topología de cableado, ubicación de servidores, diagramas de racks, credenciales de prueba, características de los equipos y vulnerabilidades observadas durante la visita. Queda prohibida la reproducción, fotografía, escaneo, divulgación o compartición de dichos insumos con terceros no autorizados.</li>
+    <li><strong>B. Uso Exclusivo de la Información:</strong> Utilizar la información técnica recopilada, así como la contenida en el Anexo 1. Diagnóstico del sistema CCTV, única y exclusivamente para la estructuración de la propuesta técnica y económica del presente proceso.</li>
+    <li><strong>C. Vigencia de la Obligación de Confidencialidad:</strong> Las obligaciones de reserva, uso exclusivo y confidencialidad sobre la información técnica y de seguridad de la infraestructura se mantendrán vigentes durante todo el desarrollo del proceso, durante la ejecución del contrato (en caso de resultar adjudicatario) y subsistirán de manera indefinida en el tiempo, incluso si el oferente no resulta seleccionado.</li>
+    <li><strong>D. Cumplimiento de Hábeas Data (Ley 1581 de 2012):</strong> Autorizar el tratamiento de los datos personales (nombres, documentos de identidad, certificación ARL/EPS y datos de contacto) de los profesionales que asistirán a la visita, con el fin exclusivo de gestionar el control de acceso físico, la seguridad de las instalaciones y la trazabilidad del proceso.</li>
+    <li><strong>E. Tratamiento de Imágenes de CCTV como Datos Personales:</strong> El Oferente reconoce y acepta que Primavera Urbana Centro Comercial y Empresarial actúa como el único Responsable del Tratamiento de Datos (en virtud de la Ley 1581 de 2012). Por consiguiente, se establece expresamente que las imágenes captadas y almacenadas por el sistema de CCTV constituyen datos personales. La solución tecnológica propuesta, así como toda intervención del contratista, deberá garantizar los mecanismos de seguridad y arquitectura necesarios que le permitan al Centro Comercial dar estricto cumplimiento a su Política de Retención de la información y asegurar la correcta aplicación de su Aviso de Privacidad.</li>
+  </ul>
+
+  <h2>4. REQUISITOS HABILITANTES (CAPACIDAD TÉCNICA Y LEGAL)</h2>
+  <p>
+    Para participar en el presente proceso de contratación, los oferentes deberán acreditar y presentar obligatoriamente los siguientes requisitos habilitantes. Su cumplimiento es de carácter eliminatorio y condición necesaria para que la propuesta técnica y económica sea evaluada:
+  </p>
+
+  <h3>4.1. Experiencia Comprobable del Oferente</h3>
+  <p>
+    Deberá aportar certificaciones de contratos ejecutados y terminados que demuestren una experiencia comprobable y una trayectoria general no menor a cinco (5) años en la instalación y puesta en marcha de sistemas de Circuito Cerrado de Televisión (CCTV). Dentro de esta experiencia, se debe acreditar la ejecución de proyectos cuya magnitud sea superior a los 300 puntos de cámaras.
+  </p>
+
+  <h3>4.2. Certificaciones Oficiales del Fabricante</h3>
+  <p>
+    El oferente o el equipo de ingenieros propuestos para la ejecución del proyecto deberán contar con certificaciones oficiales vigentes emitidas por el fabricante de la plataforma VMS o tecnología propuesta (ej. Certificación en HikCentral Professional, certificaciones en plataformas de arquitectura abierta/Appliance, etc.), que garanticen su idoneidad para la configuración avanzada, administración y soporte del sistema.
+  </p>
+
+  <h3>4.3. Personal Mínimo y Equipo de Trabajo Requerido</h3>
+  <p>
+    El contratista adjudicatario deberá disponer de un equipo de trabajo profesional y certificado que garantice la correcta ejecución del proyecto, el cual deberá estar conformado como mínimo por:
+  </p>
+  <ul>
+    <li><strong>Director de Proyecto / Ingeniero Residente:</strong> Ingeniero Electrónico, de Telecomunicaciones o afines, con matrícula profesional vigente y experiencia comprobada en la gestión de proyectos de infraestructura tecnológica y seguridad electrónica.</li>
+    <li><strong>Técnico Especialista en Redes y Cableado Estructurado:</strong> Personal técnico certificado para el tendido, conectorización, fusionado y certificación de cableado estructurado Categoría 6A y canalización.</li>
+    <li><strong>Técnico Especialista en VMS e Integración de Sistemas:</strong> Técnico o ingeniero con competencias avanzadas en configuración de plataformas de video, redes IP, enrutamiento, protocolos ONVIF, arreglos de almacenamiento RAID y parametrización de analíticas de Inteligencia Artificial.</li>
+  </ul>
+
+  <h3>4.4. Documentación Jurídica y Financiera</h3>
+  <p>
+    Para acreditar su idoneidad legal, administrativa y financiera, los oferentes deberán incluir obligatoriamente dentro de su propuesta la siguiente documentación:
+  </p>
+  <ul>
+    <li>Registro Único Tributario (RUT) actualizado al año 2026.</li>
+    <li>Certificado de existencia y representación legal expedido por la Cámara de Comercio, con una fecha de expedición no mayor a treinta (30) días (Aplica para personas jurídicas).</li>
+    <li>Copia del documento de identidad (cédula de ciudadanía) del representante legal.</li>
+    <li>Certificado de cumplimiento del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) actualizado (Requisito obligatorio aplicable para el proveedor encargado de las labores de montaje, adecuaciones y desmontaje físico).</li>
+    <li>Estados financieros debidamente certificados correspondientes al cierre de la vigencia del año 2025.</li>
+  </ul>
+
+  <h2>5. GARANTÍAS, SOPORTE TÉCNICO (SLA) Y PÓLIZAS DE CUMPLIMIENTO EXIGIBLES EN EL CONTRATO</h2>
+
+  <h3>5.1. Garantía de Equipos y Hardware</h3>
+  <p>
+    El contratista adjudicatario deberá incluir en la documentación entregada los certificados que acrediten la garantía sobre la totalidad de los equipos suministrados e instalados. Dicha documentación deberá especificar claramente:
+  </p>
+  <ul>
+    <li>La garantía de instalación y correcto funcionamiento.</li>
+    <li>La garantía de los equipos otorgada directamente por el fabricante.</li>
+    <li>La garantía de los equipos respaldada por el oferente.</li>
+    <li><strong>Reposición por Daño (Sustitución):</strong> En caso de presentarse fallas de fábrica o daños en los equipos durante el periodo de garantía, el contratista estará obligado a realizar el reemplazo o reparación del hardware defectuoso en un plazo no mayor a 48 horas contadas a partir del reporte, suministrando un equipo de respaldo temporal de iguales o superiores características si la reparación se prolonga. Asimismo, para el caso de fallas inminentes o defectos de fábrica que se presenten inmediatamente después de la instalación de los equipos, el oferente deberá documentar y presentar un plan de contingencia (Plan B) que garantice el levantamiento y restablecimiento del servicio en el menor tiempo posible.</li>
+  </ul>
+
+  <h3>5.2. Niveles de Servicio y Tiempos de Respuesta (SLA)</h3>
+  <p>
+    Durante el período de garantía y soporte post instalación, el contratista deberá atender las solicitudes de soporte técnico y fallas reportadas por el área de TI del Centro Comercial bajo los siguientes Niveles de Servicio (SLA):
+  </p>
+  <ul>
+    <li>
+      <strong>Incidencias Críticas</strong> (Afectación total del sistema, caída del servidor principal, pérdida masiva de grabación o inoperabilidad del centro de control):
+      <ul>
+        <li><strong>Tiempo de Respuesta:</strong> Máximo dos (2) horas desde el reporte.</li>
+        <li><strong>Tiempo de Solución en Sitio o Remoto:</strong> Máximo cuatro (4) a seis (6) horas.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Incidencias Menores</strong> (Falla en una (1) cámara aislada, ajustes de visualización, calibración de analíticas o solicitudes de soporte operativo menor):
+      <ul>
+        <li><strong>Tiempo de Respuesta:</strong> Máximo veinticuatro (24) horas.</li>
+        <li><strong>Tiempo de Solución:</strong> Máximo cuarenta y ocho (48) horas.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3>5.3. Pólizas de Cumplimiento y Garantías Contractuales</h3>
+  <p>
+    Como requisito indispensable para la legalización y ejecución del contrato, el oferente adjudicatario deberá constituir a su costa y a favor de Primavera Urbana Centro Comercial y Empresarial las siguientes pólizas expedidas por una compañía de seguros legalmente establecida en Colombia:
+  </p>
+  <ul>
+    <li><strong>Póliza de Cumplimiento del Contrato:</strong> Por un valor equivalente al 20 por ciento del valor total del contrato, con una vigencia igual al plazo de ejecución del mismo y seis (6) meses más.</li>
+    <li><strong>Póliza de Calidad de los Bienes y Correcto Funcionamiento:</strong> Por un valor equivalente al veinte por ciento (20%) del valor total del contrato, con una vigencia mínima de [Indicar número, ej. tres (3)] años contados a partir del recibo a satisfacción de la obra.</li>
+    <li><strong>Póliza de Responsabilidad Civil Extracontractual:</strong> Para cubrir daños a terceros o a la infraestructura del centro comercial durante las labores de instalación, por la suma asegurada del 100% del valor total del contrato.</li>
+    <li><strong>Póliza de pago de prestaciones sociales:</strong> El cual cubre la responsabilidad de pago de salarios de la empresa por el 10% del valor total del contrato con vigencia igual al plazo de ejecución y 3 años más.</li>
+    <li><strong>Buen manejo y correcta inversión del anticipo:</strong> El cual cubre la inversión del anticipo girado al proveedor, el cual no puede superar el 50% antes de IVA y su vigencia será igual al plazo de ejecución del mismo y seis (6) meses más.</li>
+  </ul>
+
+  <h2>7. DESCRIPCIÓN TÉCNICA DE REQUERIMIENTOS HARDWARE - SOFTWARE</h2>
+
+  <h3>7.1. ARQUITECTURA (CLIENTE LOCAL / NVRs)</h3>
+  <p>El oferente podrá estructurar su propuesta seleccionando una o ambas de las siguientes arquitecturas de gestión:</p>
+  <ul>
+    <li><strong>Opción 1: Arquitectura VMS Enterprise (ej. HikCentral Professional):</strong> Basada en plataforma centralizada con licenciamiento de canales. Requiere un servidor dedicado para el VMS, garantizando alta disponibilidad, mapas 2D interactivos, gestión unificada de eventos y control cliente-servidor optimizado.</li>
+    <li><strong>Opción 2: Arquitectura Abierta / Appliance (ej. Nx Witness, Uniview Unicorn, etc.):</strong> Basada en un motor de base de datos optimizado de arquitectura abierta o servidor Appliance. Exige licenciamiento perpetuo de canales (sin cobros obligatorios de mantenimiento anual ni renovación SMA) y máxima interoperabilidad multi-marca mediante protocolo ONVIF nativo.</li>
+  </ul>
+
+  <h3>7.2. REQUERIMIENTOS TÉCNICOS COMUNES</h3>
+
+  <p><strong>A. Software de Gestión y Licenciamiento Base:</strong></p>
+  <ul>
+    <li><strong>Software Cliente / Consola de Administración:</strong> Utilización de la plataforma, software cliente o consola central de administración acorde a la arquitectura seleccionada, instalada en la estación de trabajo principal del operador y estaciones auxiliares si fuera necesario.</li>
+    <li><strong>Gestión de Canales:</strong> Integración de los 387 canales de vídeo mediante el enrolamiento, licenciamiento y sincronización de las direcciones IP de los grabadores NVRs, servidores o consolas hacia la plataforma de gestión elegida.</li>
+  </ul>
+
+  <p><strong>B. Infraestructura de Grabación y Almacenamiento:</strong></p>
+  <ul>
+    <li><strong>Arreglo de NVRs / Servidores:</strong> Dimensionamiento del número necesario de grabadores NVR de gama Enterprise, servidores de almacenamiento o Appliances que soporten la tasa de bits (bitrate) combinada y el procesamiento continuo de las 387 cámaras.</li>
+    <li><strong>Retención y Tolerancia a Fallos (RAID 6):</strong> Sistema de almacenamiento centralizado configurado en RAID 6 (o esquema de tolerancia a fallos equivalente a doble disco) que garantice una retención mínima de 15 días continuos (24/7) para la totalidad de las cámaras a una resolución mínima de 1080p, formato de compresión H.265+ y 15 FPS. Los discos duros deben ser estrictamente de especificación CCTV Enterprise 24/7 (ej. WD Purple Pro o Seagate SkyHawk AI).</li>
+    <li><strong>Estudio de Almacenamiento Previo:</strong> El oferente deberá adjuntar obligatoriamente dentro de su propuesta técnica una memoria de cálculo o estudio de almacenamiento detallado, donde demuestre matemáticamente el dimensionamiento de los discos, el cálculo del bitrate por canal y la garantía de cumplimiento del tiempo de retención exigido.</li>
+  </ul>
+
+  <p><strong>C. Suministro e Instalación Independiente de 40 Cámaras Nuevas:</strong></p>
+  <ul>
+    <li><strong>Suministro de Cámaras:</strong> Suministro de cuarenta (40) cámaras IP nuevas de resolución mínima de 4 MPX para el nuevo montaje físico.</li>
+    <li><strong>Instalación, Cableado y Canalización Físicas:</strong> Para el montaje físico de estas 40 cámaras nuevas, el contratista deberá cotizar la ejecución de un nuevo tendido de cableado estructurado (100% Cobre Categoría 6A, canalización en tubería conduit EMT/PVC pesado, cajas de paso y marquillado normado en ambos extremos). El estado actual de la red está en evaluación; por lo tanto, los datos reales, las rutas de canalización y el levantamiento exacto de las cantidades de obra necesarias para esta nueva infraestructura deberán ser verificados y definidos obligatoriamente por el oferente durante la visita técnica en sitio.</li>
+    <li><strong>Optimización de Infraestructura Existente:</strong> Se aclara que, si durante el trazado de la ruta para este nuevo cableado se identifica tubería, bandejas portacables (canastillas) o puertos en switches existentes con disponibilidad y capacidad técnica, el contratista podrá hacer uso de dicha infraestructura instalada para optimizar el tendido. De allí radica la importancia y obligatoriedad de la visita técnica para realizar este levantamiento. Asimismo, todo el nuevo cableado y su infraestructura física asociada deberán ser entregados debidamente certificados, garantizando el estricto cumplimiento de la normativa técnica vigente.</li>
+  </ul>
+
+  <p><strong>D. Estación de Trabajo, Visualización y Memoria de Cálculo (8 Monitores/TVs):</strong></p>
+  <ul>
+    <li><strong>Sistema de Visualización y Monitores para Videowall (8 Pantallas):</strong> El oferente deberá cotizar el suministro e instalación de ocho (8) monitores industriales nuevos (diseñados para operación continua 24/7), los cuales deberán ser configurados físicamente en un arreglo de videowall de 2x4 (dos filas por cuatro columnas). Asimismo, deberá incluir e integrar la solución técnica idónea (controlador de videowall, decodificador de video por hardware dedicado o matriz de salidas HDMI) que provea al menos ocho (8) salidas HDMI físicas independientes para alimentar de manera fluida y simultánea esta matriz, evitando sobrecargas de procesamiento en los servidores principales.</li>
+    <li><strong>Workstation Cliente Operador:</strong> Estación de trabajo dedicada para la interacción del operador único, optimizada para control PTZ, gestión de alarmas, líneas de tiempo interactivas e investigación forense.</li>
+  </ul>
+
+  <p><strong>E. Integración del Sistema de Analítica de IA y Migración ONVIF:</strong></p>
+  <ul>
+    <li><strong>Analítica Transversal en el Sistema:</strong> Implementación y configuración de las funciones de Inteligencia Artificial a nivel general del sistema (detección y clasificación de personas y vehículos, cruce de línea, intrusión perimetral y búsqueda forense inteligente por atributos) operando de manera transversal sobre la plataforma de grabación o gestión elegida.</li>
+    <li><strong>Migración y Certificación ONVIF:</strong> Configuración, auditoría, pruebas de estabilidad de flujo de video y mapeo 2D o topológico de las 347 cámaras IP/ONVIF existentes hacia la plataforma propuesta, garantizando la correcta sincronización horaria y el funcionamiento integrado del sistema.</li>
+  </ul>
+
+  <h2>8. CRONOGRAMA DE EJECUCIÓN, FASES DE IMPLEMENTACIÓN Y RESTRICCIONES OPERATIVAS</h2>
+  <p>
+    El oferente tendrá la libertad de proponer su propio cronograma y tiempos de ejecución para el desarrollo del proyecto; sin embargo, la propuesta económica deberá contemplar y detallar a cabalidad todas las fases de implementación requeridas para cumplir con el alcance total del proyecto.
+  </p>
+  <p>
+    Para garantizar la continuidad operativa del Centro Comercial, la planificación y ejecución de las labores de migración, empalme y puesta en marcha deberán regirse bajo las siguientes directrices operativas obligatorias:
+  </p>
+  <ul>
+    <li><strong>Horarios de Ventana de Mantenimiento / Intervención:</strong> Cualquier labor crítica que implique desconexión temporal, migración de flujos de red o empalme en el sistema base deberá programarse y ejecutarse estrictamente en horarios de menor afluencia de público o en jornadas nocturnas, previa coordinación y autorización del área de Infraestructura y Soporte TI de Primavera Urbana.</li>
+    <li>
+      <strong>Detalle Obligatorio de las Fases en la Propuesta:</strong> Dentro de su propuesta técnica y comercial, el oferente deberá presentar un desglose detallado del cronograma que contemple a cabalidad las fases mínimas de ejecución:
+      <ul>
+        <li>Visita técnica en sitio y entrega de memoria de cálculo de almacenamiento.</li>
+        <li>Suministro y aprovisionamiento de equipos (servidores/appliances, discos y licencias).</li>
+        <li>Tendido de cableado estructurado, canalización y montaje físico de los 40 puntos nuevos.</li>
+        <li>Migración, enrolamiento y configuración del sistema base (347 cámaras existentes), analíticas de IA y almacenamiento RAID 6.</li>
+        <li>Pruebas de integración, despliegue de la matriz de visualización en las 8 pantallas, programas de capacitación a los diferentes niveles y periodo de marcha blanca para el recibo a satisfacción.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>9. CONSIDERACIONES DE COMPATIBILIDAD</h2>
+
+  <h3>9.1. Garantía Explícita de Compatibilidad con la Infraestructura Existente</h3>
+  <p>
+    El Oferente deberá evaluar, diagnosticar y garantizar por escrito dentro de su propuesta técnica que el software VMS, NVRs o Appliances ofrecidos en cualquiera de las dos opciones son 100% compatibles con la totalidad de las 347 cámaras IP actualmente instaladas en el Centro Comercial (cumplimiento ONVIF).
+  </p>
+
+  <h3>9.2. Soberanía Administrativa</h3>
+  <p>
+    Para garantizar la total independencia tecnológica del proveedor y evitar cualquier tipo de dependencia operativa hacia terceros, el contratista adjudicatario deberá entregar al Centro Comercial la totalidad de las credenciales de acceso con perfil Administrador Principal / Root / Superusuario de todas las plataformas VMS, NVRs, Appliances, analíticas de IA, switches de red y licencias de software implementadas. Esta entrega de credenciales deberá garantizarse y formalizarse obligatoriamente mediante un acta de entrega firmada por ambas partes a la culminación del proyecto.
+  </p>
+
+  <h3>9.3. Propiedad de Licencias</h3>
+  <p>
+    El proveedor debe garantizar que todas las licencias de software, plataformas y cuentas de administración queden registradas única y exclusivamente a nombre de Primavera Urbana Centro Comercial y Empresarial, utilizando los correos institucionales designados por el área de TI.
+  </p>
+  <p>
+    Se prohíbe de forma categórica el uso de contraseñas de fábrica no documentadas, contraseñas personalizadas sin entregar, o el registro de licencias/plataformas vinculadas a cuentas de correo personales o institucionales de la empresa contratista. El Centro Comercial mantendrá en todo momento la propiedad, soberanía y control irrestricto sobre la infraestructura, configuraciones, bases de datos y licencias de la plataforma.
+  </p>
+
+  <h3>9.4. Capacitación Formal, Transferencia de Conocimiento y Continuidad Operativa</h3>
+  <p>
+    Como condición obligatoria y prerrequisito para la firma del acta de recibo a satisfacción del proyecto, el contratista adjudicatario deberá diseñar e impartir un programa integral de Capacitación Teórico-Práctica.
+  </p>
+  <p>
+    Para garantizar la correcta transferencia, el plan de capacitación deberá estructurarse obligatoriamente bajo los siguientes parámetros mínimos:
+  </p>
+  <ul>
+    <li>
+      <strong>A. Nivel Operativo (Operadores de Medios / Centro de Control):</strong>
+      <ul>
+        <li><strong>Intensidad y Asistentes:</strong> Mínimo cuatro (4) horas, en una (1) o dos (2) sesiones. La cantidad de asistentes y la conformación de los grupos serán definidos por el área encargada del personal.</li>
+        <li><strong>Enfoque:</strong> Monitoreo en tiempo real, manipulación de la interfaz VMS o cliente de visualización, gestión de la matriz de pantallas/TVs, uso de la línea de tiempo interactiva, control de cámaras domo (PTZ), reconocimiento y gestión de alertas generadas por las analíticas de Inteligencia Artificial, y protocolos seguros para la exportación de videoclips con cadena de custodia.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>B. Nivel Técnico y Especializado (Área de Sistemas / TI):</strong>
+      <ul>
+        <li><strong>Intensidad y Asistentes:</strong> Mínimo seis (6) horas, divididas en al menos dos (2) sesiones, orientadas al equipo de infraestructura TI (hasta tres (3) asistentes).</li>
+        <li><strong>Enfoque:</strong> Administración de infraestructura, gestión de usuarios, roles y perfiles de seguridad, administración del almacenamiento RAID 6 y revisión de los logs de salud del sistema, políticas de respaldo (backups), enrolamiento y auditoría de protocolos ONVIF para futuras expansiones, y procedimientos diagnósticos ante fallas de red, con el fin de asegurar la transferencia técnica absoluta y evitar dependencias del proveedor.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>C. Nivel Administrativo y Directivo (Área Administrativa):</strong>
+      <ul>
+        <li><strong>Intensidad y Asistentes:</strong> Mínimo dos (2) horas, en una (1) sesión, orientada a la administración y supervisión (hasta tres (3) asistentes).</li>
+        <li><strong>Enfoque:</strong> Comprensión del alcance general del sistema, supervisión de reportes de auditoría y eventos, visualización de métricas de desempeño del sistema de videovigilancia y mecanismos de control sobre las licencias y garantías.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>D. Entregables, Grabación y Evaluación:</strong>
+      <ul>
+        <li><strong>Grabación de Sesiones:</strong> Todas las sesiones de capacitación (en sus tres niveles) deberán ser grabadas en video y audio, y entregadas al Centro Comercial en formato digital como material de consulta permanente para la inducción de nuevos colaboradores ante la rotación de personal.</li>
+        <li><strong>Material de Apoyo:</strong> Entrega de manuales técnicos, guías de operación rápida y fichas de procedimientos actualizadas.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>10. DESGLOSE DE LA PROPUESTA ECONÓMICA</h2>
+  <p>
+    Los oferentes podrán presentar su propuesta económica haciendo uso de su propio formato comercial o corporativo. No obstante, para efectos de revisión, comparabilidad y transparencia en el proceso, será requisito obligatorio e indispensable que la cotización presente de forma estrictamente individualizada y desglosada los siguientes rubros para cada una de las dos (2) opciones técnicas solicitadas:
+  </p>
+  <ul>
+    <li><strong>Suministro de Plataforma y Licenciamiento Base:</strong> Costo correspondiente al software de gestión VMS, licencias base, licencias de canal IP (para los 387 canales), módulos de analítica de Inteligencia Artificial y el equipamiento de procesamiento o servidores de grabación asignados (NVRs Enterprise o Appliances dedicados).</li>
+    <li><strong>Suministro de Almacenamiento Masivo:</strong> Costo de los servidores, chasis de almacenamiento expandible y controladoras dedicadas requeridas para soportar el flujo continuo de video.</li>
+    <li><strong>Suministro e Instalación de Discos Duros (Enterprise 24/7):</strong> Costo de la matriz de discos duros de especificación industrial CCTV Enterprise 24/7 (ej. WD Purple Pro o Seagate SkyHawk AI) configurados en RAID 6 para garantizar la retención continua de 15 días de los 387 canales.</li>
+    <li><strong>Suministro e Instalación de los 40 Puntos de Cámara Nuevos:</strong> Costo integral que incluye el suministro de las cuarenta (40) cámaras IP nuevas de resolución mínima de 4 MPX con analítica de IA integrada, la mano de obra, el nuevo tendido de cableado estructurado (Cat 6A 100% Cobre), canalización en tubería conduit EMT/PVC pesado, cajas de paso, marquillado y certificación de los puntos.</li>
+    <li><strong>Otros (Migración, Puesta en Marcha y Capacitación):</strong> Costo de la mano de obra especializada, servicios de reconfiguración, migración, auditoría y mapeo de las 347 cámaras existentes, así como el hardware de visualización (decodificadores o Workstations con GPU para las 8 pantallas) y el programa formal de capacitación y transferencia tecnológica para los diferentes niveles del Centro Comercial.</li>
+    <li><strong>Mantenimiento Post-Garantía:</strong> El oferente deberá cotizar de manera independiente el valor correspondiente a la prestación del servicio de mantenimiento (preventivo y correctivo) del sistema de CCTV integral. Este valor debe proyectarse para entrar en vigencia únicamente con posterioridad a la instalación y una vez finalizado el periodo de cobertura de la garantía de los equipos.</li>
+  </ul>
+
+  <h2>11. RESERVA DEL DERECHO DE ADJUDICACIÓN</h2>
+  <p>
+    La presente invitación no obliga a <strong>PRIMAVERA URBANA CENTRO COMERCIAL Y EMPRESARIAL</strong> a adjudicar el contrato; la Copropiedad podrá:
+  </p>
+  <ul>
+    <li>Declarar desierto el proceso.</li>
+    <li>Solicitar ajustes o aclaraciones a las propuestas.</li>
+    <li>Negociar aspectos técnicos o económicos con uno o varios proponentes.</li>
+    <li>Rechazar cualquiera o todas las propuestas cuando no satisfagan los intereses de la Copropiedad.</li>
+    <li>Ejecutar total o parcialmente el objeto de la invitación.</li>
+  </ul>
+  <p>
+    La decisión adoptada por la Copropiedad será de carácter definitivo y no generará obligación de indemnización alguna para los participantes.
+  </p>
+
+  <div class="footer-note">
+    Documento consolidado — Plan de Mejoramiento de CCTV (100%) · Primavera Urbana Centro Comercial y Empresarial · Área de Infraestructura y Soporte TI
+  </div>
+
+</body>
+</html>
