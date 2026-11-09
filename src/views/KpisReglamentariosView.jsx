@@ -283,7 +283,6 @@ export default function KpisReglamentariosView() {
                       <th style={{ textAlign: 'center' }}>Base / Evidencia</th>
                       <th style={{ textAlign: 'center' }}>% Cumpl.</th>
                       <th style={{ textAlign: 'center' }}>Nota (0 a 5)</th>
-                      <th>Concepto</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -295,11 +294,6 @@ export default function KpisReglamentariosView() {
                       <td style={{ textAlign: 'center', fontWeight: 600 }}>36 / 39 SLA</td>
                       <td style={{ textAlign: 'center', color: '#475569' }}>92.3%</td>
                       <td style={{ textAlign: 'center', fontWeight: 900, color: '#16a34a', fontSize: '0.96rem' }}>4.62 / 5.0</td>
-                      <td>
-                        <span className="badge" style={{ background: '#dcfce7', color: '#166534', fontWeight: 700, fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px' }}>
-                          Satisfactorio
-                        </span>
-                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -309,11 +303,6 @@ export default function KpisReglamentariosView() {
                       <td style={{ textAlign: 'center', fontWeight: 600 }}>64 / 72 Tickets</td>
                       <td style={{ textAlign: 'center', color: '#475569' }}>88.9%</td>
                       <td style={{ textAlign: 'center', fontWeight: 900, color: '#d97706', fontSize: '0.96rem' }}>4.44 / 5.0</td>
-                      <td>
-                        <span className="badge" style={{ background: '#fef3c7', color: '#b45309', fontWeight: 700, fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px' }}>
-                          8 Pend. (Welcome)
-                        </span>
-                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -323,11 +312,6 @@ export default function KpisReglamentariosView() {
                       <td style={{ textAlign: 'center', fontWeight: 600 }}>91 / 93 Tickets</td>
                       <td style={{ textAlign: 'center', color: '#475569' }}>97.8%</td>
                       <td style={{ textAlign: 'center', fontWeight: 900, color: '#2563eb', fontSize: '0.96rem' }}>4.89 / 5.0</td>
-                      <td>
-                        <span className="badge" style={{ background: '#dbeafe', color: '#1d4ed8', fontWeight: 700, fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px' }}>
-                          Sobresaliente
-                        </span>
-                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -337,22 +321,12 @@ export default function KpisReglamentariosView() {
                       <td style={{ textAlign: 'center', fontWeight: 600 }}>6 / 6 Módulos</td>
                       <td style={{ textAlign: 'center', color: '#475569' }}>100%</td>
                       <td style={{ textAlign: 'center', fontWeight: 900, color: '#1b4d3e', fontSize: '0.96rem' }}>5.00 / 5.0</td>
-                      <td>
-                        <span className="badge" style={{ background: '#dcfce7', color: '#166534', fontWeight: 700, fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px' }}>
-                          Excelente ✓
-                        </span>
-                      </td>
                     </tr>
                     <tr style={{ background: '#f8fafc', borderTop: '2px solid #cbd5e1' }}>
                       <td style={{ fontWeight: 800, color: '#0f172a' }}>NOTA GLOBAL CONGLOMERADA</td>
                       <td style={{ textAlign: 'center', fontWeight: 700 }}>4 Frentes</td>
                       <td style={{ textAlign: 'center', fontWeight: 700 }}>94.8%</td>
                       <td style={{ textAlign: 'center', fontWeight: 900, color: '#16a34a', fontSize: '1.02rem' }}>4.74 / 5.0</td>
-                      <td>
-                        <span className="badge" style={{ background: '#16a34a', color: 'white', fontWeight: 800, fontSize: '0.72rem', padding: '3px 8px', borderRadius: '6px' }}>
-                          Meta Superada ✓
-                        </span>
-                      </td>
                     </tr>
                   </tbody>
                 </table>
